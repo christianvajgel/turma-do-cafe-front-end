@@ -23,4 +23,5 @@ dist-ssr
 *.sln
 *.sw?
 
-./.secrets
+# Ignorar a pasta .secrets
+.secrets/
