@@ -1,15 +1,18 @@
 <script setup>
 
 import Header from "@/components/structure/Header.vue";
+import Footer from "@/components/structure/Footer.vue";
 </script>
 
 <template>
 
-  <div class="gradiente">
+  <div class="">
 
     <Header/>
 
     <router-view/>
+
+    <Footer/>
 
   </div>
 
