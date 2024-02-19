@@ -53,6 +53,7 @@ import prod2 from '/src/assets/images/products/prod-2.jpg';
           <div class="flex flex-col gap-y-4 gap-x-0 mt-5 sm:flex-row sm:items-center sm:justify-end sm:gap-y-0 sm:gap-x-7 sm:mt-0 sm:ps-7">
             <a class="font-medium text-blue-500 hover:text-gray-400 px-6 sm:py-6 sm:px-0 dark:text-gray-400 dark:hover:text-gray-500" href="/produtos" aria-current="page">Produtos</a>
             <a class="font-medium text-blue-500 hover:text-gray-400 px-6 sm:py-6 sm:px-0 dark:text-gray-400 dark:hover:text-gray-500" href="/detalhamento" aria-current="page">Detalhamento</a>
+            <a class="font-medium text-blue-500 hover:text-gray-400 px-6 sm:py-6 sm:px-0 dark:text-gray-400 dark:hover:text-gray-500" href="/gerenciarproduto" aria-current="page">Gerenciar Produto</a>
 
             <a class="font-medium text-gray-500 hover:text-gray-400 px-6 sm:py-6 sm:px-0 dark:text-gray-400 dark:hover:text-gray-500" href="#">Loja</a>
             <a class="font-medium text-gray-500 hover:text-gray-400 px-6 sm:py-6 sm:px-0 dark:text-gray-400 dark:hover:text-gray-500" href="#">Sobre</a>
