@@ -7,9 +7,3 @@ export function gerarUUID() {
         return v.toString(16);
     });
 }
-
-
-
-
-
-

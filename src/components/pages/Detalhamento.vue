@@ -1,28 +1,93 @@
 <script setup>
 
+import axios from "axios";
+import {onMounted, ref, watch} from "vue";
+import { useRoute } from 'vue-router';
+
+
+const data = ref(null);
+
+const ok = ref(false);
+
+watch(ok, (newValue, oldValue) => {
+  if (newValue === true) {
+    console.log('A variável ok mudou para true')
+  }
+});
+
+onMounted(() => {
+  console.log("mounted especifico");
+  listarProdutoEspecifico();
+});
+
+// function listarProdutoEspecifico(){
+//
+//   console.log("listar");
+//
+//   axios.get(`https://localhost:7173/api/Produto/${useRoute().params.id}`)
+//       .then(response => {
+//         data.value = response.data;
+//       })
+//       .catch(error => {
+//         console.error(error);
+//       });
+//
+//   console.log(data);
+// }
+
+async function listarProdutoEspecifico() {
+
+  console.log("listar especifico");
+
+  const URL = `https://localhost:7173/api/Produto/${useRoute().params.id}`;
+
+  console.log(URL);
+
+  try {
+
+    // const response = await axios.get(`https://localhost:7173/api/Produto/c9b6c3f5-f27e-499b-a4b2-17775589795e`);
+    // const response = await axios.get(`https://localhost:7173/api/Produto/${useRoute().params.id}`);
+    const response = await axios.get(URL);
+
+
+    data.value = response.data;
+
+    // setTimeout(function() {
+    //   // Whatever you want to do after the wait
+    // }, 1000);
+
+    ok.value = true;
+
+  } catch (error) {
+    console.error(error);
+  }
+
+  console.log(data);
+}
+
+
 </script>
 
 <template>
 
-  <div>
+  <div v-if="ok">
 
 <!--    Card detalhamento #######################-->
 
     <!-- Features -->
     <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
       <div class="aspect-w-16 aspect-h-7">
-        <img class="w-full object-cover rounded-xl" src="https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?q=80&w=2076&auto=format&fit=crop" alt="Image Description">
+        <img class="w-full object-cover rounded-xl" :src="data.imagem" alt="Image Description">
       </div>
 
       <!-- Grid -->
       <div class="mt-5 lg:mt-16 grid lg:grid-cols-3 gap-8 lg:gap-12">
         <div class="lg:col-span-1">
           <h2 class="font-bold text-2xl md:text-3xl text-gray-800 dark:text-gray-200">
-            Café Brasil
+            {{ data.nome }}
           </h2>
           <p class="mt-2 md:mt-4 text-gray-500">
-            Latte cup pumpkin spice percolator, saucer, seasonal percolator steamed to go breve mug barista. Single shot caffeine skinny sweet
-            robusta macchiato siphon percolator cream viennese flavour foam. Aftertaste trifecta, aroma medium single shot qui cortado macchiato viennese.
+            {{ data.descricao }}
           </p>
 
           <br>
@@ -40,7 +105,9 @@
           <div class="grid sm:grid-cols-2 gap-8 md:gap-12">
             <!-- Icon Block -->
             <div class="flex gap-x-5">
-              <svg class="flex-shrink-0 mt-1 w-6 h-6 text-blue-600 dark:text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="10" x="3" y="11" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" x2="8" y1="16" y2="16"/><line x1="16" x2="16" y1="16" y2="16"/></svg>
+              <svg class="flex-shrink-0 mt-1 w-6 h-6 text-blue-600 dark:text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 576 512" fill="#1f2937" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M176 0H400c26.5 0 48.1 21.8 47.1 48.2c-.2 5.3-.4 10.6-.7 15.8H552c13.3 0 24 10.7 24 24c0 92.6-33.5 157-78.5 200.7c-44.3 43.1-98.3 64.8-138.2 75.8c-23.4 6.5-39.4 26-39.4 45.6c0 20.9 17 37.9 37.9 37.9H384c17.7 0 32 14.3 32 32s-14.3 32-32 32H192c-17.7 0-32-14.3-32-32s14.3-32 32-32h26.1c20.9 0 37.9-17 37.9-37.9c0-19.6-15.9-39.2-39.4-45.6c-39.9-11-93.9-32.7-138.1-75.8C33.5 245 0 180.6 0 88C0 74.7 10.7 64 24 64H129.6c-.3-5.2-.5-10.4-.7-15.8C127.9 21.8 149.5 0 176 0zM133.2 112H48.9c5.1 66.3 31.1 111.2 63 142.3c22.4 21.8 48.3 37.3 73.2 48.3c-22.7-40.3-42.8-100.5-51.9-190.6zM390.8 302.6c24.9-11 50.8-26.5 73.2-48.3c32-31.1 58-76 63-142.3H442.7c-9.1 90.1-29.2 150.3-51.9 190.6zM295.2 86.5c-2.9-5.9-11.4-5.9-14.3 0l-19.2 38.9c-1.2 2.4-3.4 4-6 4.4L212.7 136c-6.6 1-9.2 9-4.4 13.6l31 30.2c1.9 1.8 2.7 4.5 2.3 7.1l-7.3 42.7c-1.1 6.5 5.7 11.5 11.6 8.4L284.3 218c2.3-1.2 5.1-1.2 7.4 0l38.4 20.2c5.9 3.1 12.7-1.9 11.6-8.4L334.4 187c-.4-2.6 .4-5.2 2.3-7.1l31-30.2c4.7-4.6 2.1-12.7-4.4-13.6l-42.9-6.2c-2.6-.4-4.9-2-6-4.4L295.2 86.5z"/>
+              </svg>
               <div class="grow">
                 <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
                   Avaliação
@@ -81,13 +148,15 @@
 
             <!-- Icon Block -->
             <div class="flex gap-x-5">
-              <svg class="flex-shrink-0 mt-1 w-6 h-6 text-blue-600 dark:text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2h0a3.13 3.13 0 0 1 3 3.88Z"/></svg>
+              <svg class="flex-shrink-0 mt-1 w-6 h-6 text-blue-600 dark:text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 320 512" fill="#1f2937" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M184 24c0-13.3-10.7-24-24-24s-24 10.7-24 24V71.7c-3.1 .1-6.2 .3-9.3 .6c-23.2 1.9-47.2 7.4-67.2 20.1C38.7 105.6 23.5 126 18 154.2c-3.9 20.3-2 38.8 6.1 55.2c8 16 20.9 27.6 34.8 36.2c26.2 16.2 61.9 25.3 92.9 33.2l2.3 .6c33.9 8.6 62.6 16.1 81.7 28c9 5.6 14.3 11.2 17.1 16.9c2.7 5.3 4.2 12.8 2 24.5c-2.9 14.7-13.4 26.9-34.5 34.9c-21.6 8.2-52 10.9-87.6 5.9c-22.6-3.3-61.8-12.7-83-22.1c-12.1-5.4-26.3 .1-31.7 12.2s.1 26.3 12.2 31.7C57 423.2 101.1 433.4 126 437l.1 0c3.3 .5 6.6 .9 9.9 1.2V488c0 13.3 10.7 24 24 24s24-10.7 24-24V439.4c19.3-1.3 37.4-4.9 53.5-11c31.9-12.1 57.7-35.2 64.5-70.6c3.9-20.3 2-38.8-6.1-55.2c-8-16-20.9-27.6-34.8-36.2c-26.2-16.2-61.9-25.3-92.9-33.2l-2.3-.6c-33.9-8.6-62.6-16.1-81.7-28c-9-5.6-14.3-11.2-17.1-16.9c-2.7-5.3-4.2-12.8-2-24.5c2.9-14.8 10.1-24 20.2-30.4c10.9-6.9 26.3-11.2 45.3-12.7c38.3-3.1 83.1 5.3 113.9 12.5c12.9 3.1 25.8-4.9 28.9-17.8s-4.9-25.8-17.8-28.9c-18.7-4.4-44.2-9.7-71.5-12.5V24z"/>
+              </svg>
               <div class="grow">
                 <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
-                  Paladar
+                  Preço
                 </h3>
                 <p class="mt-1 text-gray-600 dark:text-gray-400">
-                  Cítrico
+                  R$ {{ Number(data.preco).toFixed(2).replace('.',',') }}
                 </p>
               </div>
             </div>
@@ -95,13 +164,15 @@
 
             <!-- Icon Block -->
             <div class="flex gap-x-5">
-              <svg class="flex-shrink-0 mt-1 w-6 h-6 text-blue-600 dark:text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+              <svg class="flex-shrink-0 mt-1 w-6 h-6 text-blue-600 dark:text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512" fill="#1f2937" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M256 464C141.1 464 48 370.9 48 256c0-22 3.4-43.1 9.7-63l9.4 16.4c8.3 14.5 21.9 25.2 38 29.8L163 255.7c17.2 4.9 29 20.6 29 38.5v39.9c0 11 6.2 21 16 25.9s16 14.9 16 25.9v30.4c0 15.9 15.2 27.3 30.5 23c15.9-4.5 28.3-17 32.8-32.8l1.5-5.4c4.6-16.1 15.3-29.7 29.8-38l9.2-5.3c15-8.5 24.2-24.5 24.2-41.7v-8.3c0-12.7-5.1-24.9-14.1-33.9l-3.9-3.9c-9-9-21.2-14.1-33.9-14.1H257c-11.1 0-22.1-2.9-31.8-8.4l-34.5-19.7c-4.3-2.5-7.6-6.5-9.2-11.2c-3.2-9.6 1.1-20 10.2-24.5l5.9-3c6.6-3.3 14.3-3.9 21.3-1.5l23.2 7.7c8.2 2.7 17.2-.4 21.9-7.5c4.7-7 4.2-16.3-1.2-22.8l-13.6-16.3c-10-12-9.9-29.5 .3-41.3l15.7-18.3c8.8-10.3 10.2-25 3.5-36.7l-2.4-4.2c73.6 3.6 137.2 45.6 171.2 106.3L412 164.8c-15.7 6.3-23.8 23.8-18.5 39.8l16.9 50.7c3.5 10.4 12 18.3 22.6 20.9l29.1 7.3C448.7 385.4 361.5 464 256 464zm0 48A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"/>
+              </svg>
               <div class="grow">
                 <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
-                  Região
+                  Origem
                 </h3>
                 <p class="mt-1 text-gray-600 dark:text-gray-400">
-                  Sul de Minas
+                  {{ data.origem }}
                 </p>
               </div>
             </div>
@@ -109,13 +180,15 @@
 
             <!-- Icon Block -->
             <div class="flex gap-x-5">
-              <svg class="flex-shrink-0 mt-1 w-6 h-6 text-blue-600 dark:text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <svg class="flex-shrink-0 mt-1 w-6 h-6 text-blue-600 dark:text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512" fill="#1f2937" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M216 88a40 40 0 1 1 80 0 40 40 0 1 1 -80 0zm118.4 40c6.1-12 9.6-25.6 9.6-40c0-48.6-39.4-88-88-88s-88 39.4-88 88c0 14.4 3.5 28 9.6 40H120c-22 0-41.2 15-46.6 36.4l-72 288c-3.6 14.3-.4 29.5 8.7 41.2S33.2 512 48 512H464c14.8 0 28.7-6.8 37.8-18.5s12.3-26.8 8.7-41.2l-72-288C433.2 143 414 128 392 128H334.4zM256 176H392l72 288H48l72-288H256z"/>
+              </svg>
               <div class="grow">
                 <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
                   Peso
                 </h3>
                 <p class="mt-1 text-gray-600 dark:text-gray-400">
-                  250g
+                  {{ data.peso }} g
                 </p>
               </div>
             </div>

@@ -13,8 +13,6 @@
 
 <template>
 
-  <p>Editar</p>
-
   <!--            ID guid -->
 <!--  <div class="sm:col-span-3">-->
 <!--    <label for="id-produto" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-gray-200">-->
@@ -46,6 +44,13 @@
 <!--      </button>-->
 <!--    </div>-->
 <!--  </div>-->
+
+  <div>
+
+
+
+  </div>
+
 
 </template>
 
