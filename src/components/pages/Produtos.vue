@@ -25,12 +25,8 @@ function listarTodosOsProdutos(){
         loading.value = false;
       });
 
-  console.log(data);
-
+  // console.log(data);
 }
-
-
-
 
 
 </script>
@@ -103,10 +99,11 @@ function listarTodosOsProdutos(){
           <!-- Card -->
           <div v-for="(produto, index) in data" :key="produto.id"
                class="group flex flex-col h-full bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]">
-            <div class="h-52 flex flex-col justify-center items-center rounded-t-xl">
+<!--            <div class="h-52 flex flex-col justify-center items-center rounded-t-xl">-->
+            <div class="flex flex-col justify-center items-center rounded-t-xl">
 
-              <img :src="produto.imagemUrl"
-                   class="self-center" alt="cafe" width="75%" height="75%"/>
+              <img :src="produto.imagem"
+                   class="self-center imagem-card border rounded-xl mt-4 md:mt-6 shadow-sm" alt="cafe"/>
 
             </div>
             <div class="p-4 md:p-6">
@@ -215,5 +212,10 @@ function listarTodosOsProdutos(){
 </template>
 
 <style scoped>
+
+.imagem-card {
+  width: 80%;
+  height: auto;
+}
 
 </style>
