@@ -102,8 +102,9 @@ function listarTodosOsProdutos(){
 <!--            <div class="h-52 flex flex-col justify-center items-center rounded-t-xl">-->
             <div class="flex flex-col justify-center items-center rounded-t-xl">
 
-              <img :src="produto.imagem"
-                   class="self-center imagem-card border rounded-xl mt-4 md:mt-6 shadow-sm" alt="cafe"/>
+                <img :src="produto.imagem"
+                     class="self-center imagem-card border rounded-xl mt-4 md:mt-6 shadow-sm group-hover:scale-105 transition-transform duration-500 ease-in-out" alt="cafe"/>
+
 
             </div>
             <div class="p-4 md:p-6">
