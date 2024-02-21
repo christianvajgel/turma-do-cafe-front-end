@@ -76,7 +76,7 @@ function copiarUUIDParaAreaDeTransferencia() {
 <template>
 
   <div>
-    <h2 class="mt-20 font-bold text-2xl text-center md:text-3xl text-gray-800 dark:text-gray-200">
+    <h2 class="mt-10 lg:mt-20 font-bold text-2xl text-center md:text-3xl text-gray-800 dark:text-gray-200">
       Deletar produto
     </h2>
   </div>
