@@ -72,7 +72,7 @@ async function listarProdutoEspecifico() {
 
   <div v-if="ok">
 
-<!--    Card detalhamento #######################-->
+    <!--    Card detalhamento #######################-->
 
     <!-- Features -->
     <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
@@ -98,6 +98,49 @@ async function listarProdutoEspecifico() {
               <path d="M24 0C10.7 0 0 10.7 0 24S10.7 48 24 48H76.1l60.3 316.5c2.2 11.3 12.1 19.5 23.6 19.5H320.7c-.5-5.3-.7-10.6-.7-16c0-10.9 1-21.6 2.9-32h-143l-9.1-48H339.2c9.2-18 21.4-34.2 36-48H161.6L131.1 80H520.6L489.1 192.1c2.3-.1 4.6-.1 6.9-.1c14.3 0 28.3 1.7 41.6 4.9l35-124.3C578.3 52.3 563 32 541.8 32H122l-2.4-12.5C117.4 8.2 107.5 0 96 0H24zM176 512a48 48 0 1 0 0-96 48 48 0 1 0 0 96zM352 368a144 144 0 1 0 288 0 144 144 0 1 0 -288 0zm208 16H512v48c0 8.8-7.2 16-16 16s-16-7.2-16-16V384H432c-8.8 0-16-7.2-16-16s7.2-16 16-16h48V304c0-8.8 7.2-16 16-16s16 7.2 16 16v48h48c8.8 0 16 7.2 16 16s-7.2 16-16 16z"/>
             </svg>
           </button>
+
+          <div>
+
+            <br>
+
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
+              Gerenciar
+            </h3>
+
+            <br>
+
+
+            <router-link :to="`/editar/${useRoute().params.id}`">
+
+              <button type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-yellow-500 hover:bg-yellow-100 hover:text-yellow-500 disabled:opacity-50 disabled:pointer-events-none">
+
+                Editar
+
+                <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 448 512" fill="#EAB308" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M36.4 360.9L13.4 439 1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1L73 498.6l78.1-23c12.4-3.6 23.7-9.9 33.4-18.4c1.4-1.2 2.7-2.5 4-3.8L492.7 149.3c21.9-21.9 24.6-55.6 8.2-80.5c-2.3-3.5-5.1-6.9-8.2-10L453.3 19.3c-25-25-65.5-25-90.5 0L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4zm46 13.5c1.7-5.6 4.5-10.8 8.4-15.2c.6-.6 1.1-1.2 1.7-1.8L321 129 383 191 154.6 419.5c-4.7 4.7-10.6 8.2-17 10.1l-23.4 6.9L59.4 452.6l16.1-54.8 6.9-23.4z"/>
+                </svg>
+
+              </button>
+
+            </router-link>
+
+
+            <router-link :to="`/deletar/${useRoute().params.id}`">
+
+              <button type="button" class="ml-1.5 py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-red-600 hover:bg-red-200 hover:text-red-600 disabled:opacity-50 disabled:pointer-events-none">
+
+                Deletar
+
+                <svg class="flex-shrink-0 w-5 h-5 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 448 512" fill="#D2222D" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M345 137c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-119 119L73 103c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l119 119L39 375c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l119-119L311 409c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-119-119L345 137z"/>
+                </svg>
+
+              </button>
+
+            </router-link>
+
+          </div>
+
         </div>
         <!-- End Col -->
 

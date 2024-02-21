@@ -4,6 +4,8 @@ import {HSCopyMarkup as HSStaticMethods} from "preline";
 import Produtos from "@/components/pages/Produtos.vue";
 import Detalhamento from "@/components/pages/Detalhamento.vue";
 import GerenciarProduto from "@/components/pages/admin/produto/GerenciarProduto.vue";
+import EditarProduto from "@/components/pages/admin/produto/EditarProduto.vue";
+import DeletarProduto from "@/components/pages/admin/produto/DeletarProduto.vue";
 
 
 const routes = [
@@ -22,6 +24,16 @@ const routes = [
     {
         path: '/gerenciarproduto',
         component: GerenciarProduto,
+    },
+
+    {
+        path: '/editar/:id',
+        component: EditarProduto,
+    },
+
+    {
+        path: '/deletar/:id',
+        component: DeletarProduto,
     },
 
     // ADD NEW ROUTES HERE
