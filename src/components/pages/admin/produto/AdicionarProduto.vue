@@ -3,6 +3,7 @@
 import {ref} from "vue";
 import axios from 'axios';
 import {gerarUUID} from "@/global/functions.js";
+import router from "@/router.js";
 
 
 const form = ref({
@@ -33,6 +34,9 @@ const submitForm = async () => {
     });
 
     console.log('Resposta do servidor:', response.data);
+
+    await router.push("/produtos");
+
   } catch (error) {
     console.error(`Erro ao enviar o formulário: ${error}`);
   }
@@ -41,8 +45,6 @@ const submitForm = async () => {
 </script>
 
 <template>
-
-
 
   <div>
 
@@ -63,7 +65,7 @@ const submitForm = async () => {
           <!-- Grid -->
           <div class="grid sm:grid-cols-12 gap-2 sm:gap-6">
 
-<!--            IMAGEM -->
+            <!--            IMAGEM -->
             <div class="sm:col-span-3">
               <label for="imagem-produto" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-gray-200">
                 Imagem
@@ -90,7 +92,7 @@ const submitForm = async () => {
             <!-- End Col -->
 
 
-<!--            NOME -->
+            <!--            NOME -->
             <div class="sm:col-span-3">
               <label for="nome-produto" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-gray-200">
                 Nome
@@ -117,7 +119,7 @@ const submitForm = async () => {
             <!-- End Col -->
 
 
-<!--            PREÇO PRECO -->
+            <!--            PREÇO PRECO -->
             <div class="sm:col-span-3">
               <label for="preco-produto" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-gray-200">
                 Preço
@@ -142,7 +144,7 @@ const submitForm = async () => {
             <!-- End Col -->
 
 
-<!--            PESO -->
+            <!--            PESO -->
             <div class="sm:col-span-3">
               <label for="peso-produto" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-gray-200">
                 Peso
@@ -169,7 +171,7 @@ const submitForm = async () => {
 
 
 
-<!--            TIPO -->
+            <!--            TIPO -->
             <div class="sm:col-span-3">
               <label for="tipo-produto" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-gray-200">
                 Tipo
@@ -206,7 +208,7 @@ const submitForm = async () => {
 
 
 
-<!--            AVALIACAO -->
+            <!--            AVALIACAO -->
             <div class="sm:col-span-3">
               <label for="avaliacao-produto" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-gray-200">
                 Avaliação
@@ -232,7 +234,7 @@ const submitForm = async () => {
 
 
 
-<!--            DESCRICAO -->
+            <!--            DESCRICAO -->
             <div class="sm:col-span-3">
               <label for="descricao-produto" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-gray-200">
                 Descrição
@@ -253,14 +255,14 @@ const submitForm = async () => {
 
             <div class="sm:col-span-9">
               <div class="sm:flex">
-                <textarea v-model="form.descricao" rows="3" placeholder="Descrição do produto" id="descricao-produto" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600" ></textarea>
+                <textarea v-model="form.descricao" rows="8" placeholder="Descrição do produto" id="descricao-produto" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600" ></textarea>
               </div>
             </div>
             <!-- End Col -->
 
 
 
-<!--            SLOGAN -->
+            <!--            SLOGAN -->
             <div class="sm:col-span-3">
               <label for="slogan-produto" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-gray-200">
                 Slogan
@@ -287,7 +289,7 @@ const submitForm = async () => {
             <!-- End Col -->
 
 
-<!--            ORIGEM -->
+            <!--            ORIGEM -->
             <div class="sm:col-span-3">
               <label for="origem-produto" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-gray-200">
                 Origem
@@ -316,7 +318,7 @@ const submitForm = async () => {
 
 
 
-<!--            ESTOQUE -->
+            <!--            ESTOQUE -->
             <div class="sm:col-span-3">
               <label for="estoque-produto" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-gray-200">
                 Estoque
@@ -345,7 +347,7 @@ const submitForm = async () => {
           </div>
           <!-- End Grid -->
 
-<!--          BOTOES FORMULARIO -->
+          <!--          BOTOES FORMULARIO -->
           <div class="mt-5 flex justify-end gap-x-2">
             <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
               Cancelar
