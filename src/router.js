@@ -6,6 +6,7 @@ import Detalhamento from "@/components/pages/Detalhamento.vue";
 import GerenciarProduto from "@/components/pages/admin/produto/GerenciarProduto.vue";
 import EditarProduto from "@/components/pages/admin/produto/EditarProduto.vue";
 import DeletarProduto from "@/components/pages/admin/produto/DeletarProduto.vue";
+import AdicionarProduto from "@/components/pages/admin/produto/AdicionarProduto.vue";
 
 
 const routes = [
@@ -24,6 +25,11 @@ const routes = [
     {
         path: '/gerenciarproduto',
         component: GerenciarProduto,
+    },
+
+    {
+        path: '/adicionar',
+        component: AdicionarProduto,
     },
 
     {
