@@ -19,4 +19,8 @@ export default defineConfig({
     port: 8081,
     // open: true,
   },
+  test:{
+    globals:true,
+    environment: 'happy-dom',
+  }
 })
