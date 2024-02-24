@@ -5,7 +5,7 @@ import AdicionarProduto from "@/components/pages/admin/produto/AdicionarProduto.
 
 /* Teste geral do componente */
 
-test('Renderização do AdicionarProduto', () => {
+test('Renderização do componente AdicionarProduto', () => {
     const wrapper = mount(AdicionarProduto)
     // Teste de renderização do componente
     expect(wrapper.exists()).toBe(true)
@@ -80,14 +80,6 @@ test('Preenchimento do campo estoque no AdicionarProduto', async () => {
 })
 
 
-test('Envio do formulário no AdicionarProduto', async () => {
-    const wrapper = mount(AdicionarProduto)
-    // Teste de envio do formulário
-    // Aqui, em vez de espiar um método, você pode verificar se o comportamento esperado ocorre após a ação do usuário.
-    // Por exemplo, você pode verificar se a rota muda, se um evento é emitido, etc.
-})
-
-
 /* Testes avançados para cada tipo de campo no formulário */
 /* Para campos com entrada de valores mais suscetíveis a erros */
 /* No padrão de entrada ou que podem gerar problemas na API */
@@ -101,12 +93,11 @@ test('Verificar tipo URL no campo imagem no AdicionarProduto', async () => {
     expect(inputImagem.element.value).toMatch(/^(http|https):\/\/[^ "]+$/)
 })
 
-test('Verificar tipo float/valor no campo preço no AdicionarProduto', async () => {
+test('Verificar tipo float/valor no campo preco no AdicionarProduto', async () => {
     const wrapper = mount(AdicionarProduto)
     const inputPreco = wrapper.find('input[id="preco-produto"]')
     await inputPreco.setValue('19.99')
     expect(inputPreco.element.value).toBe('19.99')
-    // Verifique se o valor é um float válido
     expect(parseFloat(inputPreco.element.value)).toBeCloseTo(19.99)
 })
 
@@ -115,7 +106,6 @@ test('Verificar tipo int/valor no campo peso no AdicionarProduto', async () => {
     const inputPeso = wrapper.find('input[id="peso-produto"]')
     await inputPeso.setValue('500')
     expect(inputPeso.element.value).toBe('500')
-    // Verifique se o valor é um int válido
     expect(Number.isInteger(parseInt(inputPeso.element.value))).toBe(true)
 })
 
@@ -131,7 +121,6 @@ test('Verificar tipo int/valor no campo avaliacao no AdicionarProduto', async ()
     const inputAvaliacao = wrapper.find('input[id="avaliacao-produto"]')
     await inputAvaliacao.setValue('5')
     expect(inputAvaliacao.element.value).toBe('5')
-    // Verifique se o valor é um int válido entre 0 e 5
     const avaliacao = parseInt(inputAvaliacao.element.value)
     expect(Number.isInteger(avaliacao) && avaliacao >= 0 && avaliacao <= 5).toBe(true)
 })
@@ -141,7 +130,6 @@ test('Verificar tipo int/valor no campo estoque no AdicionarProduto', async () =
     const inputEstoque = wrapper.find('input[id="estoque-produto"]')
     await inputEstoque.setValue('100')
     expect(inputEstoque.element.value).toBe('100')
-    // Verifique se o valor é um int válido maior ou igual a 1
     const estoque = parseInt(inputEstoque.element.value)
     expect(Number.isInteger(estoque) && estoque >= 1).toBe(true)
 })
@@ -157,7 +145,6 @@ import { createRouterMock, injectRouterMock } from 'vue-router-mock'
 // Cria uma instância do axios
 const instance = axios.create()
 
-// Substitui o método post
 // instance.post = async () => ({ data: {} })
 
 instance.post = async () => {
@@ -206,7 +193,6 @@ test('POST - Envio do formulário de AdicionarProduto para API', async () => {
     const inputEstoque = wrapper.find('input[id="estoque-produto"]')
     await inputEstoque.setValue('100')
 
-    // Envia o formulário
     const form = wrapper.find('form')
     await form.trigger('submit.prevent')
 
