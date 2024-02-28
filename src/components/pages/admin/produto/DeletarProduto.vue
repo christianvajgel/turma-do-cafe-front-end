@@ -31,7 +31,7 @@ async function listarProdutoEspecifico() {
 
     data.value = response.data;
 
-    uuid.value = data.value.id;
+    uuid.value = data.value.idProduto;
 
     ok.value = true;
 
