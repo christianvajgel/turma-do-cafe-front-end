@@ -139,7 +139,7 @@ async function adicionarProdutoNoCarrinho() {
             <br>
 
 
-            <router-link :to="`/editar/${useRoute().params.id}`">
+            <router-link :to="`/editar-produto/${useRoute().params.id}`">
 
               <button type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-yellow-500 hover:bg-yellow-100 hover:text-yellow-500 disabled:opacity-50 disabled:pointer-events-none">
 
@@ -154,7 +154,7 @@ async function adicionarProdutoNoCarrinho() {
             </router-link>
 
 
-            <router-link :to="`/deletar/${useRoute().params.id}`">
+            <router-link :to="`/deletar-produto/${useRoute().params.id}`">
 
               <button type="button" class="ml-1.5 py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-red-600 hover:bg-red-200 hover:text-red-600 disabled:opacity-50 disabled:pointer-events-none">
 

@@ -3,7 +3,6 @@ import Home from "@/components/pages/Home.vue";
 import {HSCopyMarkup as HSStaticMethods} from "preline";
 import Produtos from "@/components/pages/Produtos.vue";
 import Detalhamento from "@/components/pages/Detalhamento.vue";
-import GerenciarProduto from "@/components/pages/admin/produto/GerenciarProduto.vue";
 import EditarProduto from "@/components/pages/admin/produto/EditarProduto.vue";
 import DeletarProduto from "@/components/pages/admin/produto/DeletarProduto.vue";
 import AdicionarProduto from "@/components/pages/admin/produto/AdicionarProduto.vue";
@@ -22,23 +21,19 @@ const routes = [
         path: '/detalhamento/:id',
         component: Detalhamento,
     },
-    {
-        path: '/gerenciarproduto',
-        component: GerenciarProduto,
-    },
 
     {
-        path: '/adicionar',
+        path: '/adicionar-produto',
         component: AdicionarProduto,
     },
 
     {
-        path: '/editar/:id',
+        path: '/editar-produto/:id',
         component: EditarProduto,
     },
 
     {
-        path: '/deletar/:id',
+        path: '/deletar-produto/:id',
         component: DeletarProduto,
     },
 
