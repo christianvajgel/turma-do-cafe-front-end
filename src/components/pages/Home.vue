@@ -57,7 +57,6 @@
         Barista, viennese, extra , instant spoon coffee id, seasonal irish variety white café au lait. Percolator aftertaste grounds rich to go, cinnamon single origin aftertaste decaffeinated milk. Trifecta organic sugar extra , steamed decaffeinated instant et siphon.
       </p>
       <br>
-      <ThemeSwitcher/>
     </div>
     <!--   End Text modal ########## -->
 

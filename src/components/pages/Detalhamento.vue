@@ -3,11 +3,15 @@
 import axios from "axios";
 import {onMounted, ref, watch} from "vue";
 import { useRoute } from 'vue-router';
+import {gerarUUID} from "@/global/functions.js";
+import router from "@/router.js";
 
 
 const data = ref(null);
 
 const ok = ref(false);
+
+
 
 watch(ok, (newValue, oldValue) => {
   if (newValue === true) {
@@ -65,6 +69,31 @@ async function listarProdutoEspecifico() {
   console.log(data);
 }
 
+const item = ref({
+  id: gerarUUID(),
+  quantidade: 1,
+});
+
+async function adicionarProdutoNoCarrinho() {
+  const jsonForm = JSON.stringify(item.value);
+  console.log(jsonForm);
+
+  try {
+    const response = await axios.post('https://localhost:7173/api/Item', jsonForm, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    console.log('ADICIONAR CARRINHO -> Resposta do servidor:', response.data);
+
+    await router.push("/produtos");
+
+  } catch (error) {
+    console.error(`ADICIONAR CARRINHO -> Erro ao enviar o formulário: ${error}`);
+  }
+}
+
 
 </script>
 
@@ -92,7 +121,7 @@ async function listarProdutoEspecifico() {
 
           <br>
 
-          <button type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+          <button @click="adicionarProdutoNoCarrinho" type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
             Comprar
             <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 640 512" fill="#000" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M24 0C10.7 0 0 10.7 0 24S10.7 48 24 48H76.1l60.3 316.5c2.2 11.3 12.1 19.5 23.6 19.5H320.7c-.5-5.3-.7-10.6-.7-16c0-10.9 1-21.6 2.9-32h-143l-9.1-48H339.2c9.2-18 21.4-34.2 36-48H161.6L131.1 80H520.6L489.1 192.1c2.3-.1 4.6-.1 6.9-.1c14.3 0 28.3 1.7 41.6 4.9l35-124.3C578.3 52.3 563 32 541.8 32H122l-2.4-12.5C117.4 8.2 107.5 0 96 0H24zM176 512a48 48 0 1 0 0-96 48 48 0 1 0 0 96zM352 368a144 144 0 1 0 288 0 144 144 0 1 0 -288 0zm208 16H512v48c0 8.8-7.2 16-16 16s-16-7.2-16-16V384H432c-8.8 0-16-7.2-16-16s7.2-16 16-16h48V304c0-8.8 7.2-16 16-16s16 7.2 16 16v48h48c8.8 0 16 7.2 16 16s-7.2 16-16 16z"/>
