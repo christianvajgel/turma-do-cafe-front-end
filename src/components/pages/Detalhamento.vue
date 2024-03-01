@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import {onMounted, ref, watch} from "vue";
-import { useRoute } from 'vue-router';
+import {useRoute} from 'vue-router';
 import {gerarUUID} from "@/global/functions.js";
 import router from "@/router.js";
 
@@ -11,7 +11,9 @@ const data = ref(null);
 
 const ok = ref(false);
 
+const subprodutos = ref(null);
 
+const uuid = useRoute().params.id;
 
 watch(ok, (newValue, oldValue) => {
   if (newValue === true) {
@@ -21,6 +23,7 @@ watch(ok, (newValue, oldValue) => {
 
 onMounted(() => {
   console.log("mounted especifico");
+  listarTodosOsProdutos();
   listarProdutoEspecifico();
 });
 
@@ -67,6 +70,45 @@ async function listarProdutoEspecifico() {
   }
 
   console.log(data);
+}
+
+function listarTodosOsProdutos(){
+
+  console.log("listar subprodutos");
+
+  axios.get('https://localhost:7173/api/Produto')
+      .then(response => {
+        subprodutos.value = response.data;
+
+        console.log(uuid);
+
+        // TODO: Separar em metodo e parametros 
+
+        const tipo = "Café"; // Substitua pelo valor desejado
+        const id = uuid; // Substitua pelo valor desejado
+
+        // Filtrar diretamente o JSON antes de converter para array
+        subprodutos.value = subprodutos.value.filter(item => item.tipo === tipo && item.id !== id);
+
+        // console.log('JSON: ' + JSON.stringify(jsonFiltrado));
+        //
+        // subprodutos.value = jsonFiltrado;
+
+
+
+
+
+        // TODO: falta fazer um filter para filtrar com base no Tipo (cafe ou acessorio) e mostrar de acordo com o produto em detalhamento
+
+        //subprodutos.value = subprodutos.value.filter(item => item.id !== `${useRoute().params.id}`);
+
+        //subprodutos.filter(item => item.id !== "d3c12f52-ba35-4e79-a478-7950ac8425ee");
+      })
+      .catch(error => {
+        console.error(error);
+      });
+
+  console.log(subprodutos);
 }
 
 const item = ref({
@@ -285,106 +327,158 @@ async function adicionarProdutoNoCarrinho() {
 
     <br>
 
-    <!--    Card group ##########-->
+    <div v-if="ok" id="subprodutos">
 
-    <div>
 
-      <!-- Card Blog -->
-      <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-        <!-- Grid -->
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <!-- Card -->
-          <div class="group flex flex-col h-full bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]">
-            <div class="h-52 flex flex-col justify-center items-center rounded-t-xl">
 
-              <img src="https://images.unsplash.com/photo-1524350876685-274059332603?q=80&w=2071&auto=format&fit=crop" class="self-center" alt="cafe" width="75%" height="75%"/>
+      <div>
+        <!-- Card Blog -->
+        <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+          <!-- Title -->
+<!--          <div class="max-w-2xl text-center mx-auto mb-10 lg:mb-14">-->
+<!--            <h2 class="text-2xl font-bold md:text-4xl md:leading-tight dark:text-white">Read our latest news</h2>-->
+<!--            <p class="mt-1 text-gray-600 dark:text-gray-400">We've helped some great companies brand, design and get to market.</p>-->
+<!--          </div>-->
+          <!-- End Title -->
 
-            </div>
-            <div class="p-4 md:p-6">
-        <span class="block mb-1 text-xs font-semibold uppercase text-yellow-800 dark:text-blue-500">
-          Café Brasil
-        </span>
-              <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-300 dark:hover:text-white">
-                Do jeito que o brasileiro gosta
-              </h3>
-              <p class="mt-3 text-gray-500">
-                Rich aftertaste dripper saucer frappuccino.
-              </p>
-            </div>
-            <div class="mt-auto flex border-t border-gray-200 divide-x divide-gray-200 dark:border-gray-700 dark:divide-gray-700">
-              <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-es-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">
-                Conheça
+
+
+
+
+          <!-- Grid -->
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10 lg:mb-14">
+
+            <!-- Card -->
+            <div v-for="(subproduto, index) in subprodutos" :key="subproduto.id">
+              <a :href="`/detalhar-produto/${subproduto.id}`" class="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md transition dark:bg-slate-900 dark:border-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                <div class="aspect-w-16 aspect-h-9">
+                  <img class="w-full object-cover rounded-t-xl" :src="subproduto.imagem" alt="Image Description">
+                </div>
+                <div class="p-4 md:p-5">
+                  <p class="mt-2 text-xs uppercase text-gray-600 dark:text-gray-400">
+                    {{ subproduto.origem }}
+                  </p>
+                  <h3 class="mt-2 text-lg font-medium text-gray-800 group-hover:text-blue-600 dark:text-gray-300 dark:group-hover:text-white">
+                    {{ subproduto.nome }}
+                  </h3>
+                </div>
               </a>
-              <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-ee-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">
-                Comprar
-              </a>
             </div>
+            <!-- End Card -->
+
           </div>
-          <!-- End Card -->
 
-          <!-- Card -->
-          <div class="group flex flex-col h-full bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]">
-            <div class="h-52 flex flex-col justify-center items-center rounded-t-xl">
-
-              <img src="https://images.unsplash.com/photo-1511759066510-46958c3fffa0?q=80&w=2076&auto=format&fit=crop" class="self-center" alt="cafe" width="75%" height="75%"/>
-
-            </div>
-            <div class="p-4 md:p-6">
-        <span class="block mb-1 text-xs font-semibold uppercase text-yellow-800 dark:text-rose-500">
-          Café Blue Mountain
-        </span>
-              <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-300 dark:hover:text-white">
-                Um café das alturas
-              </h3>
-              <p class="mt-3 text-gray-500">
-                Froth half and half french press blue mountain.
-              </p>
-            </div>
-            <div class="mt-auto flex border-t border-gray-200 divide-x divide-gray-200 dark:border-gray-700 dark:divide-gray-700">
-              <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-es-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">
-                Conheça
-              </a>
-              <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-ee-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">
-                Comprar
-              </a>
-            </div>
-          </div>
-          <!-- End Card -->
-
-          <!-- Card -->
-          <div class="group flex flex-col h-full bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]">
-            <div class="h-52 flex flex-col justify-center items-center rounded-t-xl">
-
-              <img src="https://images.unsplash.com/photo-1459755486867-b55449bb39ff?q=80&w=2069&auto=format&fit=crop" class="self-center" alt="cafe" width="75%" height="75%"/>
-
-            </div>
-            <div class="p-4 md:p-6">
-        <span class="block mb-1 text-xs font-semibold uppercase text-yellow-800">
-          Café Equador
-        </span>
-              <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-300 dark:hover:text-white">
-                Microlote especial américa
-              </h3>
-              <p class="mt-3 text-gray-500">
-                Trifecta, organic skinny cappuccino froth black sugar.
-              </p>
-            </div>
-            <div class="mt-auto flex border-t border-gray-200 divide-x divide-gray-200 dark:border-gray-700 dark:divide-gray-700">
-              <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-es-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">
-                Conheça
-              </a>
-              <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-ee-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">
-                Comprar
-              </a>
-            </div>
-          </div>
-          <!-- End Card -->
         </div>
-        <!-- End Grid -->
+        <!-- End Card Blog -->
       </div>
-      <!-- End Card Blog -->
+
+
+    <!--   End Card group ##########-->
+
+
 
     </div>
+
+    <!--    Card group ##########-->
+
+<!--    <div>-->
+
+<!--      &lt;!&ndash; Card Blog &ndash;&gt;-->
+<!--      <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">-->
+<!--        &lt;!&ndash; Grid &ndash;&gt;-->
+<!--        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">-->
+<!--          &lt;!&ndash; Card &ndash;&gt;-->
+<!--          <div class="group flex flex-col h-full bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]">-->
+<!--            <div class="h-52 flex flex-col justify-center items-center rounded-t-xl">-->
+
+<!--              <img src="https://images.unsplash.com/photo-1524350876685-274059332603?q=80&w=2071&auto=format&fit=crop" class="self-center" alt="cafe" width="75%" height="75%"/>-->
+
+<!--            </div>-->
+<!--            <div class="p-4 md:p-6">-->
+<!--        <span class="block mb-1 text-xs font-semibold uppercase text-yellow-800 dark:text-blue-500">-->
+<!--          Café Brasil-->
+<!--        </span>-->
+<!--              <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-300 dark:hover:text-white">-->
+<!--                Do jeito que o brasileiro gosta-->
+<!--              </h3>-->
+<!--              <p class="mt-3 text-gray-500">-->
+<!--                Rich aftertaste dripper saucer frappuccino.-->
+<!--              </p>-->
+<!--            </div>-->
+<!--            <div class="mt-auto flex border-t border-gray-200 divide-x divide-gray-200 dark:border-gray-700 dark:divide-gray-700">-->
+<!--              <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-es-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">-->
+<!--                Conheça-->
+<!--              </a>-->
+<!--              <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-ee-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">-->
+<!--                Comprar-->
+<!--              </a>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          &lt;!&ndash; End Card &ndash;&gt;-->
+
+<!--          &lt;!&ndash; Card &ndash;&gt;-->
+<!--          <div class="group flex flex-col h-full bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]">-->
+<!--            <div class="h-52 flex flex-col justify-center items-center rounded-t-xl">-->
+
+<!--              <img src="https://images.unsplash.com/photo-1511759066510-46958c3fffa0?q=80&w=2076&auto=format&fit=crop" class="self-center" alt="cafe" width="75%" height="75%"/>-->
+
+<!--            </div>-->
+<!--            <div class="p-4 md:p-6">-->
+<!--        <span class="block mb-1 text-xs font-semibold uppercase text-yellow-800 dark:text-rose-500">-->
+<!--          Café Blue Mountain-->
+<!--        </span>-->
+<!--              <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-300 dark:hover:text-white">-->
+<!--                Um café das alturas-->
+<!--              </h3>-->
+<!--              <p class="mt-3 text-gray-500">-->
+<!--                Froth half and half french press blue mountain.-->
+<!--              </p>-->
+<!--            </div>-->
+<!--            <div class="mt-auto flex border-t border-gray-200 divide-x divide-gray-200 dark:border-gray-700 dark:divide-gray-700">-->
+<!--              <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-es-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">-->
+<!--                Conheça-->
+<!--              </a>-->
+<!--              <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-ee-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">-->
+<!--                Comprar-->
+<!--              </a>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          &lt;!&ndash; End Card &ndash;&gt;-->
+
+<!--          &lt;!&ndash; Card &ndash;&gt;-->
+<!--          <div class="group flex flex-col h-full bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]">-->
+<!--            <div class="h-52 flex flex-col justify-center items-center rounded-t-xl">-->
+
+<!--              <img src="https://images.unsplash.com/photo-1459755486867-b55449bb39ff?q=80&w=2069&auto=format&fit=crop" class="self-center" alt="cafe" width="75%" height="75%"/>-->
+
+<!--            </div>-->
+<!--            <div class="p-4 md:p-6">-->
+<!--        <span class="block mb-1 text-xs font-semibold uppercase text-yellow-800">-->
+<!--          Café Equador-->
+<!--        </span>-->
+<!--              <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-300 dark:hover:text-white">-->
+<!--                Microlote especial américa-->
+<!--              </h3>-->
+<!--              <p class="mt-3 text-gray-500">-->
+<!--                Trifecta, organic skinny cappuccino froth black sugar.-->
+<!--              </p>-->
+<!--            </div>-->
+<!--            <div class="mt-auto flex border-t border-gray-200 divide-x divide-gray-200 dark:border-gray-700 dark:divide-gray-700">-->
+<!--              <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-es-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">-->
+<!--                Conheça-->
+<!--              </a>-->
+<!--              <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-ee-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">-->
+<!--                Comprar-->
+<!--              </a>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          &lt;!&ndash; End Card &ndash;&gt;-->
+<!--        </div>-->
+<!--        &lt;!&ndash; End Grid &ndash;&gt;-->
+<!--      </div>-->
+<!--      &lt;!&ndash; End Card Blog &ndash;&gt;-->
+
+<!--    </div>-->
 
     <!--   End Card group ##########-->
 
