@@ -48,19 +48,35 @@ onMounted(() => {
 //   console.log(data);
 // }
 
-function listarTodosOsProdutos(){
+// async function listarTodosOsProdutos(){
+//
+//   console.log("listar");
+//
+//   axios.get('https://localhost:7173/api/Produto')
+//       .then(response => {
+//         todosOsProdutos.value = response.data;
+//       })
+//       .catch(error => {
+//         console.error(error);
+//       });
+//
+// }
 
+async function listarTodosOsProdutos() {
   console.log("listar");
 
-  axios.get('https://localhost:7173/api/Produto')
-      .then(response => {
+    try {
+      const response = await axios.get('https://localhost:7173/api/Produto');
+
         todosOsProdutos.value = response.data;
-      })
-      .catch(error => {
-        console.error(error);
-      });
+
+
+    } catch (error) {
+      console.error('Erro ao listar todos os produtos:', error);
+    }
 
 }
+
 
 async function listarProdutoEspecifico() {
 
@@ -90,7 +106,7 @@ async function listarProdutoEspecifico() {
     filtrarSubprodutos(produtoEspecifico.value.id,produtoEspecifico.value.tipo);
   }
 
-  console.log(produtoEspecifico);
+  // console.log(produtoEspecifico);
 }
 
 function filtrarSubprodutos(id, tipo) {
@@ -374,15 +390,12 @@ setTimeout(function() {
 
     <!--  End  Card detalhamento #######################-->
 
-    <br>
 
     <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
       <h2 class="font-bold text-xl md:text-2xl text-gray-800 dark:text-gray-200">
         Você também pode gostar...
       </h2>
     </div>
-
-    <br>
 
     <div v-if="ok" id="subprodutos">
 
