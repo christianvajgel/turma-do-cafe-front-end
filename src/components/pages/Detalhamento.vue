@@ -7,11 +7,15 @@ import {gerarUUID} from "@/global/functions.js";
 import router from "@/router.js";
 
 
-const data = ref(null);
+const todosOsProdutos = ref(null);
+
+const produtoEspecifico = ref(null);
+
+const subprodutosFiltrados = ref(null);
 
 const ok = ref(false);
 
-const subprodutos = ref(null);
+
 
 const uuid = useRoute().params.id;
 
@@ -23,7 +27,9 @@ watch(ok, (newValue, oldValue) => {
 
 onMounted(() => {
   console.log("mounted especifico");
+
   listarTodosOsProdutos();
+
   listarProdutoEspecifico();
 });
 
@@ -42,6 +48,20 @@ onMounted(() => {
 //   console.log(data);
 // }
 
+function listarTodosOsProdutos(){
+
+  console.log("listar");
+
+  axios.get('https://localhost:7173/api/Produto')
+      .then(response => {
+        todosOsProdutos.value = response.data;
+      })
+      .catch(error => {
+        console.error(error);
+      });
+
+}
+
 async function listarProdutoEspecifico() {
 
   console.log("listar especifico");
@@ -56,8 +76,7 @@ async function listarProdutoEspecifico() {
     // const response = await axios.get(`https://localhost:7173/api/Produto/${useRoute().params.id}`);
     const response = await axios.get(URL);
 
-
-    data.value = response.data;
+    produtoEspecifico.value = response.data;
 
     // setTimeout(function() {
     //   // Whatever you want to do after the wait
@@ -67,48 +86,15 @@ async function listarProdutoEspecifico() {
 
   } catch (error) {
     console.error(error);
+  } finally {
+    filtrarSubprodutos(produtoEspecifico.value.id,produtoEspecifico.value.tipo);
   }
 
-  console.log(data);
+  console.log(produtoEspecifico);
 }
 
-function listarTodosOsProdutos(){
-
-  console.log("listar subprodutos");
-
-  axios.get('https://localhost:7173/api/Produto')
-      .then(response => {
-        subprodutos.value = response.data;
-
-        console.log(uuid);
-
-        // TODO: Separar em metodo e parametros 
-
-        const tipo = "Café"; // Substitua pelo valor desejado
-        const id = uuid; // Substitua pelo valor desejado
-
-        // Filtrar diretamente o JSON antes de converter para array
-        subprodutos.value = subprodutos.value.filter(item => item.tipo === tipo && item.id !== id);
-
-        // console.log('JSON: ' + JSON.stringify(jsonFiltrado));
-        //
-        // subprodutos.value = jsonFiltrado;
-
-
-
-
-
-        // TODO: falta fazer um filter para filtrar com base no Tipo (cafe ou acessorio) e mostrar de acordo com o produto em detalhamento
-
-        //subprodutos.value = subprodutos.value.filter(item => item.id !== `${useRoute().params.id}`);
-
-        //subprodutos.filter(item => item.id !== "d3c12f52-ba35-4e79-a478-7950ac8425ee");
-      })
-      .catch(error => {
-        console.error(error);
-      });
-
-  console.log(subprodutos);
+function filtrarSubprodutos(id, tipo) {
+  subprodutosFiltrados.value = todosOsProdutos.value.filter(item => item.id !== id && item.tipo === tipo);
 }
 
 const item = ref({
@@ -148,17 +134,17 @@ async function adicionarProdutoNoCarrinho() {
     <!-- Features -->
     <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
       <div class="aspect-w-16 aspect-h-7">
-        <img class="w-full object-cover rounded-xl" :src="data.imagem" alt="Image Description">
+        <img class="w-full object-cover rounded-xl" :src="produtoEspecifico.imagem" alt="Image Description">
       </div>
 
       <!-- Grid -->
       <div class="mt-5 lg:mt-16 grid lg:grid-cols-3 gap-8 lg:gap-12">
         <div class="lg:col-span-1">
           <h2 class="font-bold text-2xl md:text-3xl text-gray-800 dark:text-gray-200">
-            {{ data.nome }}
+            {{ produtoEspecifico.nome }}
           </h2>
           <p class="mt-2 md:mt-4 text-gray-500">
-            {{ data.descricao }}
+            {{ produtoEspecifico.descricao }}
           </p>
 
           <br>
@@ -270,7 +256,7 @@ async function adicionarProdutoNoCarrinho() {
                   Preço
                 </h3>
                 <p class="mt-1 text-gray-600 dark:text-gray-400">
-                  R$ {{ Number(data.preco).toFixed(2).replace('.',',') }}
+                  R$ {{ Number(produtoEspecifico.preco).toFixed(2).replace('.',',') }}
                 </p>
               </div>
             </div>
@@ -286,7 +272,7 @@ async function adicionarProdutoNoCarrinho() {
                   Origem
                 </h3>
                 <p class="mt-1 text-gray-600 dark:text-gray-400">
-                  {{ data.origem }}
+                  {{ produtoEspecifico.origem }}
                 </p>
               </div>
             </div>
@@ -302,7 +288,7 @@ async function adicionarProdutoNoCarrinho() {
                   Peso
                 </h3>
                 <p class="mt-1 text-gray-600 dark:text-gray-400">
-                  {{ data.peso }} g
+                  {{ produtoEspecifico.peso }} g
                 </p>
               </div>
             </div>
@@ -349,7 +335,7 @@ async function adicionarProdutoNoCarrinho() {
           <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10 lg:mb-14">
 
             <!-- Card -->
-            <div v-for="(subproduto, index) in subprodutos" :key="subproduto.id">
+            <div v-for="(subproduto, index) in subprodutosFiltrados" :key="subproduto.id">
               <a :href="`/detalhar-produto/${subproduto.id}`" class="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md transition dark:bg-slate-900 dark:border-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
                 <div class="aspect-w-16 aspect-h-9">
                   <img class="w-full object-cover rounded-t-xl" :src="subproduto.imagem" alt="Image Description">
