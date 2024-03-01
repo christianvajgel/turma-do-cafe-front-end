@@ -123,6 +123,77 @@ async function adicionarProdutoNoCarrinho() {
 }
 
 
+// Função para criar botões de estrela
+// function createStarButton(isHalf) {
+//   const button = document.createElement("button");
+//   button.classList.add("star-button");
+//   button.innerHTML = `
+//                 <svg class="flex-shrink-0 w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 576 512">
+//                     <path d="M287.9 0c9.2 0 17.6 5.2 21.6 13.5l68.6 141.3 153.2 22.6c9 1.3 16.5 7.6 19.3 16.3s.5 18.1-5.9 24.5L433.6 328.4l26.2 155.6c1.5 9-2.2 18.1-9.6 23.5s-17.3 6-25.3 1.7l-137-73.2L151 509.1c-8.1 4.3-17.9 3.7-25.3-1.7s-11.2-14.5-9.7-23.5l26.2-155.6L31.1 218.2c-6.5-6.4-8.7-15.9-5.9-24.5s10.3-14.9 19.3-16.3l153.2-22.6L266.3 13.5C270.4 5.2 278.7 0 287.9 0zm0 79L235.4 187.2c-3.5 7.1-10.2 12.1-18.1 13.3L99 217.9 184.9 303c5.5 5.5 8.1 13.3 6.8 21L171.4 443.7l105.2-56.2c7.1-3.8 15.6-3.8 22.6 0l105.2 56.2L384.2 324.1c-1.3-7.7 1.2-15.5 6.8-21l85.9-85.1L358.6 200.5c-7.8-1.2-14.6-6.1-18.1-13.3L287.9 79z"/>
+//                 </svg>
+//             `;
+//   if (isHalf) {
+//     // Adicione estilos para meia estrela (por exemplo, ajuste a cor)
+//     // Aqui você pode ajustar o caminho do SVG para representar uma meia estrela
+//     // Por exemplo, você pode usar um retângulo para criar a metade inferior da estrela
+//     // button.querySelector("svg path").setAttribute("d", "...");
+//   }
+//   return button;
+// }
+
+// Adicione os botões de avaliação à div
+// const ratingDiv = document.getElementById("rating-buttons");
+// for (let i = 0; i <= 10; i++) {
+//   const rating = i / 2; // Converta para notas (0, 0.5, 1.0, ..., 5.0)
+//   const starButton = createStarButton(rating % 1 !== 0); // Verifique se é meia estrela
+//   ratingDiv.appendChild(starButton);
+// }
+
+
+function criarEstrelasNaAvaliacao(type) {
+  const star = document.createElement("span");
+  star.classList.add("star");
+  // star.innerHTML = `<svg viewBox="0 0 576 512" class="flex-shrink-0 w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#facc15">
+  //                       <path d="M0 0h16v16H0z"/>
+  //                   </svg>
+  //           `;
+  if (type === "cheia") {
+    star.classList.add("filled-star");
+    star.innerHTML = `<svg viewBox="0 0 576 512" class="flex-shrink-0 w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#facc15" stroke="#facc15">
+                        <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                      </svg>`;
+  } else if (type === "metade") {
+    star.classList.add("half-star");
+    star.innerHTML = `<svg viewBox="0 0 576 512" class="flex-shrink-0 w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#facc15" stroke="#facc15">
+                        <defs><style>.fa-secondary{opacity:.75}</style></defs><path class="fa-primary" d="M321.7 0H320V87.1 376.4v63.5L191.8 508.3C181 514 167.9 513.1 158 506s-14.9-19.3-12.9-31.3L169.8 329 65.6 225.9c-8.6-8.5-11.7-21.2-7.9-32.7s13.7-19.9 25.7-21.7L227 150.3 291.4 18c5.4-11 16.5-18 28.8-18c.5 0 1.1 0 1.6 0zM465.2 512c-1.1 .1-2.1 .1-3.2 0h3.2z"/><path class="fa-secondary" d="M320.1 376.3l-.1 .1v63.5l.1-.1 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L470.5 329 574.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L413.2 150.3 348.9 18C343.6 7 332.4 0 320.1 0c-.5 0-1.1 0-1.6 0H320V87.1l.1-.3 42.7 87.9 12.9 26.6 29.3 4.3 96.1 14.2-70.1 69.3-20.7 20.5 4.8 28.7 16.5 97.6-85.2-45.5-26.4-14.1zM178.3 512c-1.1 .1-2.1 .1-3.2 0h3.2z"/>
+                      </svg>`
+  } else {
+    star.innerHTML = `<svg viewBox="0 0 576 512" class="flex-shrink-0 w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#d1d5db" stroke="#d1d5db">
+                        <path d="M287.9 0c9.2 0 17.6 5.2 21.6 13.5l68.6 141.3 153.2 22.6c9 1.3 16.5 7.6 19.3 16.3s.5 18.1-5.9 24.5L433.6 328.4l26.2 155.6c1.5 9-2.2 18.1-9.6 23.5s-17.3 6-25.3 1.7l-137-73.2L151 509.1c-8.1 4.3-17.9 3.7-25.3-1.7s-11.2-14.5-9.7-23.5l26.2-155.6L31.1 218.2c-6.5-6.4-8.7-15.9-5.9-24.5s10.3-14.9 19.3-16.3l153.2-22.6L266.3 13.5C270.4 5.2 278.7 0 287.9 0zm0 79L235.4 187.2c-3.5 7.1-10.2 12.1-18.1 13.3L99 217.9 184.9 303c5.5 5.5 8.1 13.3 6.8 21L171.4 443.7l105.2-56.2c7.1-3.8 15.6-3.8 22.6 0l105.2 56.2L384.2 324.1c-1.3-7.7 1.2-15.5 6.8-21l85.9-85.1L358.6 200.5c-7.8-1.2-14.6-6.1-18.1-13.3L287.9 79z"/>
+                      </svg>`;
+  }
+  return star;
+}
+
+setTimeout(function() {
+  if (ok) {
+    const avaliacaoProdutoDetalhado = produtoEspecifico.value.avaliacao;
+    const avaliacaoDiv = document.getElementById("avaliacao-produto");
+    avaliacaoDiv.innerHTML = "";
+
+    for (let i = 0; i < 5; i++) {
+      const meiaEstrela = i + 0.5 === avaliacaoProdutoDetalhado;
+      const estrelaCompleta = i < Math.floor(avaliacaoProdutoDetalhado);
+      const tipoEstrela = estrelaCompleta ? "cheia" : (meiaEstrela ? "metade" : "vazia");
+      const estrela = criarEstrelasNaAvaliacao(tipoEstrela);
+      avaliacaoDiv.appendChild(estrela);
+    }
+  }
+
+}, 500);
+
+
+
 </script>
 
 <template>
@@ -214,32 +285,32 @@ async function adicionarProdutoNoCarrinho() {
                 </h3>
 
                 <!-- Rating -->
-                <div class=" mt-4 flex items-center">
-                  <button type="button" class="w-5 h-5 inline-flex justify-center items-center text-2xl rounded-full text-yellow-400 disabled:opacity-50 disabled:pointer-events-none dark:text-yellow-500">
-                    <svg class="flex-shrink-0 w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                    </svg>
-                  </button>
-                  <button type="button" class="w-5 h-5 inline-flex justify-center items-center text-2xl rounded-full text-yellow-400 disabled:opacity-50 disabled:pointer-events-none dark:text-yellow-500">
-                    <svg class="flex-shrink-0 w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                    </svg>
-                  </button>
-                  <button type="button" class="w-5 h-5 inline-flex justify-center items-center text-2xl rounded-full text-yellow-400 disabled:opacity-50 disabled:pointer-events-none dark:text-yellow-500">
-                    <svg class="flex-shrink-0 w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                    </svg>
-                  </button>
-                  <button type="button" class="w-5 h-5 inline-flex justify-center items-center text-2xl rounded-full text-yellow-400 disabled:opacity-50 disabled:pointer-events-none dark:text-yellow-500">
-                    <svg class="flex-shrink-0 w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                    </svg>
-                  </button>
-                  <button type="button" class="w-5 h-5 inline-flex justify-center items-center text-2xl rounded-full text-gray-300 hover:text-yellow-400 disabled:opacity-50 disabled:pointer-events-none dark:text-gray-600 dark:hover:text-yellow-500">
-                    <svg class="flex-shrink-0 w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                    </svg>
-                  </button>
+                <div id="avaliacao-produto" class=" mt-4 flex items-center">
+                  <!--                  <button type="button" class="w-5 h-5 inline-flex justify-center items-center text-2xl rounded-full text-yellow-400 disabled:opacity-50 disabled:pointer-events-none dark:text-yellow-500">-->
+                  <!--                    <svg class="flex-shrink-0 w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#facc15" viewBox="0 0 16 16">-->
+                  <!--                      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>-->
+                  <!--                    </svg>-->
+                  <!--&lt;!&ndash;                  </button>&ndash;&gt;-->
+                  <!--                  <button type="button" class="w-5 h-5 inline-flex justify-center items-center text-2xl rounded-full text-yellow-400 disabled:opacity-50 disabled:pointer-events-none dark:text-yellow-500">-->
+                  <!--                    <svg class="flex-shrink-0 w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">-->
+                  <!--                      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>-->
+                  <!--                    </svg>-->
+                  <!--                  </button>-->
+                  <!--                  <button type="button" class="w-5 h-5 inline-flex justify-center items-center text-2xl rounded-full text-yellow-400 disabled:opacity-50 disabled:pointer-events-none dark:text-yellow-500">-->
+                  <!--                    <svg class="flex-shrink-0 w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">-->
+                  <!--                      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>-->
+                  <!--                    </svg>-->
+                  <!--                  </button>-->
+                  <!--                  <button type="button" class="w-5 h-5 inline-flex justify-center items-center text-2xl rounded-full text-yellow-400 disabled:opacity-50 disabled:pointer-events-none dark:text-yellow-500">-->
+                  <!--                    <svg class="flex-shrink-0 w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">-->
+                  <!--                      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>-->
+                  <!--                    </svg>-->
+                  <!--                  </button>-->
+                  <!--                  <button type="button" class="w-5 h-5 inline-flex justify-center items-center text-2xl rounded-full text-gray-300 hover:text-yellow-400 disabled:opacity-50 disabled:pointer-events-none dark:text-gray-600 dark:hover:text-yellow-500">-->
+                  <!--                    <svg class="flex-shrink-0 w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">-->
+                  <!--                      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>-->
+                  <!--                    </svg>-->
+                  <!--                  </button>-->
                 </div>
                 <!-- End Rating -->
               </div>
@@ -321,10 +392,10 @@ async function adicionarProdutoNoCarrinho() {
         <!-- Card Blog -->
         <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
           <!-- Title -->
-<!--          <div class="max-w-2xl text-center mx-auto mb-10 lg:mb-14">-->
-<!--            <h2 class="text-2xl font-bold md:text-4xl md:leading-tight dark:text-white">Read our latest news</h2>-->
-<!--            <p class="mt-1 text-gray-600 dark:text-gray-400">We've helped some great companies brand, design and get to market.</p>-->
-<!--          </div>-->
+          <!--          <div class="max-w-2xl text-center mx-auto mb-10 lg:mb-14">-->
+          <!--            <h2 class="text-2xl font-bold md:text-4xl md:leading-tight dark:text-white">Read our latest news</h2>-->
+          <!--            <p class="mt-1 text-gray-600 dark:text-gray-400">We've helped some great companies brand, design and get to market.</p>-->
+          <!--          </div>-->
           <!-- End Title -->
 
 
@@ -359,7 +430,7 @@ async function adicionarProdutoNoCarrinho() {
       </div>
 
 
-    <!--   End Card group ##########-->
+      <!--   End Card group ##########-->
 
 
 
@@ -367,104 +438,104 @@ async function adicionarProdutoNoCarrinho() {
 
     <!--    Card group ##########-->
 
-<!--    <div>-->
+    <!--    <div>-->
 
-<!--      &lt;!&ndash; Card Blog &ndash;&gt;-->
-<!--      <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">-->
-<!--        &lt;!&ndash; Grid &ndash;&gt;-->
-<!--        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">-->
-<!--          &lt;!&ndash; Card &ndash;&gt;-->
-<!--          <div class="group flex flex-col h-full bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]">-->
-<!--            <div class="h-52 flex flex-col justify-center items-center rounded-t-xl">-->
+    <!--      &lt;!&ndash; Card Blog &ndash;&gt;-->
+    <!--      <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">-->
+    <!--        &lt;!&ndash; Grid &ndash;&gt;-->
+    <!--        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">-->
+    <!--          &lt;!&ndash; Card &ndash;&gt;-->
+    <!--          <div class="group flex flex-col h-full bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]">-->
+    <!--            <div class="h-52 flex flex-col justify-center items-center rounded-t-xl">-->
 
-<!--              <img src="https://images.unsplash.com/photo-1524350876685-274059332603?q=80&w=2071&auto=format&fit=crop" class="self-center" alt="cafe" width="75%" height="75%"/>-->
+    <!--              <img src="https://images.unsplash.com/photo-1524350876685-274059332603?q=80&w=2071&auto=format&fit=crop" class="self-center" alt="cafe" width="75%" height="75%"/>-->
 
-<!--            </div>-->
-<!--            <div class="p-4 md:p-6">-->
-<!--        <span class="block mb-1 text-xs font-semibold uppercase text-yellow-800 dark:text-blue-500">-->
-<!--          Café Brasil-->
-<!--        </span>-->
-<!--              <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-300 dark:hover:text-white">-->
-<!--                Do jeito que o brasileiro gosta-->
-<!--              </h3>-->
-<!--              <p class="mt-3 text-gray-500">-->
-<!--                Rich aftertaste dripper saucer frappuccino.-->
-<!--              </p>-->
-<!--            </div>-->
-<!--            <div class="mt-auto flex border-t border-gray-200 divide-x divide-gray-200 dark:border-gray-700 dark:divide-gray-700">-->
-<!--              <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-es-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">-->
-<!--                Conheça-->
-<!--              </a>-->
-<!--              <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-ee-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">-->
-<!--                Comprar-->
-<!--              </a>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          &lt;!&ndash; End Card &ndash;&gt;-->
+    <!--            </div>-->
+    <!--            <div class="p-4 md:p-6">-->
+    <!--        <span class="block mb-1 text-xs font-semibold uppercase text-yellow-800 dark:text-blue-500">-->
+    <!--          Café Brasil-->
+    <!--        </span>-->
+    <!--              <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-300 dark:hover:text-white">-->
+    <!--                Do jeito que o brasileiro gosta-->
+    <!--              </h3>-->
+    <!--              <p class="mt-3 text-gray-500">-->
+    <!--                Rich aftertaste dripper saucer frappuccino.-->
+    <!--              </p>-->
+    <!--            </div>-->
+    <!--            <div class="mt-auto flex border-t border-gray-200 divide-x divide-gray-200 dark:border-gray-700 dark:divide-gray-700">-->
+    <!--              <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-es-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">-->
+    <!--                Conheça-->
+    <!--              </a>-->
+    <!--              <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-ee-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">-->
+    <!--                Comprar-->
+    <!--              </a>-->
+    <!--            </div>-->
+    <!--          </div>-->
+    <!--          &lt;!&ndash; End Card &ndash;&gt;-->
 
-<!--          &lt;!&ndash; Card &ndash;&gt;-->
-<!--          <div class="group flex flex-col h-full bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]">-->
-<!--            <div class="h-52 flex flex-col justify-center items-center rounded-t-xl">-->
+    <!--          &lt;!&ndash; Card &ndash;&gt;-->
+    <!--          <div class="group flex flex-col h-full bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]">-->
+    <!--            <div class="h-52 flex flex-col justify-center items-center rounded-t-xl">-->
 
-<!--              <img src="https://images.unsplash.com/photo-1511759066510-46958c3fffa0?q=80&w=2076&auto=format&fit=crop" class="self-center" alt="cafe" width="75%" height="75%"/>-->
+    <!--              <img src="https://images.unsplash.com/photo-1511759066510-46958c3fffa0?q=80&w=2076&auto=format&fit=crop" class="self-center" alt="cafe" width="75%" height="75%"/>-->
 
-<!--            </div>-->
-<!--            <div class="p-4 md:p-6">-->
-<!--        <span class="block mb-1 text-xs font-semibold uppercase text-yellow-800 dark:text-rose-500">-->
-<!--          Café Blue Mountain-->
-<!--        </span>-->
-<!--              <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-300 dark:hover:text-white">-->
-<!--                Um café das alturas-->
-<!--              </h3>-->
-<!--              <p class="mt-3 text-gray-500">-->
-<!--                Froth half and half french press blue mountain.-->
-<!--              </p>-->
-<!--            </div>-->
-<!--            <div class="mt-auto flex border-t border-gray-200 divide-x divide-gray-200 dark:border-gray-700 dark:divide-gray-700">-->
-<!--              <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-es-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">-->
-<!--                Conheça-->
-<!--              </a>-->
-<!--              <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-ee-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">-->
-<!--                Comprar-->
-<!--              </a>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          &lt;!&ndash; End Card &ndash;&gt;-->
+    <!--            </div>-->
+    <!--            <div class="p-4 md:p-6">-->
+    <!--        <span class="block mb-1 text-xs font-semibold uppercase text-yellow-800 dark:text-rose-500">-->
+    <!--          Café Blue Mountain-->
+    <!--        </span>-->
+    <!--              <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-300 dark:hover:text-white">-->
+    <!--                Um café das alturas-->
+    <!--              </h3>-->
+    <!--              <p class="mt-3 text-gray-500">-->
+    <!--                Froth half and half french press blue mountain.-->
+    <!--              </p>-->
+    <!--            </div>-->
+    <!--            <div class="mt-auto flex border-t border-gray-200 divide-x divide-gray-200 dark:border-gray-700 dark:divide-gray-700">-->
+    <!--              <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-es-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">-->
+    <!--                Conheça-->
+    <!--              </a>-->
+    <!--              <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-ee-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">-->
+    <!--                Comprar-->
+    <!--              </a>-->
+    <!--            </div>-->
+    <!--          </div>-->
+    <!--          &lt;!&ndash; End Card &ndash;&gt;-->
 
-<!--          &lt;!&ndash; Card &ndash;&gt;-->
-<!--          <div class="group flex flex-col h-full bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]">-->
-<!--            <div class="h-52 flex flex-col justify-center items-center rounded-t-xl">-->
+    <!--          &lt;!&ndash; Card &ndash;&gt;-->
+    <!--          <div class="group flex flex-col h-full bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]">-->
+    <!--            <div class="h-52 flex flex-col justify-center items-center rounded-t-xl">-->
 
-<!--              <img src="https://images.unsplash.com/photo-1459755486867-b55449bb39ff?q=80&w=2069&auto=format&fit=crop" class="self-center" alt="cafe" width="75%" height="75%"/>-->
+    <!--              <img src="https://images.unsplash.com/photo-1459755486867-b55449bb39ff?q=80&w=2069&auto=format&fit=crop" class="self-center" alt="cafe" width="75%" height="75%"/>-->
 
-<!--            </div>-->
-<!--            <div class="p-4 md:p-6">-->
-<!--        <span class="block mb-1 text-xs font-semibold uppercase text-yellow-800">-->
-<!--          Café Equador-->
-<!--        </span>-->
-<!--              <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-300 dark:hover:text-white">-->
-<!--                Microlote especial américa-->
-<!--              </h3>-->
-<!--              <p class="mt-3 text-gray-500">-->
-<!--                Trifecta, organic skinny cappuccino froth black sugar.-->
-<!--              </p>-->
-<!--            </div>-->
-<!--            <div class="mt-auto flex border-t border-gray-200 divide-x divide-gray-200 dark:border-gray-700 dark:divide-gray-700">-->
-<!--              <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-es-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">-->
-<!--                Conheça-->
-<!--              </a>-->
-<!--              <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-ee-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">-->
-<!--                Comprar-->
-<!--              </a>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          &lt;!&ndash; End Card &ndash;&gt;-->
-<!--        </div>-->
-<!--        &lt;!&ndash; End Grid &ndash;&gt;-->
-<!--      </div>-->
-<!--      &lt;!&ndash; End Card Blog &ndash;&gt;-->
+    <!--            </div>-->
+    <!--            <div class="p-4 md:p-6">-->
+    <!--        <span class="block mb-1 text-xs font-semibold uppercase text-yellow-800">-->
+    <!--          Café Equador-->
+    <!--        </span>-->
+    <!--              <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-300 dark:hover:text-white">-->
+    <!--                Microlote especial américa-->
+    <!--              </h3>-->
+    <!--              <p class="mt-3 text-gray-500">-->
+    <!--                Trifecta, organic skinny cappuccino froth black sugar.-->
+    <!--              </p>-->
+    <!--            </div>-->
+    <!--            <div class="mt-auto flex border-t border-gray-200 divide-x divide-gray-200 dark:border-gray-700 dark:divide-gray-700">-->
+    <!--              <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-es-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">-->
+    <!--                Conheça-->
+    <!--              </a>-->
+    <!--              <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-ee-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">-->
+    <!--                Comprar-->
+    <!--              </a>-->
+    <!--            </div>-->
+    <!--          </div>-->
+    <!--          &lt;!&ndash; End Card &ndash;&gt;-->
+    <!--        </div>-->
+    <!--        &lt;!&ndash; End Grid &ndash;&gt;-->
+    <!--      </div>-->
+    <!--      &lt;!&ndash; End Card Blog &ndash;&gt;-->
 
-<!--    </div>-->
+    <!--    </div>-->
 
     <!--   End Card group ##########-->
 
