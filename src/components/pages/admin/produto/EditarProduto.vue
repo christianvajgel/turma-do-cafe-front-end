@@ -32,6 +32,8 @@ async function listarProdutoEspecifico() {
 
     data.value = response.data;
 
+    console.log(data.value.id);
+
     //uuid.value = data.value.idProduto;
     uuid.value = data.value.id;
 
@@ -63,14 +65,38 @@ async function editarProduto() {
   console.log(data);
 }
 
+// function copiarUUIDParaAreaDeTransferencia() {
+//   console.log(uuid.value);
+//   navigator.clipboard.writeText(uuid.value).then(() => {
+//     console.log('UUID copiado para a área de transferência!');
+//     console.log(uuid.value);
+//   }).catch(err => {
+//     console.error('Erro ao copiar o UUID: ', err)
+//   })
+// }
+
 function copiarUUIDParaAreaDeTransferencia() {
-  navigator.clipboard.writeText(uuid.value).then(() => {
+  const textArea = document.createElement('textarea');
+  textArea.value = uuid.value;
+
+  // Adicione o elemento de texto temporário ao corpo do documento
+  document.body.appendChild(textArea);
+
+  // Selecione o conteúdo do elemento de texto
+  textArea.select();
+
+  try {
+    // Execute o comando de cópia
+    document.execCommand('copy');
     console.log('UUID copiado para a área de transferência!');
-    console.log(uuid.value);
-  }).catch(err => {
-    console.error('Erro ao copiar o UUID: ', err)
-  })
+  } catch (err) {
+    console.error('Erro ao copiar o UUID: ', err);
+  } finally {
+    // Remova o elemento de texto temporário
+    document.body.removeChild(textArea);
+  }
 }
+
 
 const form = ref({
   id: uuid.value,
