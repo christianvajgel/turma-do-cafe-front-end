@@ -2,6 +2,7 @@
 
 import {onMounted, ref} from 'vue';
 import axios from 'axios';
+import router from "@/router.js";
 
 const data = ref(null);
 const loading = ref(true);
@@ -29,12 +30,46 @@ function listarTodosOsProdutos(){
 }
 
 
+
+// const carrinho = ref({
+//   id: gerarUUID()
+// });
+
+const carrinho = ref({
+  id: "b0c3a074-fa3f-43f9-975d-8ae95d6a8940"
+});
+
+async function adicionarProdutoNoCarrinho(idProduto) {
+
+  const jsonForm = JSON.stringify(carrinho.value);
+  console.log(jsonForm);
+
+  try {
+    const response = await axios.post('https://localhost:7173/api/Carrinho/adicionar-produto-carrinho', jsonForm, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Quantidade':1,
+        'IdProduto':idProduto
+
+      }
+    });
+
+    console.log(response.request);
+
+    console.log('ADICIONAR CARRINHO -> Resposta do servidor:', response.data);
+
+    await router.push("/produtos");
+
+  } catch (error) {
+    console.error(`ADICIONAR CARRINHO -> Erro ao enviar o formulário: ${error}`);
+  }
+}
+
 </script>
 
 <template>
 
   <div>
-
 
     <!--    Carrousel ########## -->
     <div>
@@ -127,9 +162,8 @@ function listarTodosOsProdutos(){
 
               </router-link>
 
-
-              <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-ee-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                 href="#">
+              <a @click="adicionarProdutoNoCarrinho(produto.id)" class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-ee-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                 href="#comprar">
                 Comprar
               </a>
 

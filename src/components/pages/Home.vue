@@ -1,5 +1,6 @@
 <script setup>
 
+import Carrinho from "@/components/pages/Carrinho.vue";
 </script>
 
 <template >
