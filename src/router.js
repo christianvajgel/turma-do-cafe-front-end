@@ -7,6 +7,7 @@ import EditarProduto from "@/components/pages/admin/produto/EditarProduto.vue";
 import DeletarProduto from "@/components/pages/admin/produto/DeletarProduto.vue";
 import AdicionarProduto from "@/components/pages/admin/produto/AdicionarProduto.vue";
 import Carrinho from "@/components/pages/Carrinho.vue";
+import Pagamento from "@/components/pages/Pagamento.vue";
 
 
 const routes = [
@@ -21,6 +22,10 @@ const routes = [
     {
         path: '/carrinho',
         component: Carrinho,
+    },
+    {
+        path: '/pagamento',
+        component: Pagamento,
     },
     {
         path: '/detalhar-produto/:id',
