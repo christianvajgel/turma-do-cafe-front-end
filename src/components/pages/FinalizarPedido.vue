@@ -1,7 +1,5 @@
 <script setup>
 
-import {ref} from "vue";
-
 let cupomValido = false;
 
 cupomValido = true;
@@ -11,68 +9,102 @@ cupomValido = true;
 <template>
 
   <div>
+    <h2 class="mt-10 lg:mt-20 font-bold text-2xl text-center md:text-3xl text-gray-800 dark:text-gray-200">
+      Finalizar Pedido
+    </h2>
+  </div>
+
+  <div>
     <!-- Card Section -->
     <div class="max-w-2xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
       <!-- Card -->
       <div class="bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-slate-900">
-        <div class="mt-4 text-center mb-8">
-          <h2 class="text-2xl md:text-3xl font-bold text-gray-800 dark:text-gray-200">
-            Finalizar Pedido
-          </h2>
-
-
-        </div>
+<!--        <div class="mt-8 text-center mb-8">-->
+<!--          <h2 class="text-2xl md:text-3xl font-bold text-gray-800 dark:text-gray-200">-->
+<!--            Finalizar Pedido-->
+<!--          </h2>-->
+<!--        </div>-->
 
         <form>
           <!-- Section -->
-          <div class="py-6 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200">
+          <div class="py-6 first:pt-0 last:pb-0">
 
-            <div class="mt-5 sm:mt-10">
+<!--            <div class="mt-5 sm:mt-10">-->
+            <div class="">
+
               <h4 class="text-sm font-semibold">Resumo</h4>
 
-              <ul class="mt-3 flex flex-col">
-                <li class="inline-flex items-center gap-x-2 py-3 px-4 text-sm border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg">
-                  <div class="flex items-center justify-between w-full">
-                    <span class="text-center">Produto</span>
-                    <span>Preço (R$)</span>
-                    <span>Quantidade</span>
-                    <span>Total</span>
+              <br>
+
+              <div>
+                <div class="flex flex-col">
+                  <div class="-m-1.5 overflow-x-auto">
+                    <div class="p-1.5 min-w-full inline-block align-middle">
+                      <div class="overflow-hidden">
+
+                        <table class="min-w-full">
+
+                          <thead class="bg-gray-50">
+                          <tr>
+                            <th scope="col" class="px-6 py-3 text-start text-sm font-semibold">Produto</th>
+                            <th scope="col" class="px-6 py-3 text-center text-sm font-semibold">Preço</th>
+                            <th scope="col" class="px-6 py-3 text-center text-sm font-semibold">Quantidade</th>
+                            <th scope="col" class="px-6 py-3 text-end text-sm font-semibold">Subtotal</th>
+                          </tr>
+                          </thead>
+
+<!--                          <tbody class="divide-y divide-gray-200 dark:divide-gray-700">-->
+                          <tbody>
+                          <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-start text-sm">Café Blue Mountain (250g)</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-center text-sm">99,90</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-center text-sm">1</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-end text-sm">99,90</td>
+                          </tr>
+
+
+                          <!--                FRETE -->
+                          <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-start text-sm text-green-600">FRETE</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-center text-sm"></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-center text-sm"></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-end text-sm text-green-600">GRÁTIS</td>
+                          </tr>
+
+                          <!--                CUPOM -->
+                          <tr id="tr-cupom" class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-start text-sm text-red-600">CUPOM</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-center text-sm"></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-center text-sm"></td>
+                            <td id="td-valor-cupom" class="px-6 py-4 whitespace-nowrap text-end text-sm text-red-600">-99,90</td>
+                          </tr>
+
+                          </tbody>
+
+                          <tfoot class="bg-gray-50">
+                          <tr>
+                            <th scope="col" class="px-6 py-3 text-start text-sm font-semibold">TOTAL</th>
+                            <th scope="col" class="px-6 py-3 text-center text-sm font-semibold"></th>
+                            <th scope="col" class="px-6 py-3 text-center text-sm font-semibold"></th>
+                            <th scope="col" class="px-6 py-3 text-end text-sm font-semibold">R$ 99,90</th>
+                          </tr>
+                          </tfoot>
+
+                        </table>
+
+                      </div>
+                    </div>
                   </div>
-                </li>
-                <li class="inline-flex items-center gap-x-2 py-3 px-4 text-sm border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg">
-                  <div class="flex items-center justify-between w-full">
-                    <span>Café Blue Mountain (250g)</span>
-                    <span>9,90</span>
-                    <span>4</span>
-                    <span>49,60</span>
-                  </div>
-                </li>
-                <li class="inline-flex items-center gap-x-2 py-3 px-4 text-sm border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg">
-                  <div class="flex items-center justify-between w-full">
-                    <span class="text-green-600">Frete</span>
-                    <span class="text-green-600">GRÁTIS</span>
-                  </div>
-                </li>
-                <li v-if="cupomValido" class="inline-flex items-center gap-x-2 py-3 px-4 text-sm border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg">
-                  <div class="flex items-center justify-between w-full">
-                    <span class="text-red-600">Cupom</span>
-                    <span class="text-red-600">-199,90</span>
-                  </div>
-                </li>
-                <li class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-semibold bg-gray-50 border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-slate-800">
-                  <div class="flex items-center justify-between w-full">
-                    <span>Total do pedido</span>
-                    <span>R$ 123,40</span>
-                  </div>
-                </li>
-              </ul>
+                </div>
+              </div>
+
             </div>
 
 
           </div>
           <!-- End Section -->
 
-          <div class="py-6 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200">
+          <div class="py-6 first:pt-0 last:pb-0">
 
             <div>
               <h4 class="text-sm font-semibold">Cupom</h4>
@@ -95,50 +127,49 @@ cupomValido = true;
           </div>
 
           <!-- Section -->
-          <div class="py-6 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200">
+          <div class="py-6 first:pt-0 last:pb-0">
 
             <label for="af-payment-billing-contact" class="inline-block text-sm font-semibold dark:text-white">
               Dados pessoais
             </label>
 
             <div class="mt-2 space-y-3">
-              <input id="af-payment-billing-contact" type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="First Name">
-              <input type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="Last Name">
-              <input type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="Phone Number">
+              <input id="af-payment-billing-contact" type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="Nome completo">
+              <div class="grid sm:flex gap-3">
+                <input type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="CPF">
+                <input type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="Celular">
+                <input type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="Data Nascimento">
+              </div>
             </div>
+
+
           </div>
           <!-- End Section -->
 
           <!-- Section -->
-          <div class="py-6 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200">
+          <div class="py-6 first:pt-0 last:pb-0">
             <label for="af-payment-billing-address" class="inline-block text-sm font-semibold dark:text-white">
               Endereço
             </label>
 
             <div class="mt-2 space-y-3">
-              <input id="af-payment-billing-address" type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="Street Address">
-              <input type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="Apt, Syuite, Building (Optional)">
+              <input id="af-payment-billing-address" type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="Logradouro">
               <div class="grid sm:flex gap-3">
-                <input type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="Zip Code">
-                <select class="py-2 px-3 pe-9 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none ">
-                  <option selected>City</option>
-                  <option>City 1</option>
-                  <option>City 2</option>
-                  <option>City 3</option>
-                </select>
-                <select class="py-2 px-3 pe-9 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none ">
-                  <option selected>State</option>
-                  <option>State 1</option>
-                  <option>State 2</option>
-                  <option>State 3</option>
-                </select>
+                <input type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="Número">
+                <input type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="Complemento">
+                <input type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="Bairro">
+              </div>
+              <div class="grid sm:flex gap-3">
+                <input type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="Cidade">
+                <input type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="UF">
+                <input type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="CEP">
               </div>
             </div>
           </div>
           <!-- End Section -->
 
           <!-- Section -->
-          <div class="py-6 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200">
+          <div class="py-6 first:pt-0 last:pb-0">
             <label for="af-payment-payment-method" class="inline-block text-sm font-semibold dark:text-white">
               Cartão
             </label>
@@ -198,11 +229,11 @@ cupomValido = true;
             </div>
 
             <div class="mt-2 space-y-3">
-              <input id="af-payment-payment-method" type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="Name on Card">
-              <input type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="Card Number">
+              <input id="af-payment-payment-method" type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="Nome escrito no cartão">
               <div class="grid sm:flex gap-3">
-                <input type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="Expiration Date">
-                <input type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="CVV Code">
+                <input type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="Número do cartão">
+                <input type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="Data de expiração">
+                <input type="password" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="CVV">
               </div>
             </div>
           </div>
@@ -210,7 +241,6 @@ cupomValido = true;
         </form>
 
         <div class="mt-10 flex justify-end gap-x-2">
-
 
           <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
             Cancelar
