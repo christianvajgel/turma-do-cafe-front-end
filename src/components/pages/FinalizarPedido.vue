@@ -1,8 +1,143 @@
 <script setup>
 
+import axios from "axios";
+import {onMounted, ref, watch} from "vue";
+
+const CARRINHO_ID_ESTATICO_TEMPORARIO = "b0c3a074-fa3f-43f9-975d-8ae95d6a8940";
+
+const URL_LISTAR_CARRINHO = `https://localhost:7173/api/Carrinho/listar-carrinho/${CARRINHO_ID_ESTATICO_TEMPORARIO}`;
+const URL_VALOR_TOTAL_DO_CARRINHO = `https://localhost:7173/api/Carrinho/calcular-total-carrinho/${CARRINHO_ID_ESTATICO_TEMPORARIO}`;
+
+
+const itens = ref(null);
+const produtos = ref(null);
+const valorTotalDoCarrinho = ref(0);
+
+const ok = ref(false);
+
+watch(ok, (newValue, oldValue) => {
+  if (newValue === true) {
+    console.log('CARRINHO componente: A variável ok mudou para true')
+  }
+});
+
+onMounted(() => {
+
+  listarTodosOsProdutos();
+  obterValorTotalDoCarrinho();
+  listarCarrinho();
+
+  console.log("FINALIZAR PEDIDO componente: mounted OK");
+
+});
+
+async function listarCarrinho() {
+
+  //console.log("%c### LISTAR CARRINHO ###", "background: red; color: yellow; font-size: x-large;");
+
+  console.log(URL_LISTAR_CARRINHO);
+
+  try {
+
+    // const response = await axios.get(`https://localhost:7173/api/Produto/c9b6c3f5-f27e-499b-a4b2-17775589795e`);
+    // const response = await axios.get(`https://localhost:7173/api/Produto/${useRoute().params.id}`);
+    const response = await axios.get(URL_LISTAR_CARRINHO);
+
+    itens.value = response.data;
+
+    // setTimeout(function() {
+    //   // Whatever you want to do after the wait
+    // }, 1000);
+
+    //ok.value = true;
+
+  } catch (error) {
+    console.error(error);
+  } finally {
+    setTimeout(function() {
+      ok.value = true;
+    }, 1000);
+  }
+
+  // console.log(produtoEspecifico);
+}
+
+async function obterValorTotalDoCarrinho() {
+
+  //console.log("%c### LISTAR CARRINHO ###", "background: red; color: yellow; font-size: x-large;");
+
+  console.log(URL_VALOR_TOTAL_DO_CARRINHO);
+
+  try {
+    const response = await axios.get(URL_VALOR_TOTAL_DO_CARRINHO);
+    valorTotalDoCarrinho.value = response.data;
+
+    console.log(`%c### Valor Total do Carrinho: ${valorTotalDoCarrinho.value} ###`, "background: red; color: yellow; font-size: x-large;");
+
+    // setTimeout(function() {
+    //   // Whatever you want to do after the wait
+    // }, 1000);
+
+    //ok.value = true;
+
+  } catch (error) {
+    console.error(error);
+  } finally {
+    // setTimeout(function() {
+    //   ok.value = true;
+    // }, 1000);
+  }
+
+  // console.log(produtoEspecifico);
+}
+
+async function listarTodosOsProdutos(){
+
+  console.log("listar");
+
+  axios.get('https://localhost:7173/api/Produto')
+      .then(response => {
+        produtos.value = response.data;
+        console.log(produtos.value);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  // .finally(() => {
+  //   loading.value = false;
+  // });
+
+  // console.log(data);
+}
+
+function buscarAtributoDeProduto(idProduto, nomeAtributo) {
+
+  const JSON_PRODUTOS = produtos.value;
+
+  const cafeEncontrado = JSON_PRODUTOS.find(cafe => cafe.id === idProduto);
+
+  if (cafeEncontrado) {
+    return cafeEncontrado[nomeAtributo];
+  } else {
+    return null; // Retorna null se o ID não for encontrado
+  }
+
+}
+
+
+const id_carrinho = ref({
+  id: "b0c3a074-fa3f-43f9-975d-8ae95d6a8940"
+});
+
 let cupomValido = false;
 
 cupomValido = true;
+
+function calcularSubTotal(valor, quantidade) {
+
+  return (valor * quantidade).toFixed(2).replace('.', ',');
+
+}
 
 </script>
 
@@ -14,7 +149,7 @@ cupomValido = true;
     </h2>
   </div>
 
-  <div>
+  <div v-if="ok">
     <!-- Card Section -->
     <div class="max-w-2xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
       <!-- Card -->
@@ -55,11 +190,20 @@ cupomValido = true;
 
 <!--                          <tbody class="divide-y divide-gray-200 dark:divide-gray-700">-->
                           <tbody>
-                          <tr class="hover:bg-gray-50">
-                            <td class="px-6 py-4 whitespace-nowrap text-start text-sm">Café Blue Mountain (250g)</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-center text-sm">99,90</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-center text-sm">1</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-end text-sm">99,90</td>
+
+<!--                          TEXTO ESTATICO-->
+<!--                          <tr class="hover:bg-gray-50">-->
+<!--                            <td class="px-6 py-4 whitespace-nowrap text-start text-sm">Café Blue Mountain (250g)</td>-->
+<!--                            <td class="px-6 py-4 whitespace-nowrap text-center text-sm">99,90</td>-->
+<!--                            <td class="px-6 py-4 whitespace-nowrap text-center text-sm">1</td>-->
+<!--                            <td class="px-6 py-4 whitespace-nowrap text-end text-sm">99,90</td>-->
+<!--                          </tr>-->
+
+                          <tr v-for="(item, index) in itens" :key="item.id" class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-start text-sm">{{ buscarAtributoDeProduto(item.produtoId,`nome`) }} ({{ buscarAtributoDeProduto(item.produtoId,`peso`) }}g)</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-center text-sm">{{ buscarAtributoDeProduto(item.produtoId,`preco`).toFixed(2).replace('.',',') }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-center text-sm">{{ item.quantidade }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-end text-sm">{{ calcularSubTotal(buscarAtributoDeProduto(item.produtoId,`preco`),item.quantidade) }}</td>
                           </tr>
 
 
@@ -86,7 +230,7 @@ cupomValido = true;
                             <th scope="col" class="px-6 py-3 text-start text-sm font-semibold">TOTAL</th>
                             <th scope="col" class="px-6 py-3 text-center text-sm font-semibold"></th>
                             <th scope="col" class="px-6 py-3 text-center text-sm font-semibold"></th>
-                            <th scope="col" class="px-6 py-3 text-end text-sm font-semibold">R$ 99,90</th>
+                            <th scope="col" class="px-6 py-3 text-end text-sm font-semibold">R$ {{ valorTotalDoCarrinho.toFixed(2).replace('.',',') }}</th>
                           </tr>
                           </tfoot>
 

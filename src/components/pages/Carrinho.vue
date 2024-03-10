@@ -4,7 +4,6 @@
 
 import axios from "axios";
 import {onMounted, ref, watch} from "vue";
-import {useRoute} from "vue-router";
 
 const CARRINHO_ID_ESTATICO_TEMPORARIO = "b0c3a074-fa3f-43f9-975d-8ae95d6a8940";
 
