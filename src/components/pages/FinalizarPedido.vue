@@ -2,8 +2,10 @@
 
 import axios from "axios";
 import {onMounted, ref, watch} from "vue";
+import router from "@/router.js";
+import {gerarUUID} from "@/global/functions.js";
 
-const CARRINHO_ID_ESTATICO_TEMPORARIO = "b0c3a074-fa3f-43f9-975d-8ae95d6a8940";
+const CARRINHO_ID_ESTATICO_TEMPORARIO = "b0c3a074-fa3f-43f9-975d-8ae95d6a8940;"
 
 const URL_LISTAR_CARRINHO = `https://localhost:7173/api/Carrinho/listar-carrinho/${CARRINHO_ID_ESTATICO_TEMPORARIO}`;
 const URL_VALOR_TOTAL_DO_CARRINHO = `https://localhost:7173/api/Carrinho/calcular-total-carrinho/${CARRINHO_ID_ESTATICO_TEMPORARIO}`;
@@ -126,7 +128,7 @@ function buscarAtributoDeProduto(idProduto, nomeAtributo) {
 
 
 const id_carrinho = ref({
-  id: "b0c3a074-fa3f-43f9-975d-8ae95d6a8940"
+  id: CARRINHO_ID_ESTATICO_TEMPORARIO
 });
 
 let cupomValido = false;
@@ -138,6 +140,43 @@ function calcularSubTotal(valor, quantidade) {
   return (valor * quantidade).toFixed(2).replace('.', ',');
 
 }
+
+
+
+const form = ref({
+  id: gerarUUID(),
+  imagem: '',
+  nome: '',
+  preco: '',
+  peso: '',
+  tipo: '',
+  avaliacao: '',
+  descricao: '',
+  slogan: '',
+  origem: '',
+  estoque: '',
+});
+
+const submitForm = async () => {
+  const jsonForm = JSON.stringify(form.value);
+  console.log(jsonForm);
+
+  try {
+    const response = await axios.post('https://localhost:7173/api/Produto', jsonForm, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    console.log('Resposta do servidor:', response.data);
+
+    await router.push("/produtos");
+
+  } catch (error) {
+    console.error(`Erro ao enviar o formulário: ${error}`);
+  }
+};
+
 
 </script>
 
@@ -203,7 +242,7 @@ function calcularSubTotal(valor, quantidade) {
                             <td class="px-6 py-4 whitespace-nowrap text-start text-sm">{{ buscarAtributoDeProduto(item.produtoId,`nome`) }} ({{ buscarAtributoDeProduto(item.produtoId,`peso`) }}g)</td>
                             <td class="px-6 py-4 whitespace-nowrap text-center text-sm">{{ buscarAtributoDeProduto(item.produtoId,`preco`).toFixed(2).replace('.',',') }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-center text-sm">{{ item.quantidade }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-end text-sm">{{ calcularSubTotal(buscarAtributoDeProduto(item.produtoId,`preco`),item.quantidade) }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-end text-sm">{{ calcularSubTotal(item.precoVenda,item.quantidade) }}</td>
                           </tr>
 
 

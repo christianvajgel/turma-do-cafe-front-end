@@ -9,6 +9,7 @@ import AdicionarProduto from "@/components/pages/admin/produto/AdicionarProduto.
 import Carrinho from "@/components/pages/Carrinho.vue";
 import Pagamento from "@/components/pages/FinalizarPedido.vue";
 import FinalizarPedido from "@/components/pages/FinalizarPedido.vue";
+import ConfirmacaoPedido from "@/components/ConfirmacaoPedido.vue";
 
 
 const routes = [
@@ -27,6 +28,10 @@ const routes = [
     {
         path: '/finalizacao',
         component: FinalizarPedido,
+    },
+    {
+        path: '/confirmacao',
+        component: ConfirmacaoPedido,
     },
     {
         path: '/detalhar-produto/:id',

@@ -127,7 +127,7 @@ function buscarAtributoDeProduto(idProduto, nomeAtributo) {
 
 
 const id_carrinho = ref({
-  id: "b0c3a074-fa3f-43f9-975d-8ae95d6a8940"
+  id: CARRINHO_ID_ESTATICO_TEMPORARIO
 });
 
 async function modificarQuantidadeDoItemNoCarrinho(operacao, idProduto, idItem) {
