@@ -7,7 +7,6 @@ import EditarProduto from "@/components/pages/admin/produto/EditarProduto.vue";
 import DeletarProduto from "@/components/pages/admin/produto/DeletarProduto.vue";
 import AdicionarProduto from "@/components/pages/admin/produto/AdicionarProduto.vue";
 import Carrinho from "@/components/pages/Carrinho.vue";
-import Pagamento from "@/components/pages/FinalizarPedido.vue";
 import FinalizarPedido from "@/components/pages/FinalizarPedido.vue";
 import ConfirmacaoPedido from "@/components/pages/ConfirmacaoPedido.vue";
 
@@ -30,7 +29,7 @@ const routes = [
         component: FinalizarPedido,
     },
     {
-        path: '/confirmacao',
+        path: '/confirmacao/:localizador',
         component: ConfirmacaoPedido,
     },
     {
