@@ -3,6 +3,7 @@
 import {onMounted, ref} from 'vue';
 import axios from 'axios';
 import router from "@/router.js";
+import {obterIdDoCarrinho} from "@/global/functions.js";
 
 const data = ref(null);
 const loading = ref(true);
@@ -36,7 +37,7 @@ function listarTodosOsProdutos(){
 // });
 
 const carrinho = ref({
-  id: "b0c3a074-fa3f-43f9-975d-8ae95d6a8940"
+  id: obterIdDoCarrinho()
 });
 
 async function adicionarProdutoNoCarrinho(idProduto) {
@@ -50,7 +51,6 @@ async function adicionarProdutoNoCarrinho(idProduto) {
         'Content-Type': 'application/json',
         'Quantidade':1,
         'IdProduto':idProduto
-
       }
     });
 

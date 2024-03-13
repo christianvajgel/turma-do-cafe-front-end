@@ -3,7 +3,7 @@
 import axios from "axios";
 import {onMounted, ref, watch} from "vue";
 import {useRoute} from 'vue-router';
-import {gerarUUID} from "@/global/functions.js";
+import {gerarUUID, obterIdDoCarrinho} from "@/global/functions.js";
 import router from "@/router.js";
 
 
@@ -113,13 +113,13 @@ function filtrarSubprodutos(id, tipo) {
   subprodutosFiltrados.value = todosOsProdutos.value.filter(item => item.id !== id && item.tipo === tipo);
 }
 
-const carrinho = ref({
-  id: gerarUUID()
-});
-
 // const carrinho = ref({
 //   id: "b0c3a074-fa3f-43f9-975d-8ae95d6a8940"
 // });
+
+const carrinho = ref({
+  id: obterIdDoCarrinho()
+});
 
 async function adicionarProdutoNoCarrinho(idProduto) {
 

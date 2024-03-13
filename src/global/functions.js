@@ -15,3 +15,19 @@ export function gerarLocalizador(length = 6) {
     }
     return localizador;
 }
+
+export function obterIdDoCarrinho() {
+
+    let idCarrinho = localStorage.getItem("carrinhoID");
+
+    if (idCarrinho == null) {
+        idCarrinho = gerarUUID();
+        localStorage.setItem("carrinhoID",idCarrinho);
+    }
+    console.log(`%c### carrinhoID: ${idCarrinho} ###`, "background: green; color: yellow; font-size: x-large;");
+    return idCarrinho;
+}
+
+export function apagarIdDoCarrinho() {
+    localStorage.removeItem("carrinhoID");
+}
