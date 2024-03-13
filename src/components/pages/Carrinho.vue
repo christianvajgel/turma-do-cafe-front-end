@@ -230,8 +230,10 @@ async function deletarItem(idItem) {
           <div class="flex flex-col justify-center items-center rounded-t-xl">
 
 <!--            ${carrinho.value[0].produtoId}-->
+            <router-link :to="`/detalhar-produto/${buscarAtributoDeProduto(item.produtoId,`id`)}`">
             <img :src="buscarAtributoDeProduto(item.produtoId,`imagem`)"
                  class="self-center imagem-card border rounded-xl mt-4 md:mt-6 shadow-sm group-hover:scale-105 transition-transform duration-500 ease-in-out" alt="cafe"/>
+            </router-link>
 
           </div>
           <div class="p-4 md:p-6">

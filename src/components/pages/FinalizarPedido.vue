@@ -3,19 +3,20 @@
 import axios from "axios";
 import {onMounted, ref, watch} from "vue";
 import router from "@/router.js";
-import {gerarUUID} from "@/global/functions.js";
+import {gerarLocalizador, gerarUUID} from "@/global/functions.js";
 
-const CARRINHO_ID_ESTATICO_TEMPORARIO = "b0c3a074-fa3f-43f9-975d-8ae95d6a8940;"
+const CARRINHO_ID_ESTATICO_TEMPORARIO = "b0c3a074-fa3f-43f9-975d-8ae95d6a8940";
 
 const URL_LISTAR_CARRINHO = `https://localhost:7173/api/Carrinho/listar-carrinho/${CARRINHO_ID_ESTATICO_TEMPORARIO}`;
 const URL_VALOR_TOTAL_DO_CARRINHO = `https://localhost:7173/api/Carrinho/calcular-total-carrinho/${CARRINHO_ID_ESTATICO_TEMPORARIO}`;
-
 
 const itens = ref(null);
 const produtos = ref(null);
 const valorTotalDoCarrinho = ref(0);
 
 const ok = ref(false);
+
+let totalDoCarrinho;
 
 watch(ok, (newValue, oldValue) => {
   if (newValue === true) {
@@ -76,6 +77,8 @@ async function obterValorTotalDoCarrinho() {
 
     console.log(`%c### Valor Total do Carrinho: ${valorTotalDoCarrinho.value} ###`, "background: red; color: yellow; font-size: x-large;");
 
+    totalDoCarrinho = valorTotalDoCarrinho.value.toFixed(2).replace('.',',');
+
     // setTimeout(function() {
     //   // Whatever you want to do after the wait
     // }, 1000);
@@ -131,9 +134,6 @@ const id_carrinho = ref({
   id: CARRINHO_ID_ESTATICO_TEMPORARIO
 });
 
-let cupomValido = false;
-
-cupomValido = true;
 
 function calcularSubTotal(valor, quantidade) {
 
@@ -141,20 +141,22 @@ function calcularSubTotal(valor, quantidade) {
 
 }
 
+let cupomValido = false;
+
+cupomValido = true;
+
+let valorTotalDesconto = 0;
+
+let cupom = "";
+//let totalDesconto = 0;
 
 
 const form = ref({
-  id: gerarUUID(),
-  imagem: '',
-  nome: '',
-  preco: '',
-  peso: '',
-  tipo: '',
-  avaliacao: '',
-  descricao: '',
-  slogan: '',
-  origem: '',
-  estoque: '',
+  Id: '',
+  Total: totalDoCarrinho,
+  Cupom: cupom,
+  Localizador: gerarLocalizador(),
+  //TotalDesconto: totalDesconto,
 });
 
 const submitForm = async () => {
@@ -162,9 +164,11 @@ const submitForm = async () => {
   console.log(jsonForm);
 
   try {
-    const response = await axios.post('https://localhost:7173/api/Produto', jsonForm, {
+    const response = await axios.post('https://localhost:7173/api/Pedido/fazer-pedido', jsonForm, {
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'IdCarrinho': CARRINHO_ID_ESTATICO_TEMPORARIO,
+        'IdPedido': itens.value[0].pedidoId,
       }
     });
 
@@ -176,7 +180,6 @@ const submitForm = async () => {
     console.error(`Erro ao enviar o formulário: ${error}`);
   }
 };
-
 
 </script>
 
@@ -199,7 +202,7 @@ const submitForm = async () => {
 <!--          </h2>-->
 <!--        </div>-->
 
-        <form>
+        <form @submit.prevent="submitForm">
           <!-- Section -->
           <div class="py-6 first:pt-0 last:pb-0">
 
@@ -269,7 +272,9 @@ const submitForm = async () => {
                             <th scope="col" class="px-6 py-3 text-start text-sm font-semibold">TOTAL</th>
                             <th scope="col" class="px-6 py-3 text-center text-sm font-semibold"></th>
                             <th scope="col" class="px-6 py-3 text-center text-sm font-semibold"></th>
-                            <th scope="col" class="px-6 py-3 text-end text-sm font-semibold">R$ {{ valorTotalDoCarrinho.toFixed(2).replace('.',',') }}</th>
+                            <th scope="col" class="px-6 py-3 text-end text-sm font-semibold">R$
+                              <span id="valor-total-carrinho">{{ totalDoCarrinho }}</span>
+                            </th>
                           </tr>
                           </tfoot>
 
@@ -293,7 +298,7 @@ const submitForm = async () => {
               <h4 class="text-sm font-semibold">Cupom</h4>
 
               <div class="sm:flex mt-2 space-y-3">
-                <input placeholder="Digite o cupom se tiver um" type="text" id="id-produto" name="id-produto" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
+                <input v-model="form.Cupom" placeholder="Digite o cupom se tiver um" type="text" id="id-produto" name="id-produto" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
                 <button type="button" class="w-[2.875rem] h-[2.875rem] flex-shrink-0 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-e-md border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
                   <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 384 512" fill="white" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M189.8 4.4c-28.5-12.1-61.3 1.3-73.4 29.8L112 44.6l-4.4-10.5C95.5 5.7 62.7-7.6 34.2 4.4S-7.6 49.3 4.4 77.8L51.2 188.4 28.4 242.2 15.6 272.6C5.8 285.8 0 302.2 0 320v32c0 88.4 71.6 160 160 160h64c88.4 0 160-71.6 160-160V312 248v-8c0-3.2-.9-6.1-2.5-8.6C374.4 208.6 353.2 192 328 192c-12.1 0-23.3 3.8-32.5 10.4C285.6 186.5 268 176 248 176c-30.9 0-56 25.1-56 56v1.7l-19.2-45.4L219.6 77.8c12.1-28.5-1.3-61.3-29.8-73.4zm-34.4 225l4.5 10.6H151l4.5-10.6zM68.6 147.3L33.9 65.4c-5.2-12.2 .5-26.3 12.8-31.5s26.3 .5 31.5 12.8L94.6 85.7 68.6 147.3zM80 240c-5.7 0-11.3 .6-16.6 1.7L145.9 46.6c5.2-12.2 19.2-17.9 31.5-12.8s17.9 19.2 12.8 31.5L116.2 240H80zm168-32c13.3 0 24 10.7 24 24v16 48c0 13.3-10.7 24-24 24s-24-10.7-24-24v0V232c0-13.3 10.7-24 24-24zm32.5 133.6C290.4 357.5 308 368 328 368c8.4 0 16.4-1.9 23.5-5.2C346.1 428.5 291 480 224 480H160C89.3 480 32 422.7 32 352V320c0-26.5 21.5-48 48-48h88c13.2 0 24 10.7 24 24v0c0 13.3-10.7 24-24 24H112c-8.8 0-16 7.2-16 16s7.2 16 16 16h56c15.7 0 29.8-6.4 40-16.8c10.2 10.4 24.3 16.8 40 16.8c12.1 0 23.3-3.8 32.5-10.4zM352 312c0 13.3-10.7 24-24 24s-24-10.7-24-24V296 248c0-13.3 10.7-24 24-24s24 10.7 24 24v64z"/>
@@ -421,17 +426,18 @@ const submitForm = async () => {
             </div>
           </div>
           <!-- End Section -->
-        </form>
+
 
         <div class="mt-10 flex justify-end gap-x-2">
 
           <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
             Cancelar
           </button>
-          <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+          <button type="submit" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
             Finalizar Pedido
           </button>
-        </div>
+
+        </div></form>
 
       </div>
       <!-- End Card -->
