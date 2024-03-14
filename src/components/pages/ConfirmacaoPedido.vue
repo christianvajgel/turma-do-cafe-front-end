@@ -3,14 +3,166 @@
 import {gerarCodigoDeAutorizacaoAleatorio, obterIdDoCarrinho} from "@/global/functions.js";
 
 import {useRoute} from "vue-router";
+import {onMounted, ref, watch} from "vue";
+import axios from "axios";
 
 console.log(`%c### ID Pedido: ${useRoute().params.localizador} ###`, "background: blue; color: yellow; font-size: x-large;");
+
+const URL_LISTAR_CARRINHO = `https://localhost:7173/api/Item/listar-itens-de-um-pedido/${useRoute().params.localizador}`;
+//const URL_LISTAR_CARRINHO = `https://localhost:7173/api/Item/listar-itens-de-um-pedido/RJ5T6U`;
+
+const ok = ref(false);
+const ok2 = ref(false);
+const itens = ref(null);
+const produtos = ref(null);
+const pedido = ref(null);
+
+watch(ok, (newValue, oldValue) => {
+  if (newValue === true) {
+    console.log('CARRINHO componente: A variável ok mudou para true')
+  }
+});
+
+onMounted(() => {
+
+  obterPedido();
+  listarTodosOsProdutos();
+  //obterValorTotalDoCarrinho();
+  listarItensDoPedido();
+
+  console.log("CONFIRMACAO PEDIDO componente: mounted OK");
+
+});
+
+async function listarTodosOsProdutos(){
+
+  console.log("listar");
+
+  axios.get('https://localhost:7173/api/Produto')
+      .then(response => {
+        produtos.value = response.data;
+        console.log(produtos.value);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  // .finally(() => {
+  //   loading.value = false;
+  // });
+
+  // console.log(data);
+}
+
+function buscarAtributoDeProduto(idProduto, nomeAtributo) {
+
+  const JSON_PRODUTOS = produtos.value;
+
+  const cafeEncontrado = JSON_PRODUTOS.find(cafe => cafe.id === idProduto);
+
+  if (cafeEncontrado) {
+    return cafeEncontrado[nomeAtributo];
+  } else {
+    return null; // Retorna null se o ID não for encontrado
+  }
+
+}
+
+async function listarItensDoPedido() {
+
+  //console.log("%c### LISTAR CARRINHO ###", "background: red; color: yellow; font-size: x-large;");
+
+  console.log(URL_LISTAR_CARRINHO);
+
+  try {
+
+    // const response = await axios.get(`https://localhost:7173/api/Produto/c9b6c3f5-f27e-499b-a4b2-17775589795e`);
+    // const response = await axios.get(`https://localhost:7173/api/Produto/${useRoute().params.id}`);
+    const response = await axios.get(URL_LISTAR_CARRINHO);
+
+    itens.value = response.data;
+
+    // setTimeout(function() {
+    //   // Whatever you want to do after the wait
+    // }, 1000);
+
+    //ok.value = true;
+
+  } catch (error) {
+    console.error(error);
+  } finally {
+    setTimeout(function() {
+      ok.value = true;
+    }, 1000);
+  }
+
+  // console.log(produtoEspecifico);
+}
+
+
+async function obterPedido() {
+
+
+  const URL = `https://localhost:7173/api/Pedido/buscar-pedido/${useRoute().params.localizador}`;
+  console.log(`%c### URL: ${URL} ###`, "background: blue; color: yellow; font-size: x-large;");
+
+  console.log(URL);
+
+  try {
+
+    // const response = await axios.get(`https://localhost:7173/api/Produto/c9b6c3f5-f27e-499b-a4b2-17775589795e`);
+    // const response = await axios.get(`https://localhost:7173/api/Produto/${useRoute().params.id}`);
+    const response = await axios.get(URL);
+
+    setTimeout(function() {
+      pedido.value = response.data;
+
+      console.log(pedido.value.dataDoPedido);
+
+      sessionStorage.setItem("dataDoPedido",pedido.value.dataDoPedido);
+
+      ok2.value = true;
+    }, 500);
+
+
+
+    // setTimeout(function() {
+    //   // Whatever you want to do after the wait
+    // }, 1000);
+
+  } catch (error) {
+    console.error(error);
+  } finally {
+
+  }
+
+  // console.log(produtoEspecifico);
+}
+
+
+function formatarDataDoPedido() {
+  const dataFormatada = new Date(sessionStorage.getItem("dataDoPedido"));
+  const dia = dataFormatada.getDate();
+  const mes = dataFormatada.getMonth() + 1;
+  const ano = dataFormatada.getFullYear();
+  return `${dia}/${mes}/${ano}`;
+}
+
+function formatarHoraDoPedido() {
+  const horaFormatada = new Date(sessionStorage.getItem("dataDoPedido"));
+  const horas = horaFormatada.getHours();
+  const minutos = horaFormatada.getMinutes();
+  const ampm = '';
+  // const horas12 = horas % 12 || 12;
+  return `${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}`;
+}
+
+
 
 </script>
 
 <template>
 
-  <div>
+  <div v-if="ok">
 
     <!-- Invoice -->
     <div class="max-w-[85rem] px-4 sm:px-6 lg:px-8 mx-auto my-4 sm:my-10">
@@ -31,12 +183,12 @@ console.log(`%c### ID Pedido: ${useRoute().params.localizador} ###`, "background
 
               <div class="mt-10">
                 <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Christian Vajgel</h3>
-                <address class="mt-2 not-italic text-gray-500">
+                <span class="mt-2 not-italic text-gray-500">
                   Rua São José 90<br>
                   2° andar - Centro<br>
                   Rio de Janeiro / RJ<br>
                   20010-020
-                </address>
+                </span>
               </div>
 
             </div>
@@ -64,7 +216,7 @@ console.log(`%c### ID Pedido: ${useRoute().params.localizador} ###`, "background
                   Crédito à vista<br>
                 </p>
 
-                <span class="py-1 px-2 inline-flex items-center gap-x-1 text-xs font-medium bg-teal-100 text-teal-800 rounded-full dark:bg-teal-500/10 dark:text-teal-500">
+                <span class="mt-1.5 py-1 px-2 inline-flex items-center gap-x-1 text-xs font-medium bg-teal-100 text-teal-800 rounded-full dark:bg-teal-500/10 dark:text-teal-500">
                   <svg class="flex-shrink-0 size-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
                   Confirmado
                 </span>
@@ -79,13 +231,13 @@ console.log(`%c### ID Pedido: ${useRoute().params.localizador} ###`, "background
           <!-- Grid -->
           <div class="mt-8 grid sm:grid-cols-1 gap-3">
 
-            <div class="my-8 grid grid-cols-4 gap-3 text-center">
+            <div class="my-8 grid md:grid-cols-4 gap-3 text-center">
               <!-- Primeira div -->
               <div class="col-span-1">
                 <div class="font-semibold text-gray-800 dark:text-gray-200">Estado</div>
                 <div>
-                  <span class="py-1 px-2 inline-flex items-center gap-x-1 text-xs font-medium bg-teal-100 text-teal-800 rounded-full dark:bg-teal-500/10 dark:text-teal-500">
-                    <svg class="flex-shrink-0 size-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 384 512" fill="green" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <span class="mt-3.5 py-1 px-2 inline-flex items-center gap-x-1 text-xs font-medium bg-orange-100 text-orange-800 rounded-full">
+                    <svg class="flex-shrink-0 size-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 384 512" fill="#a54928" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M91.4 226.4c-6.7 2-11.4 8.3-11.4 15.3v65.1c0 4.2 1.7 8.3 4.7 11.3l51 51c4.7 4.7 7.8 10.8 8.9 17.4l15.2 90.9c1.5 8.7-4.4 17-13.2 18.4s-17-4.4-18.4-13.2l-14.3-85.9c-.5-3.3-2.1-6.3-4.5-8.7L30.1 308.7c-9-9-14.1-21.2-14.1-33.9V186.6C16 163.1 35.1 144 58.6 144c18.7 0 36.2 9.3 46.5 24.9l42.6 64c3 4.5 8 7.1 13.3 7.1H224c8.8 0 16 7.2 16 16s-7.2 16-16 16H196.3 152.6c-10.7 0-20.7-5.3-26.6-14.3l-16.6-24.9c-3.9-5.9-11.2-8.5-17.9-6.4zM251.7 272c2.7-4.7 4.3-10.2 4.3-16c0-17.7-14.3-32-32-32H161.1l-42.6-64c-13.3-20-35.8-32-59.9-32C26.2 128 0 154.2 0 186.6v88.1c0 17 6.7 33.3 18.7 45.3l79.4 79.4 14.3 85.9c2.9 17.4 19.4 29.2 36.8 26.3s29.2-19.4 26.3-36.8l-15.2-90.9c-1.6-9.9-6.3-19-13.4-26.1l-51-51V270.5 241.7l16 24 .6 .9c8.9 13.4 23.9 21.4 39.9 21.4H224 352c17.7 0 32-14.3 32-32V128c0-17.7-14.3-32-32-32H224c-17.7 0-32 14.3-32 32v64h16V128c0-8.8 7.2-16 16-16H352c8.8 0 16 7.2 16 16V256c0 8.8-7.2 16-16 16H288 251.7zM80 16a32 32 0 1 1 0 64 32 32 0 1 1 0-64zm48 32A48 48 0 1 0 32 48a48 48 0 1 0 96 0zM0 346.5L0 480c0 17.7 14.3 32 32 32s32-14.3 32-32l0-69.5-16-16L48 480c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-117.5-16-16z"/>
                     </svg>
                     Em separação
@@ -95,7 +247,7 @@ console.log(`%c### ID Pedido: ${useRoute().params.localizador} ###`, "background
               <!-- Segunda div -->
               <div class="col-span-1">
                 <div class="font-semibold text-gray-800 dark:text-gray-200">Rastreamento</div>
-                <div>
+                <div class="mt-3.5">
                   <span class="text-gray-500">
                     QR123456789BR
                   </span>
@@ -104,18 +256,18 @@ console.log(`%c### ID Pedido: ${useRoute().params.localizador} ###`, "background
               <!-- Terceira div -->
               <div class="col-span-1">
                 <div class="font-semibold text-gray-800 dark:text-gray-200">Data do pedido</div>
-                <div>
-                  <span class="text-gray-500">
-                    13/03/2024
+                <div class="mt-3.5">
+                  <span class="text-gray-500" v-if="ok2">
+                    {{ formatarDataDoPedido() }}
                   </span>
                 </div>
               </div>
               <!-- Quarta div -->
               <div class="col-span-1">
                 <div class="font-semibold text-gray-800 dark:text-gray-200">Hora do pedido</div>
-                <div>
-                  <span class="text-gray-500">
-                    12:34
+                <div class="mt-3.5">
+                  <span class="text-gray-500" v-if="ok2">
+                    {{ formatarHoraDoPedido() }}
                   </span>
                 </div>
               </div>
@@ -134,74 +286,96 @@ console.log(`%c### ID Pedido: ${useRoute().params.localizador} ###`, "background
           <div class="mt-6">
             <div class="border border-gray-200 p-4 rounded-lg space-y-4 dark:border-gray-700">
               <div class="hidden sm:grid sm:grid-cols-5">
-                <div class="sm:col-span-2 text-xs font-medium text-gray-500 uppercase">Item</div>
-                <div class="text-start text-xs font-medium text-gray-500 uppercase">Qty</div>
-                <div class="text-start text-xs font-medium text-gray-500 uppercase">Rate</div>
-                <div class="text-end text-xs font-medium text-gray-500 uppercase">Amount</div>
+                <div class="text-start text-xs font-medium text-gray-500 uppercase">Produto</div>
+                <div class="text-center text-xs font-medium text-gray-500 uppercase">Quantidade</div>
+                <div class="text-center text-xs font-medium text-gray-500 uppercase">Preço</div>
+                <div class="text-center text-xs font-medium text-gray-500 uppercase">Desconto</div>
+                <div class="text-center text-xs font-medium text-gray-500 uppercase">Subtotal</div>
               </div>
 
               <div class="hidden sm:block border-b border-gray-200 dark:border-gray-700"></div>
 
-              <div class="grid grid-cols-3 sm:grid-cols-5 gap-2">
+<!--              v-for-->
+              <div class="grid grid-cols-3 sm:grid-cols-6 gap-2" v-for="(item, index) in itens" :key="item.id">
                 <div class="col-span-full sm:col-span-2">
-                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Item</h5>
-                  <p class="font-medium text-gray-800 dark:text-gray-200">Design UX and UI</p>
+                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Produto</h5>
+                  <p class="font-medium text-gray-800">
+                    {{ buscarAtributoDeProduto(item.produtoId,`nome`) }} ({{ buscarAtributoDeProduto(item.produtoId,`peso`) }}g)
+                  </p>
                 </div>
                 <div>
-                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Qty</h5>
-                  <p class="text-gray-800 dark:text-gray-200">1</p>
+                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Quantidade</h5>
+                  <p class="text-gray-800">
+                    {{ item.quantidade }}
+                  </p>
                 </div>
                 <div>
-                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Rate</h5>
-                  <p class="text-gray-800 dark:text-gray-200">5</p>
+                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Preço</h5>
+                  <p class="text-gray-800">
+                    {{ buscarAtributoDeProduto(item.produtoId,`preco`).toFixed(2).replace('.',',') }}
+                  </p>
                 </div>
                 <div>
-                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Amount</h5>
-                  <p class="sm:text-end text-gray-800 dark:text-gray-200">$500</p>
+                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Desconto</h5>
+                  <p class="sm:text-end text-gray-800">
+                    {{ item.precoUnitario.toFixed(2).replace('.',',') }}
+                  </p>
                 </div>
+                <div>
+                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Subtotal</h5>
+                  <p class="sm:text-end text-gray-800">
+                    99999
+<!--                    {{ item.subtotal.toFixed(2).replace('.',',') }}-->
+                  </p>
+                </div>
+
+                <div class="sm:hidden border-b border-gray-200 dark:border-gray-700"></div>
               </div>
+<!--              v-for-->
 
-              <div class="sm:hidden border-b border-gray-200 dark:border-gray-700"></div>
 
-              <div class="grid grid-cols-3 sm:grid-cols-5 gap-2">
-                <div class="col-span-full sm:col-span-2">
-                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Item</h5>
-                  <p class="font-medium text-gray-800 dark:text-gray-200">Web project</p>
-                </div>
-                <div>
-                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Qty</h5>
-                  <p class="text-gray-800 dark:text-gray-200">1</p>
-                </div>
-                <div>
-                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Rate</h5>
-                  <p class="text-gray-800 dark:text-gray-200">24</p>
-                </div>
-                <div>
-                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Amount</h5>
-                  <p class="sm:text-end text-gray-800 dark:text-gray-200">$1250</p>
-                </div>
-              </div>
 
-              <div class="sm:hidden border-b border-gray-200 dark:border-gray-700"></div>
+<!--              <div class="grid grid-cols-3 sm:grid-cols-5 gap-2">-->
+<!--                <div class="col-span-full sm:col-span-2">-->
+<!--                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Item</h5>-->
+<!--                  <p class="font-medium text-gray-800 dark:text-gray-200">Web project</p>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Qty</h5>-->
+<!--                  <p class="text-gray-800 dark:text-gray-200">1</p>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Rate</h5>-->
+<!--                  <p class="text-gray-800 dark:text-gray-200">24</p>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Amount</h5>-->
+<!--                  <p class="sm:text-end text-gray-800 dark:text-gray-200">$1250</p>-->
+<!--                </div>-->
+<!--              </div>-->
 
-              <div class="grid grid-cols-3 sm:grid-cols-5 gap-2">
-                <div class="col-span-full sm:col-span-2">
-                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Item</h5>
-                  <p class="font-medium text-gray-800 dark:text-gray-200">SEO</p>
-                </div>
-                <div>
-                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Qty</h5>
-                  <p class="text-gray-800 dark:text-gray-200">1</p>
-                </div>
-                <div>
-                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Rate</h5>
-                  <p class="text-gray-800 dark:text-gray-200">6</p>
-                </div>
-                <div>
-                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Amount</h5>
-                  <p class="sm:text-end text-gray-800 dark:text-gray-200">$2000</p>
-                </div>
-              </div>
+<!--              <div class="sm:hidden border-b border-gray-200 dark:border-gray-700"></div>-->
+
+<!--              <div class="grid grid-cols-3 sm:grid-cols-5 gap-2">-->
+<!--                <div class="col-span-full sm:col-span-2">-->
+<!--                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Item</h5>-->
+<!--                  <p class="font-medium text-gray-800 dark:text-gray-200">SEO</p>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Qty</h5>-->
+<!--                  <p class="text-gray-800 dark:text-gray-200">1</p>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Rate</h5>-->
+<!--                  <p class="text-gray-800 dark:text-gray-200">6</p>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Amount</h5>-->
+<!--                  <p class="sm:text-end text-gray-800 dark:text-gray-200">$2000</p>-->
+<!--                </div>-->
+<!--              </div>-->
+
+
             </div>
           </div>
           <!-- End Table -->
@@ -214,6 +388,11 @@ console.log(`%c### ID Pedido: ${useRoute().params.localizador} ###`, "background
                 <dl class="grid sm:grid-cols-5 gap-x-3">
                   <dt class="col-span-3 font-semibold text-gray-400">Subtotal</dt>
                   <dd class="col-span-2 text-gray-600">R$ 2750.00</dd>
+                </dl>
+
+                <dl class="grid sm:grid-cols-5 gap-x-3">
+                  <dt class="col-span-3 font-semibold text-gray-400">Frete</dt>
+                  <dd class="col-span-2 text-gray-600">R$ 0,00</dd>
                 </dl>
 
                 <dl class="grid sm:grid-cols-5 gap-x-3">
