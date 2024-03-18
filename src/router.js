@@ -9,6 +9,7 @@ import AdicionarProduto from "@/components/pages/admin/produto/AdicionarProduto.
 import Carrinho from "@/components/pages/Carrinho.vue";
 import FinalizarPedido from "@/components/pages/FinalizarPedido.vue";
 import ConfirmacaoPedido from "@/components/pages/ConfirmacaoPedido.vue";
+import ListarPedidos from "@/components/pages/admin/pedido/ListarPedidos.vue";
 
 
 const routes = [
@@ -50,6 +51,11 @@ const routes = [
     {
         path: '/deletar-produto/:id',
         component: DeletarProduto,
+    },
+
+    {
+        path: '/listar-pedidos',
+        component: ListarPedidos,
     },
 
     // ADD NEW ROUTES HERE
