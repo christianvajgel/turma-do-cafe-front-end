@@ -8,8 +8,8 @@ import axios from "axios";
 
 console.log(`%c### ID Pedido: ${useRoute().params.localizador} ###`, "background: blue; color: yellow; font-size: x-large;");
 
-const URL_LISTAR_CARRINHO = `https://localhost:7173/api/Item/listar-itens-de-um-pedido/${useRoute().params.localizador}`;
-//const URL_LISTAR_CARRINHO = `https://localhost:7173/api/Item/listar-itens-de-um-pedido/RJ5T6U`;
+const URL_LISTAR_PEDIDO = `https://localhost:7173/api/Item/listar-itens-de-um-pedido/${useRoute().params.localizador}`;
+//const URL_LISTAR_PEDIDO = `https://localhost:7173/api/Item/listar-itens-de-um-pedido/RJ5T6U`;
 
 const ok = ref(false);
 const ok2 = ref(false);
@@ -71,13 +71,13 @@ async function listarItensDoPedido() {
 
   //console.log("%c### LISTAR CARRINHO ###", "background: red; color: yellow; font-size: x-large;");
 
-  console.log(URL_LISTAR_CARRINHO);
+  console.log(URL_LISTAR_PEDIDO);
 
   try {
 
     // const response = await axios.get(`https://localhost:7173/api/Produto/c9b6c3f5-f27e-499b-a4b2-17775589795e`);
     // const response = await axios.get(`https://localhost:7173/api/Produto/${useRoute().params.id}`);
-    const response = await axios.get(URL_LISTAR_CARRINHO);
+    const response = await axios.get(URL_LISTAR_PEDIDO);
 
     itens.value = response.data;
 
@@ -318,13 +318,14 @@ function formatarHoraDoPedido() {
                 <div>
                   <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Desconto</h5>
                   <p class="sm:text-end text-gray-800">
-                    {{ item.precoUnitario.toFixed(2).replace('.',',') }}
+                    completar
+<!--                    {{ item.Desconto.toFixed(2).replace('.',',') }}-->
                   </p>
                 </div>
                 <div>
                   <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Subtotal</h5>
                   <p class="sm:text-end text-gray-800">
-                    99999
+                    completar
 <!--                    {{ item.subtotal.toFixed(2).replace('.',',') }}-->
                   </p>
                 </div>
@@ -387,7 +388,7 @@ function formatarHoraDoPedido() {
               <div class="grid grid-cols-2 sm:grid-cols-1 gap-3 sm:gap-2">
                 <dl class="grid sm:grid-cols-5 gap-x-3">
                   <dt class="col-span-3 font-semibold text-gray-400">Subtotal</dt>
-                  <dd class="col-span-2 text-gray-600">R$ 2750.00</dd>
+                  <dd class="col-span-2 text-gray-600">R$ completar</dd>
                 </dl>
 
                 <dl class="grid sm:grid-cols-5 gap-x-3">
@@ -397,14 +398,14 @@ function formatarHoraDoPedido() {
 
                 <dl class="grid sm:grid-cols-5 gap-x-3">
                   <dt class="col-span-3 font-semibold text-gray-400">Descontos</dt>
-                  <dd class="col-span-2 text-red-600 border-b">R$ -500.00</dd>
+                  <dd class="col-span-2 text-red-600 border-b">R$ -completar</dd>
                 </dl>
 
                 <br>
 
                 <dl class="grid sm:grid-cols-5 gap-x-3">
                   <dt class="col-span-3 font-semibold text-gray-800">TOTAL</dt>
-                  <dd class="col-span-2 font-semibold text-gray-800">R$ 999,90</dd>
+                  <dd class="col-span-2 font-semibold text-gray-800">R$ completar</dd>
                 </dl>
               </div>
               <!-- End Grid -->

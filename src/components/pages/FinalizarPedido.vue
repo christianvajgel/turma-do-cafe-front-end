@@ -181,7 +181,7 @@ const submitForm = async () => {
       apagarIdDoCarrinho();
     }
 
-    await router.push(`/confirmacao/${LOCALIZADOR}`);
+    await router.push(`/pedido/${LOCALIZADOR}`);
 
   } catch (error) {
     console.error(`Erro ao enviar o formulário: ${error}`);

@@ -30,7 +30,7 @@ const routes = [
         component: FinalizarPedido,
     },
     {
-        path: '/confirmacao/:localizador',
+        path: '/pedido/:localizador',
         component: ConfirmacaoPedido,
     },
     {
