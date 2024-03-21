@@ -153,11 +153,14 @@ let cupom = "";
 
 const LOCALIZADOR = gerarLocalizador();
 
+const NUMERACAO_CARTAO = gerarNumeroAleatorio();
+
 const form = ref({
   //Id: '',
   //Total: valorTotalDoCarrinho.value,
   Cupom: cupom,
   Localizador: LOCALIZADOR,
+  quatroUltimoDigitosCartao: NUMERACAO_CARTAO.slice(-4),
   //TotalDesconto: totalDesconto,
 });
 
@@ -187,6 +190,42 @@ const submitForm = async () => {
     console.error(`Erro ao enviar o formulário: ${error}`);
   }
 };
+
+function gerarCartaoAleatorio() {
+
+  // Gera a data de vencimento
+  const dataVencimento = gerarDataVencimentoAleatoria();
+
+  // Gera o CVV
+  const cvv = gerarCVVAleatorio();
+
+  // Preenche os campos do formulário
+  document.getElementById("numero-cartao").value = NUMERACAO_CARTAO;
+  document.getElementById("data-expiracao-cartao").value = dataVencimento;
+  document.getElementById("cvv-cartao").value = cvv;
+}
+
+function gerarNumeroAleatorio(tamanho = 16) {
+  let numeracaoCompletaDoCartao = "";
+  for (let i = 0; i < tamanho; i++) {
+    numeracaoCompletaDoCartao += Math.floor(Math.random() * 10);
+  }
+  return numeracaoCompletaDoCartao;
+}
+
+function gerarDataVencimentoAleatoria() {
+  const mes = Math.floor(Math.random() * 12) + 1;
+  const ano = Math.floor(Math.random() * 6) + 25; // Gera ano entre 2025 e 2030
+  return `${mes.toString().padStart(2, "0")}/${ano.toString().padStart(2, "0")}`;
+}
+
+function gerarCVVAleatorio() {
+  let cvv = "";
+  for (let i = 0; i < 3; i++) {
+    cvv += Math.floor(Math.random() * 10);
+  }
+  return cvv;
+}
 
 </script>
 
@@ -423,12 +462,12 @@ const submitForm = async () => {
 
             </div>
 
-            <div class="mt-2 space-y-3">
+            <div class="mt-2 space-y-3" @click="gerarCartaoAleatorio()">
               <input id="af-payment-payment-method" type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="Nome escrito no cartão">
               <div class="grid sm:flex gap-3">
-                <input type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="Número do cartão">
-                <input type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="Data de expiração">
-                <input type="password" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="CVV">
+                <input id="numero-cartao" type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="Número do cartão">
+                <input id="data-expiracao-cartao" type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="Data de expiração">
+                <input id="cvv-cartao" type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="CVV">
               </div>
             </div>
           </div>
