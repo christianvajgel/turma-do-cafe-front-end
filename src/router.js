@@ -10,6 +10,7 @@ import Carrinho from "@/components/pages/Carrinho.vue";
 import FinalizarPedido from "@/components/pages/FinalizarPedido.vue";
 import ConfirmacaoPedido from "@/components/pages/ConfirmacaoPedido.vue";
 import ListarPedidos from "@/components/pages/admin/pedido/ListarPedidos.vue";
+import BuscarPedido from "@/components/pages/BuscarPedido.vue";
 
 
 const routes = [
@@ -56,6 +57,11 @@ const routes = [
     {
         path: '/listar-pedidos',
         component: ListarPedidos,
+    },
+
+    {
+        path: '/buscar-pedido',
+        component: BuscarPedido,
     },
 
     // ADD NEW ROUTES HERE

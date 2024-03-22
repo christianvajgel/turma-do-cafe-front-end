@@ -60,9 +60,9 @@ async function deletarPedido(idPedido) {
   //console.log(data);
 }
 
-async function modificarPedido(acao, idPedido) {
+async function modificarPedido(acao, localizador) {
 
-  const URL = `https://localhost:7173/api/Pedido/${acao}-pedido/${idPedido}`;
+  const URL = `https://localhost:7173/api/Pedido/${acao}-pedido/${localizador}`;
 
   try {
 
@@ -359,6 +359,19 @@ async function modificarPedido(acao, idPedido) {
                                     <path d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z"/>
                                   </svg>
                                   Cobrar
+                                </span>
+                              </span>
+                            </button>
+                          </div>
+
+                          <div v-if="pedido.estado === 'Enviado'">
+                            <button @click="modificarPedido('entregar',pedido.localizador)" type="button" class="inline-flex" data-hs-overlay="#hs-ai-invoice-modal">
+                            <span class="px-2 py-2">
+                                <span class="py-1 px-2 inline-flex justify-center items-center gap-2 rounded-lg border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
+                                  <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 384 512">
+                                    <path d="M80 0a48 48 0 1 1 0 96A48 48 0 1 1 80 0zM0 488L0 340.3c.5 .4 1.1 .9 1.6 1.3L48 378.1 48 488c0 13.3-10.7 24-24 24s-24-10.7-24-24zM59.2 176C53 176 48 181 48 187.2v85.3c0 2.5 1.1 4.8 3.1 6.3L72 295.2V179c-3.9-1.9-8.3-3-12.8-3zM120 246.2v86.7l25.8 20.3c8.1 6.4 13.4 15.6 14.9 25.8l15.1 105.6c1.9 13.1-7.2 25.3-20.4 27.2s-25.3-7.2-27.2-20.4L113.6 388.9 21.4 316.5C7.9 305.9 0 289.6 0 272.4V187.2C0 154.5 26.5 128 59.2 128c26.1 0 50.5 13.3 64.6 35.3L173.1 240H192V128c0-17.7 14.3-32 32-32H352c17.7 0 32 14.3 32 32V256c0 17.7-14.3 32-32 32H232h-8H168.7c-13.6 0-26.3-6.9-33.6-18.4L120 246.2zM240 240h96V144H240v96z"/>
+                                  </svg>
+                                  Entregar
                                 </span>
                               </span>
                             </button>
