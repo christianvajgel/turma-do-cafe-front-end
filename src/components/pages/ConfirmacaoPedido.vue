@@ -211,7 +211,7 @@ function formatarHoraDoPedido() {
                   </defs>
                 </svg>
 
-                <a class="titulo-header flex-none text-2xl font-semibold" href="/" aria-label="Brand">Turma do Café</a>
+                <span class="titulo-header flex-none text-2xl font-semibold" href="/" aria-label="Brand">Turma do Café</span>
               </div>
 
               <div class="mt-10">
