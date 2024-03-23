@@ -352,8 +352,7 @@ function lidarComPedidoInvalido(){
 
 #localizador {
   font-size: 16px; /* Tamanho da fonte ajustado para melhor visualização */
-  background: linear-gradient(90deg, #E6CCB2, #DDB892, #B08968);
-  -webkit-background-clip: text;
+  background: linear-gradient(90deg, #E6CCB2, #DDB892, #B08968); -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 

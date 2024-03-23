@@ -16,7 +16,21 @@ import {useRoute} from "vue-router";
     <header class="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white border-b border-gray-200 text-sm py-3 sm:py-0 dark:bg-gray-800 dark:border-gray-700">
       <nav class="relative max-w-[85rem] flex flex-wrap basis-full items-center w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8" aria-label="Global">
         <div class="flex items-center justify-between">
-          <a class="flex-none text-xl font-semibold dark:text-white" href="/" aria-label="Brand">Turma do Café</a>
+
+          <svg class="mr-2.5 mt-1 flex-shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 448 512" stroke="transparent" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <defs>
+            </defs>
+            <path d="M331.4 203.3c24.4-24.6 45.4-67.3 59.9-101.7c5.1-12.2 20.9-15.3 28.2-4.3c51.2 77.7 26.2 201.2-63.4 290.8c-79.6 79.6-186 108.1-263.2 77.7c-14.8-5.8-20-23.2-13.2-37.5c.7-1.6 1.5-3.1 2.2-4.7c16.5-34.5 37.5-72.2 57.4-92.3c29.7-29.9 59.7-44.9 91.8-61l.5-.3 0 0c32-15.9 66.1-32.9 99.7-66.8zM53.1 409.7c-5.3 11-19.9 13.6-26.9 3.6c-54-77.4-29.6-203.2 61.2-294C167.6 39.1 275.1 10.7 352.5 42.4c14 5.7 19.4 22 13.7 36c-1.4 3.5-2.9 7.1-4.4 10.8c-14.5 34.5-33.5 71.8-53.1 91.5c-29.7 29.9-59.7 44.9-91.8 61l-.5 .3c-32 15.9-66.1 32.9-99.7 66.8c-24.1 24.3-47.1 66.6-63.6 101z" fill="url(#myGradient)" />
+            <defs>
+              <linearGradient id="myGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="rgb(237, 224, 212)"/>
+                <stop offset="50%" stop-color="rgb(230, 204, 178)"/>
+                <stop offset="100%" stop-color="rgb(221, 184, 146)"/>
+              </linearGradient>
+            </defs>
+          </svg>
+
+          <a class="titulo-header flex-none text-2xl font-semibold" href="/" aria-label="Brand">Turma do Café</a>
         </div>
 
         <div class="flex items-center ms-auto sm:ms-0 sm:order-3">
@@ -220,6 +234,13 @@ import {useRoute} from "vue-router";
 
 </template>
 
-<style scoped>
+<style>
+
+
+.titulo-header {
+  background: linear-gradient(90deg,#DDB892, #B08968, #9C6644, #7F5539);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 </style>
