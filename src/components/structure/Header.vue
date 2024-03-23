@@ -63,6 +63,7 @@ import {useRoute} from "vue-router";
 <!--            <a class="font-medium text-blue-500 hover:text-gray-400 px-6 sm:py-6 sm:px-0" href="/detalhamento" aria-current="page">Detalhamento</a>-->
 <!--            <a class="font-medium text-blue-500 hover:text-gray-400 px-6 sm:py-6 sm:px-0" href="/adicionar-produto" aria-current="page">Adicionar Produto</a>-->
 
+            <a class="font-medium text-gray-500 hover:text-gray-400 px-6 sm:py-6 sm:px-0" href="/buscar-pedido">Buscar pedido</a>
             <a class="font-medium text-gray-500 hover:text-gray-400 px-6 sm:py-6 sm:px-0" href="#">Loja</a>
             <a class="font-medium text-gray-500 hover:text-gray-400 px-6 sm:py-6 sm:px-0" href="#">Sobre</a>
             <a class="font-medium text-gray-500 hover:text-gray-400 px-6 sm:py-6 sm:px-0" href="#">Contato</a>
