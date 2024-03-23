@@ -5,6 +5,7 @@ import {gerarCodigoDeAutorizacaoAleatorio, obterIdDoCarrinho} from "@/global/fun
 import {useRoute} from "vue-router";
 import {onMounted, ref, watch} from "vue";
 import axios from "axios";
+import router from "@/router.js";
 
 console.log(`%c### ID Pedido: ${useRoute().params.localizador} ###`, "background: blue; color: yellow; font-size: x-large;");
 
@@ -135,7 +136,17 @@ async function obterPedido() {
     // }, 1000);
 
   } catch (error) {
-    console.error(error);
+    //console.log(`%c### URL: ${error} ###`, "background: pink; color: yellow; font-size: x-large;");
+    // await router.push(`/buscar-pedido/`);
+
+    await router.push({
+      path: `/buscar-pedido/`,
+      query: {
+        estadoPedido: "invalido",
+      },
+    });
+
+    //console.error(error);
   } finally {
 
   }

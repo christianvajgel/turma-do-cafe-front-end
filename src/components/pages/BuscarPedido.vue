@@ -1,12 +1,36 @@
 <script setup>
 
 import router from "@/router.js";
+import {useRoute, useRouter} from "vue-router";
+import axios from "axios";
+import {onMounted} from "vue";
+
+let textoPlaceholderInputLocalizador = "Todo o seu pedido em um só localizador";
+
+onMounted(() => {
+  lidarComPedidoInvalido();
+});
 
 async function procurarPedido() {
 
-  const PEDIDO_ID = document.getElementById("localizador").value;
+  const PEDIDO_LOCALIZADOR = document.getElementById("localizador").value.toUpperCase();
 
-  await router.push(`/pedido/${PEDIDO_ID}`);
+  if (PEDIDO_LOCALIZADOR === '') {
+    return;
+  }
+
+  await router.push(`/pedido/${PEDIDO_LOCALIZADOR}`);
+}
+
+function lidarComPedidoInvalido(){
+
+  if (router !== undefined) {
+    const estadoPedido = useRoute().query.estadoPedido;
+    if (estadoPedido === "invalido") {
+      document.getElementById("localizador").placeholder = "Localizador do pedido inválido. Tente novamente.";
+    }
+  }
+
 }
 
 </script>
@@ -36,7 +60,7 @@ async function procurarPedido() {
                     <span class="sr-only">Todo o seu pedido em um só localizador</span>
                   </label>
                   <input type="text" name="hs-search-article-1" id="localizador" class="py-2.5 px-4 block w-full border-transparent rounded-lg focus:border-b-yellow-900 focus:ring-yellow-900"
-                         placeholder="Todo o seu pedido em um só localizador">
+                         :placeholder="textoPlaceholderInputLocalizador">
                 </div>
 
                 <div class="flex-[0_0_auto]">
@@ -198,6 +222,13 @@ async function procurarPedido() {
 <!--          </div>-->
 
 
+
+          <div>
+
+          </div>
+
+
+
         </div>
       </div>
     </div>
@@ -256,44 +287,44 @@ async function procurarPedido() {
 
 
 .elemento-1-primario {
-  fill: #E6CCB2;
+  fill: #e1c09f;
 }
 .elemento-1-secundario {
   opacity:.4;
-  fill: #E6CCB2;
+  fill: #e1c09f;
 }
 
 
 .elemento-2-primario {
-  fill: #DDB892;
+  fill: #d9b38e;
 }
 .elemento-2-secundario {
   opacity:.4;
-  fill: #DDB892;
+  fill: #d9b38e;
 }
 
 .elemento-3-primario {
-  fill: #B08968;
+  fill: #c49e7b;
 }
 .elemento-3-secundario {
   opacity:.4;
-  fill: #B08968;
+  fill: #c49e7b;
 }
 
 .elemento-4-primario {
-  fill: #9C6644;
+  fill: #b38c6b;
 }
 .elemento-4-secundario {
   opacity:.4;
-  fill: #9C6644;
+  fill: #b38c6b;
 }
 
 .elemento-5-primario {
-  fill: #7F5539;
+  fill: #a87b5a;
 }
 .elemento-5-secundario {
   opacity:.4;
-  fill: #7F5539;
+  fill: #a87b5a;
 }
 
 #titulo-buscar {
@@ -317,6 +348,13 @@ async function procurarPedido() {
 .icone-botao-buscar-secundario {
   opacity:.4;
   fill: #7F5539;
+}
+
+#localizador {
+  font-size: 16px; /* Tamanho da fonte ajustado para melhor visualização */
+  background: linear-gradient(90deg, #E6CCB2, #DDB892, #B08968);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 </style>
