@@ -6,6 +6,7 @@ import {useRoute} from "vue-router";
 import {onMounted, ref, watch} from "vue";
 import axios from "axios";
 import router from "@/router.js";
+import {NOME_DA_MARCA} from "@/global/variables.js";
 
 console.log(`%c### ID Pedido: ${useRoute().params.localizador} ###`, "background: blue; color: yellow; font-size: x-large;");
 
@@ -211,7 +212,7 @@ function formatarHoraDoPedido() {
                   </defs>
                 </svg>
 
-                <span class="titulo-header flex-none text-2xl font-semibold" href="/" aria-label="Brand">Turma do Café</span>
+                <span class="titulo-header flex-none text-2xl font-semibold" aria-label="Brand">{{ NOME_DA_MARCA }}</span>
               </div>
 
               <div class="mt-10">
