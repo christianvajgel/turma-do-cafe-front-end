@@ -45,5 +45,3 @@ export function gerarCodigoDeAutorizacaoAleatorio(length = 10) {
     }
     return result;
 }
-
-

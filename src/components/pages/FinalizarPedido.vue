@@ -3,21 +3,25 @@
 import axios from "axios";
 import {onMounted, ref, watch} from "vue";
 import router from "@/router.js";
-import {apagarIdDoCarrinho, gerarLocalizador, gerarUUID, obterIdDoCarrinho} from "@/global/functions.js";
+import {apagarIdDoCarrinho, gerarLocalizador, obterIdDoCarrinho} from "@/global/functions.js";
 
 // const CARRINHO_ID_ESTATICO_TEMPORARIO = "b0c3a074-fa3f-43f9-975d-8ae95d6a8940";
 const CARRINHO_ID_ESTATICO_TEMPORARIO = obterIdDoCarrinho();
 
 const URL_LISTAR_CARRINHO = `https://localhost:7173/api/Carrinho/listar-carrinho/${CARRINHO_ID_ESTATICO_TEMPORARIO}`;
 const URL_VALOR_TOTAL_DO_CARRINHO = `https://localhost:7173/api/Carrinho/calcular-total-carrinho/${CARRINHO_ID_ESTATICO_TEMPORARIO}`;
+const URL_DESCONTO_TOTAL_DO_CARRINHO = `https://localhost:7173/api/Carrinho/calcular-desconto-total-carrinho/${CARRINHO_ID_ESTATICO_TEMPORARIO}`;
 
 const itens = ref(null);
 const produtos = ref(null);
 const valorTotalDoCarrinho = ref(0);
+const descontoTotalDoCarrinho = ref(0);
 
 const ok = ref(false);
 
 let totalDoCarrinho;
+
+let totalDescontoCarrinho;
 
 watch(ok, (newValue, oldValue) => {
   if (newValue === true) {
@@ -25,14 +29,46 @@ watch(ok, (newValue, oldValue) => {
   }
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+
+    preencherElementosDeCupom();
+
+  }, 1250);
+
+});
+
+
+function preencherElementosDeCupom() {
+
+  const trCupom = document.getElementById("tr-cupom");
+  const spanCupomValido = document.getElementById("cupom-valido");
+  const spanCupomInvalido = document.getElementById("cupom-invalido");
+  const inputCupom = document.getElementById("cupom");
+
+  if (spanCupomValido && trCupom && parseFloat(totalDescontoCarrinho) > 0) {
+    inputCupom.value = sessionStorage.getItem("cupom");
+    trCupom.classList.remove("hidden");
+    spanCupomValido.classList.remove("hidden");
+  }
+
+  else if (parseFloat(totalDescontoCarrinho) <= 0) {
+    spanCupomInvalido.classList.remove("hidden");
+  }
+
+}
+
+
+
 onMounted(() => {
 
   listarTodosOsProdutos();
   obterValorTotalDoCarrinho();
   listarCarrinho();
+  obterDescontoTotalDoCarrinho();
 
+  console.log(document.readyState === 'complete');
   console.log("FINALIZAR PEDIDO componente: mounted OK");
-
 });
 
 async function listarCarrinho() {
@@ -62,8 +98,6 @@ async function listarCarrinho() {
       ok.value = true;
     }, 1000);
   }
-
-  // console.log(produtoEspecifico);
 }
 
 async function obterValorTotalDoCarrinho() {
@@ -130,42 +164,104 @@ function buscarAtributoDeProduto(idProduto, nomeAtributo) {
 
 }
 
-
-const id_carrinho = ref({
-  id: CARRINHO_ID_ESTATICO_TEMPORARIO
-});
-
-
 function calcularSubTotal(valor, quantidade) {
 
   return (valor * quantidade).toFixed(2).replace('.', ',');
 
 }
 
-let cupomValido = false;
-
-cupomValido = true;
-
-let valorTotalDesconto = 0;
-
-let cupom = "";
-//let totalDesconto = 0;
+let cupom = sessionStorage.getItem("cupom") ? sessionStorage.getItem("cupom") : "";
+console.log(`%c### CUPOM Session: ${cupom} ###`, "background: white; color: red; font-size: x-large;");
 
 const LOCALIZADOR = gerarLocalizador();
 
 const NUMERACAO_CARTAO = gerarNumeroAleatorio();
 
 const form = ref({
-  //Id: '',
-  //Total: valorTotalDoCarrinho.value,
-  Cupom: cupom,
   Localizador: LOCALIZADOR,
+  TotalDesconto: '',
+  Cupom: cupom,
   quatroUltimoDigitosCartao: NUMERACAO_CARTAO.slice(-4),
-  //TotalDesconto: totalDesconto,
 });
 
+const cupomRequest = ref({
+  id: '',
+  Cupom: '',
+});
+
+async function validarCupom(){
+
+  cupomRequest.value.id = itens.value[0].pedidoId;
+  cupomRequest.value.Cupom = document.getElementById('cupom').value.toUpperCase();
+
+  const jsonForm = JSON.stringify(cupomRequest.value);
+
+  console.log(`%c### CUPOM JSON: ${jsonForm} ###`, "background: white; color: red; font-size: x-large;");
+
+  try {
+    const response = await axios.post('https://localhost:7173/api/Pedido/validar-cupom', jsonForm, {
+      headers: {
+        'Content-Type': 'application/json',
+        // 'IdCarrinho': CARRINHO_ID_ESTATICO_TEMPORARIO,
+        // 'IdPedido': itens.value[0].pedidoId,
+        // 'ValorTotalCarrinho': valorTotalDoCarrinho.value,
+      }
+    });
+
+    console.log('Resposta do servidor:', response.data);
+
+    if (response.status === 200) {
+      sessionStorage.setItem("cupom",cupomRequest.value.Cupom);
+      cupom = document.getElementById('cupom').value.toUpperCase();
+      location.reload();
+    }
+    else if (response.status === 204) {
+      location.reload();
+    }
+
+    //await router.push(`/pedido/${LOCALIZADOR}`);
+
+  } catch (error) {
+    console.error(`Erro ao enviar o formulário: ${error}`);
+  }
+}
+
+async function obterDescontoTotalDoCarrinho() {
+
+  console.log(URL_DESCONTO_TOTAL_DO_CARRINHO);
+
+  try {
+    const response = await axios.get(URL_DESCONTO_TOTAL_DO_CARRINHO);
+
+    descontoTotalDoCarrinho.value = response.data;
+    totalDescontoCarrinho = descontoTotalDoCarrinho.value.toFixed(2).replace('.',',');
+
+    console.log(`%c### Desconto Total do Carrinho: ${totalDescontoCarrinho} ###`, "background: white; color: red; font-size: x-large;");
+    console.log(`%c### Desconto Total do Carrinho: ${totalDoCarrinho > 0} ###`, "background: white; color: red; font-size: x-large;");
+    console.log(`%c### Desconto Total do Carrinho: ${typeof totalDescontoCarrinho} ###`, "background: white; color: red; font-size: x-large;");
+
+
+  } catch (error) {
+    console.error(error);
+  } finally {
+    // setTimeout(function() {
+    //   ok.value = true;
+    // }, 1000);
+  }
+
+  // console.log(produtoEspecifico);
+}
+
+
 const submitForm = async () => {
+
+  form.value.TotalDesconto = totalDescontoCarrinho.replace(",", ".");
+
+  console.log(`%c### form.value.TotalDesconto: ${form.value.TotalDesconto } ###`, "background: white; color: red; font-size: x-large;");
+
+
   const jsonForm = JSON.stringify(form.value);
+
   console.log(jsonForm);
 
   try {
@@ -182,6 +278,7 @@ const submitForm = async () => {
 
     if (response.status === 200) {
       apagarIdDoCarrinho();
+      sessionStorage.clear();
     }
 
     await router.push(`/pedido/${LOCALIZADOR}`);
@@ -227,21 +324,26 @@ function gerarCVVAleatorio() {
   return cvv;
 }
 
+//let cupomValido = sessionStorage.getItem("cupom") || sessionStorage.setItem("cupom","");
+
+
+const placeholderCupom = "Digite o cupom se tiver um";
+
 </script>
 
 <template>
 
   <div>
-    <h2 class="mt-10 lg:mt-20 font-bold text-2xl text-center md:text-3xl text-gray-800 dark:text-gray-200">
+    <h2 class="titulo-header mt-10 lg:mt-20 font-bold text-2xl text-center md:text-3xl text-gray-800 dark:text-gray-200">
       Finalizar Pedido
     </h2>
   </div>
 
   <div v-if="ok">
     <!-- Card Section -->
-    <div class="max-w-2xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+    <div class="max-w-4xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
       <!-- Card -->
-      <div class="bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-slate-900">
+      <div class="bg-white rounded-xl shadow p-4 sm:p-7">
 <!--        <div class="mt-8 text-center mb-8">-->
 <!--          <h2 class="text-2xl md:text-3xl font-bold text-gray-800 dark:text-gray-200">-->
 <!--            Finalizar Pedido-->
@@ -271,6 +373,7 @@ function gerarCVVAleatorio() {
                           <tr>
                             <th scope="col" class="px-6 py-3 text-start text-sm font-semibold">Produto</th>
                             <th scope="col" class="px-6 py-3 text-center text-sm font-semibold">Preço</th>
+<!--                            <th scope="col" class="px-6 py-3 text-center text-sm font-semibold">Desconto</th>-->
                             <th scope="col" class="px-6 py-3 text-center text-sm font-semibold">Quantidade</th>
                             <th scope="col" class="px-6 py-3 text-end text-sm font-semibold">Subtotal</th>
                           </tr>
@@ -289,26 +392,37 @@ function gerarCVVAleatorio() {
 
                           <tr v-for="(item, index) in itens" :key="item.id" class="hover:bg-gray-50">
                             <td class="px-6 py-4 whitespace-nowrap text-start text-sm">{{ buscarAtributoDeProduto(item.produtoId,`nome`) }} ({{ buscarAtributoDeProduto(item.produtoId,`peso`) }}g)</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-center text-sm">{{ buscarAtributoDeProduto(item.produtoId,`preco`).toFixed(2).replace('.',',') }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-center text-sm">{{ item.quantidade }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-end text-sm">{{ calcularSubTotal(item.precoVenda,item.quantidade) }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-center text-sm">
+                              <span>{{ buscarAtributoDeProduto(item.produtoId,`preco`).toFixed(2).replace('.',',') }}</span>
+                            </td>
+<!--                            <td class="px-6 py-4 whitespace-nowrap text-center text-sm">-->
+<!--                              {{ (buscarAtributoDeProduto(item.produtoId,`preco`) - item.precoUnitario).toFixed(2).replace('.',',') }}-->
+<!--                            </td>-->
+                            <td class="px-6 py-4 whitespace-nowrap text-center text-sm">
+                              {{ item.quantidade }}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-end text-sm">
+                              {{ calcularSubTotal(item.precoVenda,item.quantidade) }}
+                            </td>
                           </tr>
 
 
                           <!--                FRETE -->
-                          <tr class="hover:bg-gray-50">
+                          <tr class="hover:bg-gray-50 border-t">
                             <td class="px-6 py-4 whitespace-nowrap text-start text-sm text-green-600">FRETE</td>
+<!--                            <td class="px-6 py-4 whitespace-nowrap text-center text-sm"></td>-->
                             <td class="px-6 py-4 whitespace-nowrap text-center text-sm"></td>
                             <td class="px-6 py-4 whitespace-nowrap text-center text-sm"></td>
                             <td class="px-6 py-4 whitespace-nowrap text-end text-sm text-green-600">GRÁTIS</td>
                           </tr>
 
                           <!--                CUPOM -->
-                          <tr id="tr-cupom" class="hover:bg-gray-50">
+                          <tr id="tr-cupom" class="hidden hover:bg-gray-50">
                             <td class="px-6 py-4 whitespace-nowrap text-start text-sm text-red-600">CUPOM</td>
+<!--                            <td class="px-6 py-4 whitespace-nowrap text-center text-sm"></td>-->
                             <td class="px-6 py-4 whitespace-nowrap text-center text-sm"></td>
                             <td class="px-6 py-4 whitespace-nowrap text-center text-sm"></td>
-                            <td id="td-valor-cupom" class="px-6 py-4 whitespace-nowrap text-end text-sm text-red-600">-99,90</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-end text-sm text-red-600">- {{ totalDescontoCarrinho }}</td>
                           </tr>
 
                           </tbody>
@@ -316,6 +430,7 @@ function gerarCVVAleatorio() {
                           <tfoot class="bg-gray-50">
                           <tr>
                             <th scope="col" class="px-6 py-3 text-start text-sm font-semibold">TOTAL</th>
+<!--                            <th scope="col" class="px-6 py-3 text-center text-sm font-semibold"></th>-->
                             <th scope="col" class="px-6 py-3 text-center text-sm font-semibold"></th>
                             <th scope="col" class="px-6 py-3 text-center text-sm font-semibold"></th>
                             <th scope="col" class="px-6 py-3 text-end text-sm font-semibold">R$
@@ -344,16 +459,17 @@ function gerarCVVAleatorio() {
               <h4 class="text-sm font-semibold">Cupom</h4>
 
               <div class="sm:flex mt-2 space-y-3">
-                <input v-model="form.Cupom" placeholder="Digite o cupom se tiver um" type="text" id="id-produto" name="id-produto" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
-                <button type="button" class="w-[2.875rem] h-[2.875rem] flex-shrink-0 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-e-md border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                <input v-model="cupomRequest.Cupom" :placeholder="placeholderCupom" type="text" id="cupom" name="cupom" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
+                <button @click="validarCupom()" type="button" class="w-[2.875rem] h-[2.875rem] flex-shrink-0 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-e-md border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
                   <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 384 512" fill="white" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M189.8 4.4c-28.5-12.1-61.3 1.3-73.4 29.8L112 44.6l-4.4-10.5C95.5 5.7 62.7-7.6 34.2 4.4S-7.6 49.3 4.4 77.8L51.2 188.4 28.4 242.2 15.6 272.6C5.8 285.8 0 302.2 0 320v32c0 88.4 71.6 160 160 160h64c88.4 0 160-71.6 160-160V312 248v-8c0-3.2-.9-6.1-2.5-8.6C374.4 208.6 353.2 192 328 192c-12.1 0-23.3 3.8-32.5 10.4C285.6 186.5 268 176 248 176c-30.9 0-56 25.1-56 56v1.7l-19.2-45.4L219.6 77.8c12.1-28.5-1.3-61.3-29.8-73.4zm-34.4 225l4.5 10.6H151l4.5-10.6zM68.6 147.3L33.9 65.4c-5.2-12.2 .5-26.3 12.8-31.5s26.3 .5 31.5 12.8L94.6 85.7 68.6 147.3zM80 240c-5.7 0-11.3 .6-16.6 1.7L145.9 46.6c5.2-12.2 19.2-17.9 31.5-12.8s17.9 19.2 12.8 31.5L116.2 240H80zm168-32c13.3 0 24 10.7 24 24v16 48c0 13.3-10.7 24-24 24s-24-10.7-24-24v0V232c0-13.3 10.7-24 24-24zm32.5 133.6C290.4 357.5 308 368 328 368c8.4 0 16.4-1.9 23.5-5.2C346.1 428.5 291 480 224 480H160C89.3 480 32 422.7 32 352V320c0-26.5 21.5-48 48-48h88c13.2 0 24 10.7 24 24v0c0 13.3-10.7 24-24 24H112c-8.8 0-16 7.2-16 16s7.2 16 16 16h56c15.7 0 29.8-6.4 40-16.8c10.2 10.4 24.3 16.8 40 16.8c12.1 0 23.3-3.8 32.5-10.4zM352 312c0 13.3-10.7 24-24 24s-24-10.7-24-24V296 248c0-13.3 10.7-24 24-24s24 10.7 24 24v64z"/>
                   </svg>
                 </button>
               </div>
 
-              <div v-if="cupomValido">
-                <p class="text-sm text-red-600 mt-2">Cupom aplicado com sucesso, você ganhou R$ 199,90 de desconto!</p>
+              <div id="cupom-mensagem" class="">
+                <p id="cupom-valido" class="hidden text-sm text-red-600 mt-2">Cupom aplicado com sucesso, você ganhou R$ <span> {{ totalDescontoCarrinho }} </span> de desconto.</p>
+                <p id="cupom-invalido" class="hidden text-sm text-red-600 mt-2">Cupom inválido, tente novamente.</p>
               </div>
 
             </div>
@@ -474,16 +590,18 @@ function gerarCVVAleatorio() {
           <!-- End Section -->
 
 
-        <div class="mt-10 flex justify-end gap-x-2">
+          <div class="mt-10 flex justify-end gap-x-2">
 
-          <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-            Cancelar
-          </button>
-          <button type="submit" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-            Finalizar Pedido
-          </button>
+            <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+              Cancelar
+            </button>
+            <button type="submit" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+              Finalizar Pedido
+            </button>
 
-        </div></form>
+          </div>
+
+        </form>
 
       </div>
       <!-- End Card -->

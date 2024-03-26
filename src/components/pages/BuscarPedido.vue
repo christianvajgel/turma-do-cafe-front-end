@@ -65,7 +65,7 @@ function lidarComPedidoInvalido(){
 
                 <div class="flex-[0_0_auto]">
                   <button @click="procurarPedido()" type="button" class="mt-1 size-[50px] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-white disabled:opacity-50 disabled:pointer-events-none">
-                    <svg class="p-1.5 hover:scale-125 transition-transform duration-500 ease-in-out " xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="" viewBox="0 0 512 512">
+                    <svg class="p-1.5 hover:scale-125 transition-transform duration-500 ease-in-out" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="" viewBox="0 0 512 512">
                       <path class="icone-botao-buscar-secundario" d="M208 64a144 144 0 1 1 0 288 144 144 0 1 1 0-288zm0 352A208 208 0 1 0 208 0a208 208 0 1 0 0 416z"/>
                       <path class="icone-botao-buscar-primario" d="M330.7 376L457.4 502.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L376 330.7C363.3 348 348 363.3 330.7 376z"/>
                     </svg>

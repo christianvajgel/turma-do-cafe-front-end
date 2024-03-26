@@ -8,10 +8,94 @@ const pedidos = ref(null);
 const ok = ref(false);
 
 let valorTotalPedidos = 0;
+let valorTotalPedidosAtivos = 0;
+let valorTotalPedidosInativos = 0;
+
+let quantidadePedidos = 0;
+let valorTotalDosPedidos = 0;
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   setTimeout(() => {
+//
+//     buscarPedidosPorEstado('Aguardando pagamento');
+//     buscarPedidosPorEstado('Em separação');
+//     buscarPedidosPorEstado('Enviado');
+//     buscarPedidosPorEstado('Entregue');
+//     buscarPedidosPorEstado('Devolvido');
+//     buscarPedidosPorEstado('Estornado');
+//     buscarPedidosPorEstado('Cancelado');
+//
+//   }, 1250);
+//
+// });
+
+async function buscarPedidosComPausa(estado,positivo) {
+  await buscarPedidosPorEstado(estado,positivo);
+  await new Promise(resolve => setTimeout(resolve, 0));
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+
+  obterValorTotalDeTodosOsPedidos();
+
+  const estados = ["Cancelado", "Estornado", "Aguardando pagamento", "Em separação", "Enviado", "Entregue", "Devolvido"];
+
+  for (const estado of estados) {
+    await buscarPedidosComPausa(estado);
+  }
+
+  obterValorTotalDeTodosOsPedidosAtivos();
+  obterValorTotalDeTodosOsPedidosInativos();
+  obterValorTotalDeTodosOsPedidosAbertos();
+});
 
 onMounted(() => {
   listarTodosOsPedidos();
+
 })
+
+function buscarPedidosPorEstado(estado){
+
+  if (estado === "Em separação" || estado === "Aguardando pagamento") {
+    estado = estado.split(' ').reduce((acc, word) => acc + word[0].toUpperCase() + word.slice(1), '').replace("ã","a").replace("ç","c");
+  }
+
+  axios.get(`https://localhost:7173/api/Pedido/buscar-pedidos-por-estado/${estado}`)
+      .then(response => {
+
+        pedidos.value = response.data;
+
+        quantidadePedidos = pedidos.value.quantidadePedidos;
+        valorTotalDosPedidos = pedidos.value.somaTotalPedidos;
+        valorTotalDosPedidos = valorTotalDosPedidos.toFixed(2).replace('.',',');
+
+        let trQuantidadeID = 'quantidadePedido' + estado;
+        let trQuantidade = document.getElementById(trQuantidadeID);
+        trQuantidade.innerHTML = quantidadePedidos;
+
+        let trValorID = 'valorPedido' + estado;
+        let trValor = document.getElementById(trValorID);
+        trValor.innerHTML = valorTotalDosPedidos;
+
+        if (estado === "Estornado" || estado === "Devolvido" || estado === "Cancelado") {
+          trValor.innerHTML = "- " + valorTotalDosPedidos;
+        }
+
+
+        //trValor.innerHTML = totalPedidos.toFixed(2).replace('.',',');
+
+        console.log(`%c### quantidadePedidos: ${quantidadePedidos} ###`, "background: white; color: red; font-size: x-large;");
+        console.log(`%c### totalPedidos: ${valorTotalDosPedidos} ###`, "background: white; color: red; font-size: x-large;");
+        console.log(`%c### trQuantidadeID: ${trQuantidadeID} ###`, "background: white; color: red; font-size: x-large;");
+        console.log(`%c### trValorID: ${trValorID} ###`, "background: white; color: red; font-size: x-large;");
+
+      })
+      .catch(error => {
+        console.error(error);
+      })
+      .finally(() => {
+      });
+}
 
 function listarTodosOsPedidos(){
 
@@ -27,8 +111,64 @@ function listarTodosOsPedidos(){
       })
       .finally(() => {
       });
+}
 
-  // console.log(data);
+function obterValorTotalDeTodosOsPedidos(){
+
+  axios.get('https://localhost:7173/api/Pedido/valor-total-todos-pedidos')
+      .then(response => {
+        valorTotalPedidos = response.data.toFixed(2).replace('.',',');
+      })
+      .catch(error => {
+        console.error(error);
+      })
+      .finally(() => {
+      });
+}
+
+function obterValorTotalDeTodosOsPedidosAtivos(){
+
+  axios.get('https://localhost:7173/api/Pedido/valor-total-vendas-ativas')
+      .then(response => {
+        valorTotalPedidosAtivos = response.data.toFixed(2).replace('.',',');
+
+        document.getElementById("spanValorTotalPedidosAtivos").innerHTML = "R$ " + valorTotalPedidosAtivos
+      })
+      .catch(error => {
+        console.error(error);
+      })
+      .finally(() => {
+      });
+}
+
+function obterValorTotalDeTodosOsPedidosInativos(){
+
+  axios.get('https://localhost:7173/api/Pedido/valor-total-vendas-inativas')
+      .then(response => {
+        valorTotalPedidosInativos = response.data.toFixed(2).replace('.',',');
+
+        document.getElementById("spanValorTotalPedidosInativos").innerHTML = "R$ - " + valorTotalPedidosInativos
+      })
+      .catch(error => {
+        console.error(error);
+      })
+      .finally(() => {
+      });
+}
+
+function obterValorTotalDeTodosOsPedidosAbertos(){
+
+  axios.get('https://localhost:7173/api/Pedido/valor-total-vendas-abertas')
+      .then(response => {
+        valorTotalPedidosInativos = response.data.toFixed(2).replace('.',',');
+
+        document.getElementById("spanValorTotalPedidosAbertos").innerHTML = "R$ " + valorTotalPedidosInativos
+      })
+      .catch(error => {
+        console.error(error);
+      })
+      .finally(() => {
+      });
 }
 
 function formatarDataHora(dataHora) {
@@ -77,23 +217,6 @@ async function modificarPedido(acao, localizador) {
   }
   //console.log(data);
 }
-// async function enviarPedido(idPedido) {
-//
-//   const URL = `https://localhost:7173/api/Pedido/enviar-pedido/${idPedido}`;
-//
-//   try {
-//
-//     const response = await axios.put(URL);
-//
-//     console.log(response);
-//
-//     location.reload();
-//
-//   } catch (error) {
-//     console.error(error);
-//   }
-//   //console.log(data);
-// }
 
 </script>
 
@@ -115,7 +238,7 @@ async function modificarPedido(acao, localizador) {
         <div class="flex flex-col">
           <div class="-m-1.5 overflow-x-auto">
             <div class="p-1.5 min-w-full inline-block align-middle">
-              <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden dark:bg-slate-900 dark:border-gray-700">
+              <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
                 <!-- Header -->
 <!--                <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-gray-700">-->
 <!--                  <div>-->
@@ -142,27 +265,6 @@ async function modificarPedido(acao, localizador) {
 <!--                </div>-->
                 <!-- End Header -->
 
-                <!-- Accordion -->
-<!--                <div class="border-b border-gray-200 hover:bg-gray-50 dark:hover:bg-slate-900 dark:border-gray-700">-->
-<!--                  <button type="button" class="hs-collapse-toggle py-4 px-6 w-full flex items-center gap-2 font-semibold text-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" id="hs-basic-collapse" data-hs-collapse="#hs-as-table-collapse">-->
-<!--                    <svg class="hs-collapse-open:rotate-90 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>-->
-<!--                    Insights-->
-<!--                  </button>-->
-<!--                  <div id="hs-as-table-collapse" class="hs-collapse hidden w-full overflow-hidden transition-[height] duration-300" aria-labelledby="hs-basic-collapse">-->
-<!--                    <div class="pb-4 px-6">-->
-<!--                      <div class="flex items-center space-x-2">-->
-<!--                  <span class="size-5 flex justify-center items-center rounded-full bg-blue-600 text-white dark:bg-blue-500">-->
-<!--                    <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>-->
-<!--                  </span>-->
-<!--                        <span class="text-sm text-gray-800 dark:text-gray-400">-->
-<!--                    There are no insights for this period.-->
-<!--                  </span>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                </div>-->
-                <!-- End Accordion -->
-
                 <!-- Table -->
                 <table class="min-w-full divide-y divide-gray-200">
                   <thead class="bg-gray-50">
@@ -176,7 +278,7 @@ async function modificarPedido(acao, localizador) {
                           <div class="hs-tooltip">
                             <div class="hs-tooltip-toggle">
                               <svg class="flex-shrink-0 size-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
-                              <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-slate-700" role="tooltip">
+                              <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm" role="tooltip">
                                 Único identificador do pedido para o cliente
                               </span>
                             </div>
@@ -219,7 +321,7 @@ async function modificarPedido(acao, localizador) {
                         <button type="button" class="block" data-hs-overlay="#hs-ai-invoice-modal">
                           <span class="block px-6 py-2">
                             <router-link :to="`/pedido/${pedido.localizador}`">
-                            <span class="font-mono text-sm text-blue-600 dark:text-blue-500">{{ pedido.localizador }}</span>
+                            <span class="font-mono text-sm text-blue-600">{{ pedido.localizador }}</span>
                             </router-link>
                           </span>
                         </button>
@@ -424,6 +526,16 @@ async function modificarPedido(acao, localizador) {
                       </td>
                   </tr>
 
+<!--                    "Cancelado", // detalhes (pagina detalhamento) - deletar (exclui do banco)-->
+<!--                    "Estornado", // detalhes (pagina detalhamento) - cancelar (permite deletar)-->
+
+<!--                    "Aguardando pagamento", // detalhes (pagina detalhamento) - cancelar (permite deletar) - cobrar (refaz cobranca)-->
+
+<!--                    "Em separação", // detalhes (pagina detalhamento)  - estornar (permite cancelar)-->
+<!--                    "Enviado", // detalhes (pagina detalhamento)-->
+<!--                    "Entregue", // detalhes (pagina detalhamento) - devolver (permite cancelar)-->
+<!--                    "Devolvido" // detalhes (pagina detalhamento)  - estornar (permite cancelar)-->
+
 
                   </tbody>
                 </table>
@@ -431,9 +543,80 @@ async function modificarPedido(acao, localizador) {
 
                 <!-- Footer -->
                 <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-t border-gray-200 dark:border-gray-700">
-                  <div>
-                    <p class="text-sm text-gray-600 dark:text-gray-400">
-                      <span class="font-semibold text-gray-800">TOTAL:</span> <span> {{ pedidos.length }} </span> pedidos
+                  <div style="width: 100%;">
+<!--                    <p class="text-sm text-gray-600 dark:text-gray-400">-->
+<!--                      <span class="font-semibold text-gray-800">TOTAL:</span> <span> {{ pedidos.length }} </span> <span v-if="pedidos.length > 1">pedidos</span><span v-else>pedido</span>-->
+<!--                    </p>-->
+
+                    <div>
+                      <div class=" flex flex-col">
+                        <div class="-m-1.5 overflow-x-auto">
+                          <div class="p-1.5 min-w-full inline-block align-middle">
+                            <div class="overflow-hidden">
+                              <table class="min-w-full ">
+                                <thead>
+                                <tr>
+                                  <th scope="col" class="px-6 py-3 text-center text-xs font-medium uppercase"></th>
+<!--                                  <th scope="col" class="px-6 py-3 text-center text-xs font-medium uppercase">TOTAL</th>-->
+                                  <th scope="col" class="px-6 py-3 text-center text-xs font-medium ">Aguardando pagamento</th>
+                                  <th scope="col" class="px-6 py-3 text-center text-xs font-medium  text-green-700">Em separação</th>
+                                  <th scope="col" class="px-6 py-3 text-center text-xs font-medium  text-green-700">Enviado</th>
+                                  <th scope="col" class="px-6 py-3 text-center text-xs font-medium  text-green-700">Entregue</th>
+                                  <th scope="col" class="px-6 py-3 text-center text-xs font-medium  text-red-700">Devolvido</th>
+                                  <th scope="col" class="px-6 py-3 text-center text-xs font-medium  text-red-700">Estornado</th>
+                                  <th scope="col" class="px-6 py-3 text-center text-xs font-medium  text-red-700">Cancelado</th>
+                                </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr>
+                                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-center text-gray-600">PEDIDOS</td>
+<!--                                  <td id="quantidadePedidoTotal" class="px-6 py-4 whitespace-nowrap text-sm font-medium text-center">{{ pedidos.length }}</td>-->
+                                  <td id="quantidadePedidoAguardandoPagamento" class="hover:bg-gray-100 px-6 py-4 whitespace-nowrap text-sm font-medium text-center"></td>
+                                  <td id="quantidadePedidoEmSeparacao" class="hover:bg-gray-100 px-6 py-4 whitespace-nowrap text-sm font-medium text-center text-green-700"></td>
+                                  <td id="quantidadePedidoEnviado" class="hover:bg-gray-100 px-6 py-4 whitespace-nowrap text-sm text-center text-green-700"></td>
+                                  <td id="quantidadePedidoEntregue" class="hover:bg-gray-100 px-6 py-4 whitespace-nowrap text-sm text-center text-green-700"></td>
+                                  <td id="quantidadePedidoDevolvido" class="hover:bg-gray-100 px-6 py-4 whitespace-nowrap text-sm text-center text-red-800"></td>
+                                  <td id="quantidadePedidoEstornado" class="hover:bg-gray-100 px-6 py-4 whitespace-nowrap text-sm text-center text-red-800"></td>
+                                  <td id="quantidadePedidoCancelado" class="hover:bg-gray-100 px-6 py-4 whitespace-nowrap text-sm text-center text-red-800"></td>
+                                </tr>
+                                <tr>
+                                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-center text-gray-600">SUBTOTAL</td>
+<!--                                  <td id="valorSubtotalPedidos" class="px-6 py-4 whitespace-nowrap text-sm font-medium text-center">{{ valorTotalPedidos }}</td>-->
+                                  <td id="valorPedidoAguardandoPagamento" class="hover:bg-gray-100 px-6 py-4 whitespace-nowrap text-sm font-medium text-center"></td>
+                                  <td id="valorPedidoEmSeparacao" class="hover:bg-gray-100 px-6 py-4 whitespace-nowrap text-sm font-medium text-center text-green-700"></td>
+                                  <td id="valorPedidoEnviado" class="hover:bg-gray-100 px-6 py-4 whitespace-nowrap text-sm text-center text-green-700"></td>
+                                  <td id="valorPedidoEntregue" class="hover:bg-gray-100 px-6 py-4 whitespace-nowrap text-sm text-center text-green-700"></td>
+                                  <td id="valorPedidoDevolvido" class="hover:bg-gray-100 px-6 py-4 whitespace-nowrap text-sm text-center text-red-700"></td>
+                                  <td id="valorPedidoEstornado" class="hover:bg-gray-100 px-6 py-4 whitespace-nowrap text-sm text-center text-red-700"></td>
+                                  <td id="valorPedidoCancelado" class="hover:bg-gray-100 px-6 py-4 whitespace-nowrap text-sm text-center text-red-700"></td>
+                                </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <!--                    <p class="mt-5 text-sm text-gray-600 dark:text-gray-400 text-center">-->
+<!--                      <span> {{ pedidos.length }} </span>-->
+<!--                      <span> {{ pedidos.length }} </span>-->
+<!--                      <span> {{ pedidos.length }} </span>-->
+<!--                      <span> {{ pedidos.length }} </span>-->
+<!--                      <span> {{ pedidos.length }} </span>-->
+<!--                      <span> {{ pedidos.length }} </span>-->
+<!--                      <span> {{ pedidos.length }} </span>-->
+<!--                    </p>-->
+                    <p class="mt-5 text-sm text-gray-600">
+                      <span class="font-semibold text-gray-800">TOTAL:</span>
+                        <span class="ml-5"> {{ pedidos.length }} </span>
+                        <span v-if="pedidos.length > 1"> pedidos</span>
+                        <span v-else> pedido</span>
+<!--                      <span class="font-bold text-gray-800">TOTAL: </span>-->
+                      <span class="ml-10 font-semibold text-grey-600">ativos:</span> <span id="spanValorTotalPedidosAtivos" class="text-green-700"></span>
+                      <span class="ml-10 font-semibold text-grey-600">inativos:</span> <span id="spanValorTotalPedidosInativos" class="text-red-700"></span>
+                      <span class="ml-10 font-semibold text-grey-600">abertos:</span> <span id="spanValorTotalPedidosAbertos" class="text-grey-700"></span>
                     </p>
                   </div>
 

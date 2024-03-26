@@ -24,10 +24,22 @@ const itens = ref(null);
 const produtos = ref(null);
 const pedido = ref(null);
 
+let totalDescontoPedido;
+let totalPedido;
+
 watch(ok, (newValue, oldValue) => {
   if (newValue === true) {
     console.log('CARRINHO componente: A variável ok mudou para true')
   }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+
+    console.log(totalDescontoPedido);
+
+  }, 1250);
+
 });
 
 onMounted(() => {
@@ -105,7 +117,6 @@ async function listarItensDoPedido() {
   // console.log(produtoEspecifico);
 }
 
-
 async function obterPedido() {
 
 
@@ -122,6 +133,9 @@ async function obterPedido() {
 
     setTimeout(function() {
       pedido.value = response.data;
+
+      totalPedido = pedido.value.total.toFixed(2).replace('.',',');
+      totalDescontoPedido = pedido.value.totalDesconto.toFixed(2).replace('.',',');
 
       console.log(pedido.value.dataDoPedido);
 
@@ -395,46 +409,49 @@ function formatarHoraDoPedido() {
             <div class="border border-gray-200 p-4 rounded-lg space-y-4 dark:border-gray-700">
               <div class="hidden sm:grid sm:grid-cols-5">
                 <div class="text-start text-xs font-medium text-gray-500 uppercase">Produto</div>
-                <div class="text-center text-xs font-medium text-gray-500 uppercase">Quantidade</div>
-                <div class="text-center text-xs font-medium text-gray-500 uppercase">Preço</div>
-                <div class="text-center text-xs font-medium text-gray-500 uppercase">Desconto</div>
-                <div class="text-center text-xs font-medium text-gray-500 uppercase">Subtotal</div>
+                <div class="text-end text-xs font-medium text-gray-500 uppercase">Peso</div>
+                <div class="text-end text-xs font-medium text-gray-500 uppercase">Preço</div>
+                <div class="text-end text-xs font-medium text-gray-500 uppercase">Quantidade</div>
+                <div class="text-end text-xs font-medium text-gray-500 uppercase">Subtotal</div>
               </div>
 
-              <div class="hidden sm:block border-b border-gray-200 dark:border-gray-700"></div>
+              <div class="hidden sm:block border-b border-gray-200"></div>
 
 <!--              v-for-->
               <div class="grid grid-cols-3 sm:grid-cols-6 gap-2" v-for="(item, index) in itens" :key="item.id">
+
                 <div class="col-span-full sm:col-span-2">
                   <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Produto</h5>
                   <p class="font-medium text-gray-800">
-                    {{ buscarAtributoDeProduto(item.produtoId,`nome`) }} ({{ buscarAtributoDeProduto(item.produtoId,`peso`) }}g)
+                    {{ buscarAtributoDeProduto(item.produtoId,`nome`) }}
                   </p>
                 </div>
+
                 <div>
-                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Quantidade</h5>
+                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Peso</h5>
                   <p class="text-gray-800">
-                    {{ item.quantidade }}
+                    {{ buscarAtributoDeProduto(item.produtoId,`peso`) }}g
                   </p>
                 </div>
+
                 <div>
                   <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Preço</h5>
                   <p class="text-gray-800">
                     {{ buscarAtributoDeProduto(item.produtoId,`preco`).toFixed(2).replace('.',',') }}
                   </p>
                 </div>
+
                 <div>
-                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Desconto</h5>
-                  <p class="sm:text-end text-gray-800">
-                    completar
-<!--                    {{ item.Desconto.toFixed(2).replace('.',',') }}-->
+                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Quantidade</h5>
+                  <p class="text-gray-800 text-center">
+                    {{ item.quantidade }}
                   </p>
                 </div>
+
                 <div>
                   <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Subtotal</h5>
                   <p class="sm:text-end text-gray-800">
-                    completar
-<!--                    {{ item.subtotal.toFixed(2).replace('.',',') }}-->
+                    {{ (item.precoVenda * item.quantidade).toFixed(2).replace('.',',') }}
                   </p>
                 </div>
 
@@ -496,7 +513,7 @@ function formatarHoraDoPedido() {
               <div class="grid grid-cols-2 sm:grid-cols-1 gap-3 sm:gap-2">
                 <dl class="grid sm:grid-cols-5 gap-x-3">
                   <dt class="col-span-3 font-semibold text-gray-400">Subtotal</dt>
-                  <dd class="col-span-2 text-gray-600">R$ completar</dd>
+                  <dd class="col-span-2 text-gray-600">R$ {{ (parseFloat(totalPedido) + parseFloat(totalDescontoPedido)).toFixed(2).replace('.',',') }}</dd>
                 </dl>
 
                 <dl class="grid sm:grid-cols-5 gap-x-3">
@@ -506,14 +523,14 @@ function formatarHoraDoPedido() {
 
                 <dl class="grid sm:grid-cols-5 gap-x-3">
                   <dt class="col-span-3 font-semibold text-gray-400">Descontos</dt>
-                  <dd class="col-span-2 text-red-600 border-b">R$ -completar</dd>
+                  <dd class="col-span-2 text-red-600 border-b">R$ - {{ totalDescontoPedido }}</dd>
                 </dl>
 
                 <br>
 
                 <dl class="grid sm:grid-cols-5 gap-x-3">
                   <dt class="col-span-3 font-semibold text-gray-800">TOTAL</dt>
-                  <dd class="col-span-2 font-semibold text-gray-800">R$ completar</dd>
+                  <dd class="col-span-2 font-semibold text-gray-800">R$ {{ totalPedido }}</dd>
                 </dl>
               </div>
               <!-- End Grid -->
