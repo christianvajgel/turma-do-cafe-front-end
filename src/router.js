@@ -14,6 +14,7 @@ import BuscarPedido from "@/components/pages/BuscarPedido.vue";
 import Equipe from "@/components/pages/institucionais/Equipe.vue";
 import Loja from "@/components/pages/institucionais/Loja.vue";
 import Contato from "@/components/pages/institucionais/Contato.vue";
+import Sustentabilidade from "@/components/pages/institucionais/Sustentabilidade.vue";
 
 
 const routes = [
@@ -80,6 +81,11 @@ const routes = [
     {
         path: '/contato',
         component: Contato,
+    },
+
+    {
+        path: '/sustentabilidade',
+        component: Sustentabilidade,
     },
 
     // ADD NEW ROUTES HERE

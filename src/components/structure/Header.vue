@@ -68,6 +68,7 @@ import {NOME_DA_MARCA} from "@/global/variables.js";
             <a class="font-medium text-gray-500 hover:text-gray-400 px-6 sm:py-6 sm:px-0" href="/buscar-pedido">Buscar pedido</a>
             <a class="font-medium text-gray-500 hover:text-gray-400 px-6 sm:py-6 sm:px-0" href="/loja">Loja</a>
             <a class="font-medium text-gray-500 hover:text-gray-400 px-6 sm:py-6 sm:px-0" href="/equipe">Equipe</a>
+            <a class="font-medium text-gray-500 hover:text-gray-400 px-6 sm:py-6 sm:px-0" href="/sustentabilidade">Sustentabilidade</a>
             <a class="font-medium text-gray-500 hover:text-gray-400 px-6 sm:py-6 sm:px-0" href="#">Sobre</a>
             <a class="font-medium text-gray-500 hover:text-gray-400 px-6 sm:py-6 sm:px-0" href="/contato">Contato</a>
 
