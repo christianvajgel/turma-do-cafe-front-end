@@ -154,7 +154,6 @@
     <!-- End Features -->
 
 
-
     <div>
 
       <!-- Hero -->
@@ -331,8 +330,6 @@
     </div>
 
 
-
-
     <!-- Features -->
     <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
       <!-- Grid -->
@@ -482,7 +479,6 @@
       <!-- End Grid -->
     </div>
     <!-- End Features -->
-
 
 
     <div>
@@ -671,8 +667,6 @@
     </div>
 
 
-
-
     <!-- Features -->
     <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
       <!-- Grid -->
@@ -848,6 +842,403 @@
     </div>
     <!-- End Features -->
 
+
+    <div>
+
+      <!-- Hero -->
+      <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Grid -->
+        <div class="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
+          <div>
+<!--            <h1 class="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-4xl lg:leading-tight dark:text-white">-->
+<!--              Estamos no coração da <span class="titulo-header">tecnologia</span>-->
+<!--            </h1>-->
+
+            <h2 class="font-bold text-4xl text-gray-800">
+              Estamos no coração da <span class="titulo-header">tecnologia</span>
+            </h2>
+
+            <p class="mt-3 text-lg text-gray-600">
+              No coração pulsante da Cidade Maravilhosa, onde os zeros e uns da tecnologia encontram a paixão pelo café, está a nossa cafeteria.
+            </p>
+
+            <div class="mt-6 lg:mt-10 grid grid-cols-2 gap-x-5">
+              <!-- Review -->
+              <div class="py-5">
+                <div class="flex space-x-1">
+
+                  <svg fill="url(#myGradient1)" class="mt-1 flex-shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 576 512" stroke="transparent" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <defs>
+                    </defs>
+                    <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                    <defs>
+                      <linearGradient id="myGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#EDE0D4"/>
+                        <stop offset="25%" stop-color="#EDE0D4"/>
+                        <stop offset="50%" stop-color="#E6CCB2"/>
+                        <stop offset="75%" stop-color="#E6CCB2"/>
+                        <stop offset="100%" stop-color="#E6CCB2"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+
+                  <svg fill="url(#myGradient2)" class="mr-2.5 mt-1 flex-shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 576 512" stroke="transparent" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <defs>
+                    </defs>
+                    <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                    <defs>
+                      <linearGradient id="myGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#E6CCB2"/>
+                        <stop offset="25%" stop-color="#E6CCB2"/>
+                        <stop offset="50%" stop-color="#E6CCB2"/>
+                        <stop offset="75%" stop-color="#DDB892"/>
+                        <stop offset="100%" stop-color="#DDB892"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+
+                  <svg fill="url(#myGradient3)" class="mr-2.5 mt-1 flex-shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 576 512" stroke="transparent" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <defs>
+                    </defs>
+                    <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                    <defs>
+                      <linearGradient id="myGradient3" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#DDB892"/>
+                        <stop offset="25%" stop-color="#DDB892"/>
+                        <stop offset="50%" stop-color="#B08968"/>
+                        <stop offset="75%" stop-color="#B08968"/>
+                        <stop offset="100%" stop-color="#B08968"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+
+                  <svg fill="url(#myGradient4)" class="mr-2.5 mt-1 flex-shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 576 512" stroke="transparent" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <defs>
+                    </defs>
+                    <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                    <defs>
+                      <linearGradient id="myGradient4" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#B08968"/>
+                        <stop offset="25%" stop-color="#B08968"/>
+                        <stop offset="50%" stop-color="#9C6644"/>
+                        <stop offset="75%" stop-color="#9C6644"/>
+                        <stop offset="100%" stop-color="#9C6644"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+
+                  <svg fill="url(#myGradient5)" class="mr-2.5 mt-1 flex-shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 576 512" stroke="transparent" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <defs>
+                    </defs>
+                    <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                    <defs>
+                      <linearGradient id="myGradient5" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#9C6644"/>
+                        <stop offset="25%" stop-color="#9C6644"/>
+                        <stop offset="50%" stop-color="#7F5539"/>
+                        <stop offset="75%" stop-color="#7F5539"/>
+                        <stop offset="100%" stop-color="#7F5539"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+
+                </div>
+
+                <p class="mt-3 text-sm text-gray-800">
+                  <span class="font-bold">4.9</span> / 5 - de 12k avaliações
+                </p>
+
+                <div class="mt-5">
+                  <svg class="h-auto w-16 text-gray-800 dark:text-white" width="80" height="27" viewBox="0 0 80 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.558 9.74046H11.576V12.3752H17.9632C17.6438 16.0878 14.5301 17.7245 11.6159 17.7245C7.86341 17.7245 4.58995 14.7704 4.58995 10.6586C4.58995 6.62669 7.70373 3.51291 11.6159 3.51291C14.6498 3.51291 16.4063 5.42908 16.4063 5.42908L18.2426 3.51291C18.2426 3.51291 15.8474 0.878184 11.4961 0.878184C5.94724 0.838264 1.67578 5.50892 1.67578 10.5788C1.67578 15.5289 5.70772 20.3592 11.6558 20.3592C16.8854 20.3592 20.7177 16.8063 20.7177 11.4969C20.7177 10.3792 20.558 9.74046 20.558 9.74046Z" fill="currentColor"/>
+                    <path d="M27.8621 7.78442C24.1894 7.78442 21.5547 10.6587 21.5547 14.012C21.5547 17.4451 24.1096 20.3593 27.9419 20.3593C31.415 20.3593 34.2094 17.7645 34.2094 14.0918C34.1695 9.94011 30.896 7.78442 27.8621 7.78442ZM27.902 10.2994C29.6984 10.2994 31.415 11.7764 31.415 14.0918C31.415 16.4072 29.7383 17.8842 27.902 17.8842C25.906 17.8842 24.3491 16.2874 24.3491 14.0519C24.3092 11.8962 25.8661 10.2994 27.902 10.2994Z" fill="currentColor"/>
+                    <path d="M41.5964 7.78442C37.9238 7.78442 35.2891 10.6587 35.2891 14.012C35.2891 17.4451 37.844 20.3593 41.6763 20.3593C45.1493 20.3593 47.9438 17.7645 47.9438 14.0918C47.9038 9.94011 44.6304 7.78442 41.5964 7.78442ZM41.6364 10.2994C43.4328 10.2994 45.1493 11.7764 45.1493 14.0918C45.1493 16.4072 43.4727 17.8842 41.6364 17.8842C39.6404 17.8842 38.0835 16.2874 38.0835 14.0519C38.0436 11.8962 39.6004 10.2994 41.6364 10.2994Z" fill="currentColor"/>
+                    <path d="M55.0475 7.82434C51.6543 7.82434 49.0195 10.7784 49.0195 14.0918C49.0195 17.8443 52.0934 20.3992 54.9676 20.3992C56.764 20.3992 57.6822 19.7205 58.4407 18.8822V20.1198C58.4407 22.2754 57.1233 23.5928 55.1273 23.5928C53.2111 23.5928 52.2531 22.1557 51.8938 21.3573L49.4587 22.3553C50.297 24.1517 52.0135 26.0279 55.0874 26.0279C58.4407 26.0279 60.9956 23.9122 60.9956 19.481V8.18362H58.3608V9.26147C57.6423 8.38322 56.5245 7.82434 55.0475 7.82434ZM55.287 10.2994C56.9237 10.2994 58.6403 11.7365 58.6403 14.1317C58.6403 16.6068 56.9636 17.9241 55.2471 17.9241C53.4507 17.9241 51.774 16.4471 51.774 14.1716C51.8139 11.6966 53.5305 10.2994 55.287 10.2994Z" fill="currentColor"/>
+                    <path d="M72.8136 7.78442C69.62 7.78442 66.9453 10.2994 66.9453 14.0519C66.9453 18.004 69.9393 20.3593 73.093 20.3593C75.7278 20.3593 77.4044 18.8822 78.3625 17.6048L76.1669 16.1277C75.608 17.006 74.6499 17.8443 73.093 17.8443C71.3365 17.8443 70.5381 16.8862 70.0192 15.9281L78.4423 12.4152L78.0032 11.3772C77.1649 9.46107 75.2886 7.78442 72.8136 7.78442ZM72.8934 10.2196C74.0511 10.2196 74.8495 10.8184 75.2487 11.5768L69.6599 13.9321C69.3405 12.0958 71.097 10.2196 72.8934 10.2196Z" fill="currentColor"/>
+                    <path d="M62.9531 19.9999H65.7076V1.47693H62.9531V19.9999Z" fill="currentColor"/>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="py-5">
+                <div class="flex space-x-1">
+
+                  <svg fill="url(#myGradient6)" class="mr-2.5 mt-1 flex-shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 576 512" stroke="transparent" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <defs>
+                    </defs>
+                    <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                    <defs>
+                      <linearGradient id="myGradient6" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#9C6644"/>
+                        <stop offset="25%" stop-color="#9C6644"/>
+                        <stop offset="50%" stop-color="#7F5539"/>
+                        <stop offset="75%" stop-color="#7F5539"/>
+                        <stop offset="100%" stop-color="#7F5539"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+
+                  <svg fill="url(#myGradient7)" class="mr-2.5 mt-1 flex-shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 576 512" stroke="transparent" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <defs>
+                    </defs>
+                    <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                    <defs>
+                      <linearGradient id="myGradient7" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#B08968"/>
+                        <stop offset="25%" stop-color="#B08968"/>
+                        <stop offset="50%" stop-color="#9C6644"/>
+                        <stop offset="75%" stop-color="#9C6644"/>
+                        <stop offset="100%" stop-color="#9C6644"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+
+                  <svg fill="url(#myGradient8)" class="mr-2.5 mt-1 flex-shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 576 512" stroke="transparent" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <defs>
+                    </defs>
+                    <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                    <defs>
+                      <linearGradient id="myGradient8" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#DDB892"/>
+                        <stop offset="25%" stop-color="#DDB892"/>
+                        <stop offset="50%" stop-color="#B08968"/>
+                        <stop offset="75%" stop-color="#B08968"/>
+                        <stop offset="100%" stop-color="#B08968"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+
+                  <svg fill="url(#myGradient9)" class="mr-2.5 mt-1 flex-shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 576 512" stroke="transparent" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <defs>
+                    </defs>
+                    <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                    <defs>
+                      <linearGradient id="myGradient9" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#E6CCB2"/>
+                        <stop offset="25%" stop-color="#E6CCB2"/>
+                        <stop offset="50%" stop-color="#E6CCB2"/>
+                        <stop offset="75%" stop-color="#DDB892"/>
+                        <stop offset="100%" stop-color="#DDB892"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+
+                  <svg fill="url(#myGradient10)" class="mt-1 flex-shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 576 512" stroke="transparent" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <defs>
+                    </defs>
+
+                    <path d="M288 376.4l.1-.1 26.4 14.1 85.2 45.5-16.5-97.6-4.8-28.7 20.7-20.5 70.1-69.3-96.1-14.2-29.3-4.3-12.9-26.6L288.1 86.9l-.1 .3V376.4zm175.1 98.3c2 12-3 24.2-12.9 31.3s-23 8-33.8 2.3L288.1 439.8 159.8 508.3C149 514 135.9 513.1 126 506s-14.9-19.3-12.9-31.3L137.8 329 33.6 225.9c-8.6-8.5-11.7-21.2-7.9-32.7s13.7-19.9 25.7-21.7L195 150.3 259.4 18c5.4-11 16.5-18 28.8-18s23.4 7 28.8 18l64.3 132.3 143.6 21.2c12 1.8 22 10.2 25.7 21.7s.7 24.2-7.9 32.7L438.5 329l24.6 145.7z"/>
+
+                    <defs>
+                      <linearGradient id="myGradient10" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#EDE0D4"/>
+                        <stop offset="25%" stop-color="#EDE0D4"/>
+                        <stop offset="50%" stop-color="#E6CCB2"/>
+                        <stop offset="75%" stop-color="#E6CCB2"/>
+                        <stop offset="100%" stop-color="#E6CCB2"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+
+                </div>
+
+                <p class="mt-3 text-sm text-gray-800">
+                  <span class="font-bold">4.95</span> / 5 - de 10k avaliações
+                </p>
+
+                <div class="mt-5">
+                  <svg class="h-auto w-16 text-gray-800 dark:text-white" width="110" height="28" viewBox="0 0 110 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M66.6601 8.35107C64.8995 8.35107 63.5167 8.72875 62.1331 9.48265C62.1331 5.4582 62.1331 1.81143 62.2594 0.554199L53.8321 2.06273V2.81736L54.7124 2.94301C55.8433 3.19431 56.2224 3.82257 56.4715 5.33255C56.725 8.35107 56.5979 24.4496 56.4715 27.0912C58.7354 27.5945 61.1257 27.9722 63.5159 27.9722C70.1819 27.9722 74.2064 23.8213 74.2064 17.281C74.2064 12.1249 70.9366 8.35107 66.6601 8.35107ZM63.7672 26.5878C63.2639 26.5878 62.6342 26.5878 62.258 26.4629C62.1316 24.7023 62.0067 17.281 62.1316 10.7413C62.8862 10.4893 63.3888 10.3637 64.0185 10.3637C66.7872 10.3637 68.2965 13.6335 68.2965 17.6572C68.2957 22.6898 66.4088 26.5878 63.7672 26.5878ZM22.1363 1.0568H0V2.18838L1.25796 2.31403C2.89214 2.56533 3.52184 3.57127 3.77242 5.9608C4.15082 10.4886 4.02445 18.6646 3.77242 22.5619C3.52112 24.9522 2.89287 26.0845 1.25796 26.2087L0 26.4615V27.4674H14.2123V26.4615L12.703 26.2087C11.0681 26.0838 10.4392 24.9522 10.1879 22.5619C10.0615 20.9263 9.93583 18.2847 9.93583 15.0156L12.9543 15.1413C14.8413 15.1413 15.7208 16.6505 16.0985 18.7881H17.2308V9.86106H16.0985C15.7201 11.9993 14.8413 13.5078 12.9543 13.5078L9.93655 13.6342C9.93655 9.35773 10.0622 5.33328 10.1886 2.94374H14.59C17.9869 2.94374 19.7475 5.08125 21.0047 8.85513L22.2626 8.47745L22.1363 1.0568Z" fill="currentColor"/>
+                    <path d="M29.3053 8.09998C35.5944 8.09998 38.7385 12.3764 38.7385 18.0358C38.7385 23.4439 35.2167 27.9731 28.9276 27.9731C22.6393 27.9731 19.4951 23.6959 19.4951 18.0358C19.4951 12.6277 23.0162 8.09998 29.3053 8.09998ZM28.9276 9.35793C26.1604 9.35793 25.4058 13.1311 25.4058 18.0358C25.4058 22.8149 26.6637 26.7137 29.1796 26.7137C32.0703 26.7137 32.8264 22.9405 32.8264 18.0358C32.8264 13.2567 31.5699 9.35793 28.9276 9.35793ZM75.8403 18.1622C75.8403 13.0054 79.1101 8.09998 85.5248 8.09998C90.8057 8.09998 93.3224 11.9995 93.3224 17.1555H81.6253C81.4989 21.8089 83.7628 25.2051 88.2913 25.2051C90.3038 25.2051 91.3098 24.7033 92.5685 23.8223L93.0703 24.4505C91.8124 26.2111 89.0459 27.9731 85.5248 27.9731C79.8647 27.9724 75.8403 23.9479 75.8403 18.1622ZM81.6253 15.7726L87.5366 15.6463C87.5366 13.1311 87.159 9.35793 85.0214 9.35793C82.8839 9.35793 81.7502 12.8791 81.6253 15.7726ZM108.291 9.10663C106.782 8.47693 104.77 8.09998 102.506 8.09998C97.8538 8.09998 94.9594 10.8665 94.9594 14.137C94.9594 17.4075 97.0955 18.7904 100.118 19.7971C103.261 20.9279 104.142 21.8089 104.142 23.3182C104.142 24.8275 103.01 26.2103 100.997 26.2103C98.6084 26.2103 96.8464 24.8275 95.4635 21.0536L94.5825 21.3063L94.7089 26.84C96.2181 27.4683 98.9846 27.9724 101.375 27.9724C106.28 27.9724 109.425 25.4557 109.425 21.5576C109.425 18.9161 108.041 17.4075 104.771 16.1489C101.249 14.766 99.992 13.8857 99.992 12.2501C99.992 10.6152 101.126 9.48286 102.635 9.48286C104.897 9.48286 106.407 10.8665 107.54 14.2627L108.42 14.0114L108.291 9.10663ZM55.0883 8.6033C52.9508 7.3468 49.1769 7.97433 47.1651 12.5028L47.29 8.1007L38.8642 9.73561V10.4902L39.7444 10.6159C40.8775 10.7423 41.3794 11.3705 41.5057 13.0062C41.757 16.0247 41.6314 21.3078 41.5057 23.9486C41.3794 25.4564 40.8775 26.2111 39.7444 26.3374L38.8642 26.4638V27.4697H50.5606V26.4638L49.0513 26.3374C47.7941 26.2111 47.4164 25.4564 47.29 23.9486C47.0387 21.5584 47.0387 16.7793 47.1651 13.7608C47.7933 12.8798 50.5606 12.1259 53.0757 13.7608L55.0883 8.6033Z" fill="currentColor"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative ms-4">
+
+
+            <iframe class="w-full rounded-xl" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12509.071220028352!2d-43.176818!3d-22.906079!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997f5fd24e0bdd%3A0x99447fc2607f1de1!2sFaculdade%20Infnet%20-%20Faculdade%20de%20Engenharia%20de%20Software%2C%20Engenharia%20da%20Computa%C3%A7%C3%A3o%2C%20Engenharia%20de%20Dados%20e%20IA%20%7C%20MBA%20e%20P%C3%B3s%20em%20TI!5e1!3m2!1spt-BR!2sbr!4v1711470017960!5m2!1spt-BR!2sbr" width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Features -->
+    <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+      <!-- Grid -->
+      <div class="md:grid md:grid-cols-2 md:items-center md:gap-12 xl:gap-32">
+        <div>
+          <div>
+            <!-- Slider -->
+            <div data-hs-carousel='{ "loadingClasses": "opacity-0", "isAutoPlay": true }' class="relative">
+              <div class="hs-carousel relative overflow-hidden w-full min-h-[600px] bg-white rounded-lg">
+                <div class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0">
+                  <div class="hs-carousel-slide">
+                    <div class="flex justify-center h-full">
+                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/cafe-1.jpg" alt="Image Description">
+                    </div>
+                  </div>
+                  <div class="hs-carousel-slide">
+                    <div class="flex justify-center h-full">
+                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/cafe-2.jpg" alt="Image Description">
+                    </div>
+                  </div>
+                  <div class="hs-carousel-slide">
+                    <div class="flex justify-center h-full">
+                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/cafe-3.jpg" alt="Image Description">
+                    </div>
+                  </div>
+                  <div class="hs-carousel-slide">
+                    <div class="flex justify-center h-full">
+                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/cafe-4.jpg" alt="Image Description">
+                    </div>
+                  </div>
+                  <div class="hs-carousel-slide">
+                    <div class="flex justify-center h-full">
+                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/cafe-5.jpg" alt="Image Description">
+                    </div>
+                  </div>
+                  <div class="hs-carousel-slide">
+                    <div class="flex justify-center h-full">
+                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/cafe-6.jpg" alt="Image Description">
+                    </div>
+                  </div>
+                  <div class="hs-carousel-slide">
+                    <div class="flex justify-center h-full">
+                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/cafe-7.jpg" alt="Image Description">
+                    </div>
+                  </div>
+                  <div class="hs-carousel-slide">
+                    <div class="flex justify-center h-full">
+                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/cafe-8.jpg" alt="Image Description">
+                    </div>
+                  </div>
+                  <div class="hs-carousel-slide">
+                    <div class="flex justify-center h-full">
+                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/cafe-9.jpg" alt="Image Description">
+                    </div>
+                  </div>
+                  <div class="hs-carousel-slide">
+                    <div class="flex justify-center h-full">
+                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/cafe-10.jpg" alt="Image Description">
+                    </div>
+                  </div>
+                  <div class="hs-carousel-slide">
+                    <div class="flex justify-center h-full">
+                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/cafe-11.jpg" alt="Image Description">
+                    </div>
+                  </div>
+                  <div class="hs-carousel-slide">
+                    <div class="flex justify-center h-full">
+                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/cafe-12.jpg" alt="Image Description">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <button type="button" class="hs-carousel-prev hs-carousel:disabled:opacity-50 disabled:pointer-events-none absolute inset-y-0 start-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/[.1]">
+                <span class="text-2xl" aria-hidden="true">
+                  <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                       viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                          d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                  </svg>
+                </span>
+                <span class="sr-only">Previous</span>
+              </button>
+
+              <button type="button" class="hs-carousel-next hs-carousel:disabled:opacity-50 disabled:pointer-events-none absolute inset-y-0 end-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/[.1]">
+                <span class="sr-only">Next</span>
+                <span class="text-2xl" aria-hidden="true">
+                  <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                  </svg>
+                </span>
+              </button>
+
+              <div class="hs-carousel-pagination flex justify-center absolute bottom-3 start-0 end-0 space-x-2">
+                <span
+                    class="hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer"></span>
+                <span
+                    class="hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer"></span>
+                <span
+                    class="hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer"></span>
+              </div>
+            </div>
+            <!-- End Slider -->
+          </div>
+
+
+        </div>
+        <!-- End Col -->
+
+        <div class="mt-5 sm:mt-10 lg:mt-0">
+          <div class="space-y-6 sm:space-y-8">
+            <!-- Title -->
+            <div class="space-y-2 md:space-y-4">
+              <h2 class="font-bold text-4xl text-gray-800">
+                <span class="titulo-header">Tecnologia</span> nos detalhes do café
+              </h2>
+              <p class="mt-3 text-lg text-gray-600 text-justify">
+                Com a destreza do auxílio de robôs, os nossos cafés são uma obra de arte feita sobre a espuma do leite.
+              </p>
+            </div>
+            <!-- End Title -->
+
+            <!-- List -->
+            <ul role="list" class="space-y-2 sm:space-y-4">
+
+
+              <li class="flex space-x-3">
+                <span class="mt-0.5 size-5 flex justify-center items-center rounded-full ">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 576 512" fill="none">
+                    <path class="svg-primario" d="M559.6 16.4c21.9 21.9 21.9 57.3 0 79.2L306.9 348.3l-79.2-79.2L480.4 16.4c21.9-21.9 57.3-21.9 79.2 0zM205.1 291.7l79.2 79.2-.1 .1c2.5 9.3 3.8 19 3.8 29c0 61.9-50.1 112-112 112H32c-17.7 0-32-14.3-32-32s14.3-32 32-32h4.8c17.6 0 29.6-18.9 27.8-36.4c-.4-3.8-.6-7.7-.6-11.6c0-61.9 50.1-112 112-112c10 0 19.8 1.3 29 3.8l.1-.1z"/>
+                    <path class="svg-secundario" d="M164.7 19.3L298.5 153.1 194.4 257.2c-6-.8-12.2-1.2-18.4-1.2c-.8 0-1.7 0-2.5 0L50.7 133.3c-25-25-25-65.5 0-90.5L74.2 19.3c25-25 65.5-25 90.5 0zM384.6 467.1L320 402.5c0-.8 0-1.7 0-2.5c0-6.2-.4-12.4-1.2-18.4L422.9 277.5l75.6 75.6c6.7 6.7 11.6 15.1 14.2 24.2l29.7 104c2.4 8.4 .1 17.4-6.1 23.6s-15.2 8.5-23.6 6.1l-104-29.7c-9.1-2.6-17.5-7.5-24.2-14.2z"/>
+                 </svg>
+                </span>
+                <span class="text-sm sm:text-base text-gray-500">
+                  <span class="font-bold">O que você quiser</span> os nossos robôs podem desenhar sob o seu café, o único limite é a sua imaginação.
+                </span>
+              </li>
+
+              <li class="flex space-x-3">
+                <span class="mt-0.5 size-5 flex justify-center items-center rounded-full">
+                  <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 320 512" fill="none">
+                    <path class="svg-primario" d="M96 0C82.7 0 72 10.7 72 24s10.7 24 24 24l128 0c13.3 0 24-10.7 24-24s-10.7-24-24-24L96 0zm64 384c26.5 0 48-16 48-48c0-22.2-23-52-37.2-68.2c-5.8-6.7-15.9-6.7-21.7 0C135 284 112 313.8 112 336c0 26.5 21.5 48 48 48z"/>
+                    <path class="svg-secundario" d="M104 120.9V48H216v72.9c0 12.2 7.2 23.1 17.2 30.1c33.1 23.1 54.8 61.5 54.8 105V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V256c0-43.5 21.7-81.9 54.8-105c10-7 17.2-17.9 17.2-30.1zM160 384c26.5 0 48-16 48-48c0-22.2-23-52-37.2-68.2c-5.8-6.7-15.9-6.7-21.7 0C135 284 112 313.8 112 336c0 26.5 21.5 48 48 48z"/>
+                  </svg>
+                </span>
+                <span class="text-sm sm:text-base text-gray-500">
+                <span class="font-bold">Espuma com essências naturais</span> para adicionar um gosto a mais no seu momento de café diário.
+                </span>
+              </li>
+
+
+              <li class="flex space-x-3">
+              <span class="mt-0.5 size-5 flex justify-center items-center rounded-full">
+                <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 512 512" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path class="svg-primario" d="M41 7C31.6-2.3 16.4-2.3 7 7S-2.3 31.6 7 41l80 80c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9L41 7zM471 7L391 87c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l80-80c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0zM7 505c9.4 9.4 24.6 9.4 33.9 0l80-80c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0L7 471c-9.4 9.4-9.4 24.6 0 33.9zm464 0c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l80 80z"/>
+                  <path class="svg-secundario" d="M208 48a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm40 304V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V256.9l-28.6 47.5c-9.1 15.1-28.8 20-43.9 10.9s-20-28.8-10.9-43.9l58.3-97c17.4-28.9 48.6-46.6 82.3-46.6h29.7c33.7 0 64.9 17.7 82.3 46.6l58.3 97c9.1 15.1 4.2 34.8-10.9 43.9s-34.8 4.2-43.9-10.9L328 256.9V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V352H248z"/>
+                </svg>
+              </span>
+                <span class="text-sm sm:text-base text-gray-500">
+                <span class="font-bold">Tudo para ser seu</span> e você sentir a essência do café unido a sua essência e ao seu dia.
+              </span>
+              </li>
+
+            </ul>
+            <!-- End List -->
+          </div>
+        </div>
+        <!-- End Col -->
+      </div>
+      <!-- End Grid -->
+    </div>
+    <!-- End Features -->
 
 
     <div>
