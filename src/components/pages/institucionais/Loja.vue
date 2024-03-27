@@ -345,22 +345,32 @@
                 <div class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0">
                   <div class="hs-carousel-slide">
                     <div class="flex justify-center h-full">
-                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/cafeteria%20(1).jpg" alt="Image Description">
+                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/graos-cafe%20(1).jpg" alt="Image Description">
                     </div>
                   </div>
                   <div class="hs-carousel-slide">
                     <div class="flex justify-center h-full">
-                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/cafeteria%20(2).jpg" alt="Image Description">
+                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/graos-cafe%20(2).jpg" alt="Image Description">
                     </div>
                   </div>
                   <div class="hs-carousel-slide">
                     <div class="flex justify-center h-full">
-                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/cafeteria%20(3).jpg" alt="Image Description">
+                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/graos-cafe%20(3).jpg" alt="Image Description">
                     </div>
                   </div>
                   <div class="hs-carousel-slide">
                     <div class="flex justify-center h-full">
-                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/cafeteria%20(4).jpg" alt="Image Description">
+                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/graos-cafe%20(4).jpg" alt="Image Description">
+                    </div>
+                  </div>
+                  <div class="hs-carousel-slide">
+                    <div class="flex justify-center h-full">
+                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/graos-cafe%20(5).jpg" alt="Image Description">
+                    </div>
+                  </div>
+                  <div class="hs-carousel-slide">
+                    <div class="flex justify-center h-full">
+                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/graos-8.jpg" alt="Image Description">
                     </div>
                   </div>
                 </div>
@@ -616,7 +626,7 @@
                     </div>
                     <div class="hs-carousel-slide">
                       <div class="flex justify-center h-full">
-                        <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/graos-8.jpg" alt="Image Description">
+                        <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/graos-9.jpg" alt="Image Description">
                       </div>
                     </div>
                   </div>
@@ -675,22 +685,57 @@
                 <div class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0">
                   <div class="hs-carousel-slide">
                     <div class="flex justify-center h-full">
-                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/cafeteria%20(1).jpg" alt="Image Description">
+                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/cardapio%20(1).jpg" alt="Image Description">
                     </div>
                   </div>
                   <div class="hs-carousel-slide">
                     <div class="flex justify-center h-full">
-                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/cafeteria%20(2).jpg" alt="Image Description">
+                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/cardapio%20(3).jpg" alt="Image Description">
                     </div>
                   </div>
                   <div class="hs-carousel-slide">
                     <div class="flex justify-center h-full">
-                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/cafeteria%20(3).jpg" alt="Image Description">
+                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/cardapio%20(4).jpg" alt="Image Description">
                     </div>
                   </div>
                   <div class="hs-carousel-slide">
                     <div class="flex justify-center h-full">
-                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/cafeteria%20(4).jpg" alt="Image Description">
+                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/cardapio%20(5).jpg" alt="Image Description">
+                    </div>
+                  </div>
+                  <div class="hs-carousel-slide">
+                    <div class="flex justify-center h-full">
+                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/cardapio%20(6).jpg" alt="Image Description">
+                    </div>
+                  </div>
+                  <div class="hs-carousel-slide">
+                    <div class="flex justify-center h-full">
+                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/cardapio%20(7).jpg" alt="Image Description">
+                    </div>
+                  </div>
+                  <div class="hs-carousel-slide">
+                    <div class="flex justify-center h-full">
+                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/cardapio%20(8).jpg" alt="Image Description">
+                    </div>
+                  </div>
+                  <div class="hs-carousel-slide">
+                    <div class="flex justify-center h-full">
+                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/cardapio%20(9).jpg" alt="Image Description">
+                    </div>
+                  </div>
+                  <div class="hs-carousel-slide">
+                    <div class="flex justify-center h-full">
+                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/cardapio%20(10).jpg" alt="Image Description">
+                    </div>
+                  </div>
+                  <div class="hs-carousel-slide">
+                    <div class="flex justify-center h-full">
+                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/cardapio%20(11).jpg" alt="Image Description">
+                    </div>
+                  </div>
+                  <div class="hs-carousel-slide">
+                    <div class="flex justify-center h-full">
+                      <img class="rounded-xl self-center transition duration-700" src="https://storage.googleapis.com/turma-do-cafe-assets/cardapio%20(12).jpg" alt="Image Description">
                     </div>
                   </div>
                 </div>
@@ -740,7 +785,7 @@
                 <span class="titulo-header">Tecnologia</span> no cardápio
               </h2>
               <p class="mt-3 text-lg text-gray-600 text-justify">
-                Uma maneira tecnológica e integrada de fazer o seu pedido, crie o seu café como quiser.
+                Uma maneira tecnológica e integrada de fazer o seu pedido, crie e aprecie o seu café como quiser.
               </p>
             </div>
             <!-- End Title -->
@@ -751,13 +796,13 @@
 
               <li class="flex space-x-3">
                 <span class="mt-0.5 size-5 flex justify-center items-center rounded-full ">
-                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 576 512" fill="none">
-                  <path class="svg-secundario" d="M559.7 392.2c17.8-13.1 21.6-38.1 8.5-55.9s-38.1-21.6-55.9-8.5L392.6 416H272c-8.8 0-16-7.2-16-16s7.2-16 16-16h16 64c17.7 0 32-14.3 32-32s-14.3-32-32-32H288 272 193.7c-29.1 0-57.3 9.9-80 28L68.8 384H32c-17.7 0-32 14.3-32 32v64c0 17.7 14.3 32 32 32H192 352.5c29 0 57.3-9.3 80.7-26.5l126.6-93.3zm-366.1-8.3a.5 .5 0 1 1 -.9 .2 .5 .5 0 1 1 .9-.2z"/>
-                  <path class="svg-primario" d="M96 14.5C96 6.5 102.5 0 110.5 0H160c88.4 0 160 71.6 160 160v96c0 17.7-14.3 32-32 32s-32-14.3-32-32V160H241.5C161.1 160 96 94.9 96 14.5zm384 0C480 89 424.1 150.3 352 159c-.2-44.9-15.9-86.2-42-118.8C338.2 15.2 375.3 0 416 0h49.5c8 0 14.5 6.5 14.5 14.5z"/>
+                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 448 512" fill="none">
+                    <path class="svg-primario" d="M80 128c0-35.3 28.7-64 64-64H304c35.3 0 64 28.7 64 64V256c0 35.3-28.7 64-64 64H144c-35.3 0-64-28.7-64-64V128zm112 32a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm96 32a32 32 0 1 0 0-64 32 32 0 1 0 0 64zM144 256a16 16 0 1 0 32 0 16 16 0 1 0 -32 0zm80-16a16 16 0 1 0 0 32 16 16 0 1 0 0-32zm48 16a16 16 0 1 0 32 0 16 16 0 1 0 -32 0zM0 448c0-53 43-96 96-96H352c53 0 96 43 96 96v32c0 17.7-14.3 32-32 32H352V448c0-17.7-14.3-32-32-32H128c-17.7 0-32 14.3-32 32v64H32c-17.7 0-32-14.3-32-32V448z"/>
+                    <path class="svg-secundario" d="M240 16c0-8.8-7.2-16-16-16s-16 7.2-16 16V64h32V16zM64 128c-17.7 0-32 14.3-32 32v64c0 17.7 14.3 32 32 32H80V128H64zM176 464c0-8.8-7.2-16-16-16s-16 7.2-16 16v48h32V464zm64 0c0-8.8-7.2-16-16-16s-16 7.2-16 16v48h32V464zm48-16c-8.8 0-16 7.2-16 16v48h32V464c0-8.8-7.2-16-16-16zM416 160c0-17.7-14.3-32-32-32H368V256h16c17.7 0 32-14.3 32-32V160z"/>
                  </svg>
                 </span>
                 <span class="text-sm sm:text-base text-gray-500">
-                  <span class="font-bold">Práticas agrícolas sustentáveis</span> são aplicadas que minimizam o impacto ambiental e preservam a biodiversidade.
+                  <span class="font-bold">Um robô</span> que te entende, que sabe o que você quer e faz a mágica acontecer do seu jeito.
                 </span>
               </li>
 
@@ -766,30 +811,30 @@
 
 
               <li class="flex space-x-3">
-            <span class="mt-0.5 size-5 flex justify-center items-center rounded-full">
-              <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 640 512" fill="none">
-                <path class="svg-secundario" d="M0 96C0 60.7 28.7 32 64 32H384c35.3 0 64 28.7 64 64V234.8c-14.5-6.9-30.8-10.8-48-10.8c-60.1 0-109.1 47.3-111.9 106.7C250.2 348.7 224 387.3 224 432c0 17.2 3.9 33.5 10.8 48H64c-35.3 0-64-28.7-64-64V96zm88 0c-13.3 0-24 10.7-24 24V264c0 13.3 10.7 24 24 24s24-10.7 24-24V120c0-13.3-10.7-24-24-24zm96 0c-13.3 0-24 10.7-24 24V264c0 13.3 10.7 24 24 24s24-10.7 24-24V120c0-13.3-10.7-24-24-24z"/>
-                <path class="svg-primario" d="M256 432c0 44.2 35.8 80 80 80H560c44.2 0 80-35.8 80-80c0-39-27.9-71.5-64.8-78.6c.5-3.1 .8-6.2 .8-9.4c0-30.9-25.1-56-56-56c-18.1 0-34.1 8.6-44.4 21.8C464.8 278.5 435 256 400 256c-44.2 0-80 35.8-80 80c0 5.9 .6 11.7 1.9 17.2C284.4 359.9 256 392.6 256 432z"/>
-              </svg>
-            </span>
+                <span class="mt-0.5 size-5 flex justify-center items-center rounded-full">
+                  <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 512 512" fill="none">
+                    <path class="svg-primario" d="M243.9 248.3L39 308.5c-13.9 4.1-15.6 23.2-2.6 29.7l57.3 28.7c1.3 .7 2.6 1.5 3.7 2.5l-88 88c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l88-88c1 1.1 1.9 2.3 2.5 3.7l28.7 57.3c6.5 13 25.6 11.3 29.7-2.6l60.2-204.8c3.6-12.1-7.7-23.4-19.9-19.9z"/>
+                    <path class="svg-secundario" d="M448 256c0 106-86 192-192 192c-3.9 0-7.8-.1-11.7-.4l-18.4 62.6c9.9 1.2 19.9 1.8 30.1 1.8c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256c0 10.2 .6 20.2 1.8 30.1l62.6-18.4c-.2-3.9-.4-7.8-.4-11.7C64 150 150 64 256 64s192 86 192 192zm-48 0c0-79.5-64.5-144-144-144c-78.8 0-142.8 63.2-144 141.7L179.1 234c9.6-33.5 40.4-58 76.9-58c44.2 0 80 35.8 80 80c0 36.5-24.5 67.4-58 76.9l-19.7 67C336.8 398.8 400 334.8 400 256z"/>
+                  </svg>
+                </span>
 
                 <span class="text-sm sm:text-base text-gray-500">
-                <span class="font-bold">Sensores inteligentes</span> monitoram o clima e a saúde das plantas, otimizando o uso de recursos e garantindo um plantio sustentável.
-            </span>
+                <span class="font-bold">Atenção aos detalhes pedidos</span> é o princípio de toda preparação de cafés por cada um de nossos robôs.
+                </span>
               </li>
 
 
               <li class="flex space-x-3">
             <span class="mt-0.5 size-5 flex justify-center items-center rounded-full">
-              <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 576 512" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path class="svg-secundario" d="M48 56c0-4.4 3.6-8 8-8h80c13.3 0 24-10.7 24-24s-10.7-24-24-24H56C25.1 0 0 25.1 0 56v80c0 13.3 10.7 24 24 24s24-10.7 24-24V56zm480 0v80c0 13.3 10.7 24 24 24s24-10.7 24-24V56c0-30.9-25.1-56-56-56H440c-13.3 0-24 10.7-24 24s10.7 24 24 24h80c4.4 0 8 3.6 8 8zM56 464c-4.4 0-8-3.6-8-8V376c0-13.3-10.7-24-24-24s-24 10.7-24 24v80c0 30.9 25.1 56 56 56h80c13.3 0 24-10.7 24-24s-10.7-24-24-24H56zm472-8c0 4.4-3.6 8-8 8H440c-13.3 0-24 10.7-24 24s10.7 24 24 24h80c30.9 0 56-25.1 56-56V376c0-13.3-10.7-24-24-24s-24 10.7-24 24v80z"/>
-                <path class="svg-primario" d="M152 128c-13.3 0-24 10.7-24 24V360c0 13.3 10.7 24 24 24h16c13.3 0 24-10.7 24-24V152c0-13.3-10.7-24-24-24H152zm160 0c-13.3 0-24 10.7-24 24V360c0 13.3 10.7 24 24 24h16c13.3 0 24-10.7 24-24V152c0-13.3-10.7-24-24-24H312zm72 24V360c0 13.3 10.7 24 24 24h16c13.3 0 24-10.7 24-24V152c0-13.3-10.7-24-24-24H408c-13.3 0-24 10.7-24 24zM240 128c-8.8 0-16 7.2-16 16V368c0 8.8 7.2 16 16 16s16-7.2 16-16V144c0-8.8-7.2-16-16-16z"/>
+              <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 512 512" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path class="svg-primario" d="M154 120.8c22.6 3.5 41.3 18.9 49.5 39.6c-5.6 9.4-15.8 15.6-27.5 15.6c-17.7 0-32-14.3-32-32c0-9.1 3.8-17.4 10-23.2zM360.8 122c22 5.3 40.1 20.6 49.1 40.9c-5.8 8-15.2 13.1-25.9 13.1c-17.7 0-32-14.3-32-32c0-8.5 3.3-16.3 8.8-22zM100.4 307.8c-2.3-10.2 5.5-19.8 15.9-19.8H395.7c10.4 0 18.1 9.6 15.9 19.8c-5 22.3-14.6 42.7-27.7 60.2c-13.4-10-30-16-47.9-16c-44.2 0-80 35.8-80 80c-74.3 0-139.5-51.6-155.6-124.2z"/>
+                <path class="svg-secundario" d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM144 120c35.3 0 64 28.7 64 64v10.3c0 16.4-13.3 29.7-29.7 29.7H109.7C93.3 224 80 210.7 80 194.3V184c0-35.3 28.7-64 64-64zm128 72c0-39.8 32.2-72 72-72s72 32.2 72 72v7.5c0 13.5-11 24.5-24.5 24.5H296.5C283 224 272 213 272 199.5V192zM116.3 288H395.7c10.4 0 18.1 9.6 15.9 19.8C395.5 380.4 330.3 432 256 432s-139.5-51.6-155.6-124.2c-2.3-10.2 5.5-19.8 15.9-19.8z"/>
               </svg>
 
             </span>
 
                 <span class="text-sm sm:text-base text-gray-500">
-                <span class="font-bold">Rastreabilidade</span> em cada colheita desde a planta até a sua xícara, garantindo a origem e a qualidade do café.
+                <span class="font-bold">De forma humanizada</span> é como os nossos robôs interagem com os nossos clientes, eles fazem mais do que preparar um café.
             </span>
               </li>
 
