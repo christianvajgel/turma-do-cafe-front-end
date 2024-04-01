@@ -72,55 +72,60 @@ async function adicionarProdutoNoCarrinho(idProduto) {
   <div>
 
     <!--    Carrousel ########## -->
-    <div>
+<!--    <div>-->
 
 
-      <!-- Slider -->
-      <div data-hs-carousel='{
-          "loadingClasses": "opacity-0"
-        }' class="relative">
-        <div class="hs-carousel relative overflow-hidden w-full min-h-[350px] bg-white rounded-lg">
-          <div class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0">
-            <div class="hs-carousel-slide">
-              <div class="flex justify-center h-full p-6">
-                <!--                <span class="self-center text-4xl transition duration-700">First slide</span>-->
-                <img src="https://images.unsplash.com/photo-1561986810-4f3ba2f46ceb?q=80&w=2070&auto=format&fit=crop" class="self-center transition duration-700" alt="cafe"/>
-              </div>
-            </div>
-            <div class="hs-carousel-slide">
-              <div class="flex justify-center h-full p-6">
-                <img src="https://images.unsplash.com/photo-1629248989876-07129a68946d?q=80&w=2069&auto=format&fit=crop" class="self-center transition duration-700" alt="cafe"/>
-              </div>
-            </div>
-            <div class="hs-carousel-slide">
-              <div class="flex justify-center h-full p-6">
-                <img src="https://images.unsplash.com/photo-1584850379382-0eac0eec7011?q=80&w=2092&auto=format&fit=crop" class="self-center transition duration-700" alt="cafe"/>
-              </div>
-            </div>
-          </div>
-        </div>
+<!--      &lt;!&ndash; Slider &ndash;&gt;-->
+<!--      <div data-hs-carousel='{-->
+<!--          "loadingClasses": "opacity-0"-->
+<!--        }' class="relative">-->
+<!--        <div class="hs-carousel relative overflow-hidden w-full min-h-[350px] bg-white rounded-lg">-->
+<!--          <div class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0">-->
+<!--            <div class="hs-carousel-slide">-->
+<!--              <div class="flex justify-center h-full p-6">-->
+<!--                &lt;!&ndash;                <span class="self-center text-4xl transition duration-700">First slide</span>&ndash;&gt;-->
+<!--                <img src="https://images.unsplash.com/photo-1561986810-4f3ba2f46ceb?q=80&w=2070&auto=format&fit=crop" class="self-center transition duration-700" alt="cafe"/>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="hs-carousel-slide">-->
+<!--              <div class="flex justify-center h-full p-6">-->
+<!--                <img src="https://images.unsplash.com/photo-1629248989876-07129a68946d?q=80&w=2069&auto=format&fit=crop" class="self-center transition duration-700" alt="cafe"/>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="hs-carousel-slide">-->
+<!--              <div class="flex justify-center h-full p-6">-->
+<!--                <img src="https://images.unsplash.com/photo-1584850379382-0eac0eec7011?q=80&w=2092&auto=format&fit=crop" class="self-center transition duration-700" alt="cafe"/>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
 
-        <div class="hs-carousel-pagination flex justify-center absolute bottom-3 start-0 end-0 space-x-2">
-          <span class="hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 w-3 h-3 border border-gray-400 rounded-full cursor-pointer"></span>
-          <span class="hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 w-3 h-3 border border-gray-400 rounded-full cursor-pointer"></span>
-          <span class="hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 w-3 h-3 border border-gray-400 rounded-full cursor-pointer"></span>
-        </div>
-      </div>
-      <!-- End Slider -->
+<!--        <div class="hs-carousel-pagination flex justify-center absolute bottom-3 start-0 end-0 space-x-2">-->
+<!--          <span class="hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 w-3 h-3 border border-gray-400 rounded-full cursor-pointer"></span>-->
+<!--          <span class="hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 w-3 h-3 border border-gray-400 rounded-full cursor-pointer"></span>-->
+<!--          <span class="hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 w-3 h-3 border border-gray-400 rounded-full cursor-pointer"></span>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      &lt;!&ndash; End Slider &ndash;&gt;-->
 
-    </div>
+<!--    </div>-->
     <!--   End Carrousel ########## -->
 
+<!--    <br>-->
+<!--    <br>-->
+
+<!--    <div>-->
+<!--      <div style="text-align: center;" v-if="loading">Carregando...</div>-->
+<!--      <div style="text-align: center;" v-else>RESPONSE: <br> {{ data }}</div>-->
+<!--    </div>-->
+
+    <br>
     <br>
     <br>
 
-    <div>
-      <div style="text-align: center;" v-if="loading">Carregando...</div>
-      <div style="text-align: center;" v-else>RESPONSE: <br> {{ data }}</div>
+    <div class="mt-5 max-w-2xl mx-auto text-center mb-10 lg:mb-14">
+      <h2 class="text-2xl font-bold md:text-4xl md:leading-tight titulo-header">Produtos</h2>
     </div>
-
-    <br>
-    <br>
 
     <!--    Card group ##########-->
 

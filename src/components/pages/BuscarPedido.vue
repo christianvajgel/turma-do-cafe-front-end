@@ -239,16 +239,6 @@ function lidarComPedidoInvalido(){
 
 <style scoped>
 
-
-.translate-x-64 {
-  --tw-translate-x: 16rem/* 256px */;
-  transform: translate(var(--tw-translate-x), -3rem) rotate(0) skewX(0) skewY(0) scaleX(1) scaleY(1);
-}
-
-#grao-cafe {
-
-}
-
 #elemento-1 {
   --tw-translate-x: 5rem; /* 80px */;
   --tw-translate-y: -3.45rem/* -48px */;
@@ -282,8 +272,6 @@ function lidarComPedidoInvalido(){
 
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(0) skewX(0) skewY(0) scaleX(1) scaleY(1);
 }
-
-
 
 
 .elemento-1-primario {
@@ -335,12 +323,6 @@ function lidarComPedidoInvalido(){
   -webkit-text-fill-color: transparent;
 }
 
-.gradiente-borda {
-  background: linear-gradient(90deg, #EDE0D4, #E6CCB2, #DDB892, #B08968, #9C6644, #7F5539);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 .icone-botao-buscar-primario {
   fill: #7F5539;
 }
@@ -351,7 +333,7 @@ function lidarComPedidoInvalido(){
 }
 
 #localizador {
-  font-size: 16px; /* Tamanho da fonte ajustado para melhor visualização */
+  font-size: 16px;
   background: linear-gradient(90deg, #E6CCB2, #DDB892, #B08968); -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
