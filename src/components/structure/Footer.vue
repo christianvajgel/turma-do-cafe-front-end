@@ -12,11 +12,7 @@ function obterAnoCorrente() {
 
   <div>
     <footer class="w-full max-w-[85rem] py-10 px-4 sm:px-6 lg:px-8 mx-auto">
-      <!-- Grid -->
       <div class="text-center">
-
-
-        <!-- Social Brands -->
         <div class="mt-3 space-x-2">
           <a class="inline-flex justify-center items-center w-10 h-10 text-center text-gray-500 hover:bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition" href="#">
             <svg class="flex-shrink-0 w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 448 512">
@@ -34,19 +30,14 @@ function obterAnoCorrente() {
             </svg>
           </a>
         </div>
-
         <br>
         <div>
           <a class="flex-none text-sm font-semibold text-gray-400" href="#" aria-label="Brand">{{ NOME_DA_MARCA }}</a>
         </div>
-        <!-- End Col -->
-
         <div class="mt-3">
           <p class="text-gray-400 text-sm">© {{ NOME_DA_MARCA }} 2023 - {{ obterAnoCorrente() }}. Todos os direitos reservados.</p>
         </div>
-        <!-- End Social Brands -->
       </div>
-      <!-- End Grid -->
     </footer>
   </div>
 
