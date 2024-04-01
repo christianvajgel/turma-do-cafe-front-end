@@ -1,6 +1,6 @@
 <script setup>
 
-import {gerarCodigoDeAutorizacaoAleatorio, obterIdDoCarrinho} from "@/global/functions.js";
+import {gerarCodigoDeAutorizacaoAleatorio} from "@/global/functions.js";
 
 import {useRoute} from "vue-router";
 import {onMounted, ref, watch} from "vue";
@@ -8,15 +8,10 @@ import axios from "axios";
 import router from "@/router.js";
 import {NOME_DA_MARCA} from "@/global/variables.js";
 
-console.log(`%c### ID Pedido: ${useRoute().params.localizador} ###`, "background: blue; color: yellow; font-size: x-large;");
-
 const URL_LISTAR_PEDIDO = `https://localhost:7173/api/Item/listar-itens-de-um-pedido/${useRoute().params.localizador}`;
-//const URL_LISTAR_PEDIDO = `https://localhost:7173/api/Item/listar-itens-de-um-pedido/RJ5T6U`;
 
 const TAMANHO_ICONE_SVG = 35;
-// const COR_ICONE_SVG = "currentCollor";
 const COR_ICONE_SVG = "#e5e7eb";
-
 
 const ok = ref(false);
 const ok2 = ref(false);
@@ -28,29 +23,14 @@ let totalDescontoPedido;
 let totalPedido;
 
 watch(ok, (newValue, oldValue) => {
-  if (newValue === true) {
-    console.log('CARRINHO componente: A variável ok mudou para true')
-  }
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  setTimeout(() => {
-
-    console.log(totalDescontoPedido);
-
-  }, 1250);
-
+  if (newValue === true) { }
 });
 
 onMounted(() => {
 
   obterPedido();
   listarTodosOsProdutos();
-  //obterValorTotalDoCarrinho();
   listarItensDoPedido();
-
-  console.log("CONFIRMACAO PEDIDO componente: mounted OK");
-
 });
 
 async function listarTodosOsProdutos(){
@@ -65,11 +45,6 @@ async function listarTodosOsProdutos(){
       .catch(error => {
         console.error(error);
       });
-  // .finally(() => {
-  //   loading.value = false;
-  // });
-
-  // console.log(data);
 }
 
 function buscarAtributoDeProduto(idProduto, nomeAtributo) {
@@ -81,30 +56,15 @@ function buscarAtributoDeProduto(idProduto, nomeAtributo) {
   if (cafeEncontrado) {
     return cafeEncontrado[nomeAtributo];
   } else {
-    return null; // Retorna null se o ID não for encontrado
+    return null;
   }
-
 }
 
 async function listarItensDoPedido() {
 
-  //console.log("%c### LISTAR CARRINHO ###", "background: red; color: yellow; font-size: x-large;");
-
-  console.log(URL_LISTAR_PEDIDO);
-
   try {
-
-    // const response = await axios.get(`https://localhost:7173/api/Produto/c9b6c3f5-f27e-499b-a4b2-17775589795e`);
-    // const response = await axios.get(`https://localhost:7173/api/Produto/${useRoute().params.id}`);
     const response = await axios.get(URL_LISTAR_PEDIDO);
-
     itens.value = response.data;
-
-    // setTimeout(function() {
-    //   // Whatever you want to do after the wait
-    // }, 1000);
-
-    //ok.value = true;
 
   } catch (error) {
     console.error(error);
@@ -113,22 +73,13 @@ async function listarItensDoPedido() {
       ok.value = true;
     }, 1000);
   }
-
-  // console.log(produtoEspecifico);
 }
 
 async function obterPedido() {
 
-
   const URL = `https://localhost:7173/api/Pedido/buscar-pedido/${useRoute().params.localizador}`;
-  console.log(`%c### URL: ${URL} ###`, "background: blue; color: yellow; font-size: x-large;");
-
-  console.log(URL);
 
   try {
-
-    // const response = await axios.get(`https://localhost:7173/api/Produto/c9b6c3f5-f27e-499b-a4b2-17775589795e`);
-    // const response = await axios.get(`https://localhost:7173/api/Produto/${useRoute().params.id}`);
     const response = await axios.get(URL);
 
     setTimeout(function() {
@@ -136,41 +87,23 @@ async function obterPedido() {
 
       totalPedido = pedido.value.total.toFixed(2).replace('.',',');
       totalDescontoPedido = pedido.value.totalDesconto.toFixed(2).replace('.',',');
-
-      console.log(pedido.value.dataDoPedido);
-
       sessionStorage.setItem("dataDoPedido",pedido.value.dataDoPedido);
-
       ok2.value = true;
+
     }, 500);
 
-
-
-    // setTimeout(function() {
-    //   // Whatever you want to do after the wait
-    // }, 1000);
-
   } catch (error) {
-    //console.log(`%c### URL: ${error} ###`, "background: pink; color: yellow; font-size: x-large;");
-    // await router.push(`/buscar-pedido/`);
-
     await router.push({
       path: `/buscar-pedido/`,
       query: {
         estadoPedido: "invalido",
       },
     });
-
-    //console.error(error);
-  } finally {
-
   }
-
-  // console.log(produtoEspecifico);
 }
 
-
 function formatarDataDoPedido() {
+
   const dataFormatada = new Date(sessionStorage.getItem("dataDoPedido"));
   const dia = dataFormatada.getDate();
   const mes = dataFormatada.getMonth() + 1;
@@ -179,40 +112,24 @@ function formatarDataDoPedido() {
 }
 
 function formatarHoraDoPedido() {
+
   const horaFormatada = new Date(sessionStorage.getItem("dataDoPedido"));
   const horas = horaFormatada.getHours();
   const minutos = horaFormatada.getMinutes();
-  const ampm = '';
-  // const horas12 = horas % 12 || 12;
   return `${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}`;
 }
-
-
 
 </script>
 
 <template>
 
   <div v-if="ok">
-
-    <!-- Invoice -->
     <div class="max-w-[85rem] px-4 sm:px-6 lg:px-8 mx-auto my-4 sm:my-10">
       <div id="pdf" class="sm:w-11/12 lg:w-3/4 mx-auto">
-        <!-- Card -->
         <div class="flex flex-col p-4 sm:p-10 bg-white shadow-md rounded-xl dark:bg-gray-800">
-          <!-- Grid -->
           <div class="flex justify-between">
             <div>
-<!--              <svg class="size-10" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">-->
-<!--                <path d="M1 26V13C1 6.37258 6.37258 1 13 1C19.6274 1 25 6.37258 25 13C25 19.6274 19.6274 25 13 25H12" class="stroke-blue-600 dark:stroke-white" stroke="currentColor" stroke-width="2"/>-->
-<!--                <path d="M5 26V13.16C5 8.65336 8.58172 5 13 5C17.4183 5 21 8.65336 21 13.16C21 17.6666 17.4183 21.32 13 21.32H12" class="stroke-blue-600 dark:stroke-white" stroke="currentColor" stroke-width="2"/>-->
-<!--                <circle cx="13" cy="13.0214" r="5" fill="currentColor" class="fill-blue-600 dark:fill-white"/>-->
-<!--              </svg>-->
-
-<!--              <h1 class="mt-2 text-lg md:text-xl font-semibold text-amber-800 dark:text-white">Turma do Café</h1>-->
-
               <div class="flex items-center justify-between">
-
                 <svg class="mr-2.5 mt-1 flex-shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 448 512" stroke="transparent" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <defs>
                   </defs>
@@ -225,10 +142,8 @@ function formatarHoraDoPedido() {
                     </linearGradient>
                   </defs>
                 </svg>
-
                 <span class="titulo-header flex-none text-2xl font-semibold" aria-label="Brand">{{ NOME_DA_MARCA }}</span>
               </div>
-
               <div class="mt-10">
                 <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Christian Vajgel</h3>
                 <span class="mt-2 not-italic text-gray-500">
@@ -238,20 +153,11 @@ function formatarHoraDoPedido() {
                   20010-020
                 </span>
               </div>
-
             </div>
-            <!-- Col -->
-
             <div class="text-end">
-
               <h2 class="text-2xl md:text-3xl font-semibold text-gray-800 dark:text-gray-200">Pedido {{useRoute().params.localizador}}</h2>
-<!--              <span class="mt-1 block text-gray-500">Localizador</span>-->
-
-
               <div class="mt-10">
                 <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Pagamento</h3>
-
-                <!-- Icon -->
                 <span class="mt-3.5 inline-flex justify-center items-center size-[46px] rounded-full text-gray-500">
                   <svg class="flex-shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 576 512" fill="#000" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >
 
@@ -270,7 +176,6 @@ function formatarHoraDoPedido() {
                   </svg>
                   &nbsp;••••&nbsp;{{ pedido.quatroUltimoDigitosCartao }}
                 </span>
-                <!-- End Icon -->
 
                 <p class="mt-2 not-italic text-gray-500">
                   Crédito à vista<br>
@@ -305,17 +210,11 @@ function formatarHoraDoPedido() {
                 </span>
 
               </div>
-
             </div>
-            <!-- Col -->
           </div>
-          <!-- End Grid -->
 
-          <!-- Grid -->
           <div class="mt-8 grid sm:grid-cols-1 gap-3">
-
             <div class="my-8 grid md:grid-cols-4 gap-3 text-center">
-              <!-- Primeira div -->
               <div class="col-span-1">
                 <div class="font-semibold text-gray-800 dark:text-gray-200">Estado</div>
                 <div>
@@ -363,7 +262,6 @@ function formatarHoraDoPedido() {
                   </span>
                 </div>
               </div>
-              <!-- Segunda div -->
               <div class="col-span-1">
                 <div class="font-semibold text-gray-800 dark:text-gray-200">Rastreamento</div>
                 <div class="mt-3.5">
@@ -375,7 +273,6 @@ function formatarHoraDoPedido() {
                   </span>
                 </div>
               </div>
-              <!-- Terceira div -->
               <div class="col-span-1">
                 <div class="font-semibold text-gray-800 dark:text-gray-200">Data do pedido</div>
                 <div class="mt-3.5">
@@ -384,7 +281,6 @@ function formatarHoraDoPedido() {
                   </span>
                 </div>
               </div>
-              <!-- Quarta div -->
               <div class="col-span-1">
                 <div class="font-semibold text-gray-800 dark:text-gray-200">Hora do pedido</div>
                 <div class="mt-3.5">
@@ -394,17 +290,8 @@ function formatarHoraDoPedido() {
                 </div>
               </div>
             </div>
-
-
-
-
-
-
-            <!-- Col -->
           </div>
-          <!-- End Grid -->
 
-          <!-- Table -->
           <div class="mt-6">
             <div class="border border-gray-200 p-4 rounded-lg space-y-4 dark:border-gray-700">
               <div class="hidden sm:grid sm:grid-cols-5">
@@ -417,9 +304,7 @@ function formatarHoraDoPedido() {
 
               <div class="hidden sm:block border-b border-gray-200"></div>
 
-<!--              v-for-->
               <div class="grid grid-cols-3 sm:grid-cols-6 gap-2" v-for="(item, index) in itens" :key="item.id">
-
                 <div class="col-span-full sm:col-span-2">
                   <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Produto</h5>
                   <p class="font-medium text-gray-800">
@@ -457,59 +342,11 @@ function formatarHoraDoPedido() {
 
                 <div class="sm:hidden border-b border-gray-200 dark:border-gray-700"></div>
               </div>
-<!--              v-for-->
-
-
-
-<!--              <div class="grid grid-cols-3 sm:grid-cols-5 gap-2">-->
-<!--                <div class="col-span-full sm:col-span-2">-->
-<!--                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Item</h5>-->
-<!--                  <p class="font-medium text-gray-800 dark:text-gray-200">Web project</p>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Qty</h5>-->
-<!--                  <p class="text-gray-800 dark:text-gray-200">1</p>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Rate</h5>-->
-<!--                  <p class="text-gray-800 dark:text-gray-200">24</p>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Amount</h5>-->
-<!--                  <p class="sm:text-end text-gray-800 dark:text-gray-200">$1250</p>-->
-<!--                </div>-->
-<!--              </div>-->
-
-<!--              <div class="sm:hidden border-b border-gray-200 dark:border-gray-700"></div>-->
-
-<!--              <div class="grid grid-cols-3 sm:grid-cols-5 gap-2">-->
-<!--                <div class="col-span-full sm:col-span-2">-->
-<!--                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Item</h5>-->
-<!--                  <p class="font-medium text-gray-800 dark:text-gray-200">SEO</p>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Qty</h5>-->
-<!--                  <p class="text-gray-800 dark:text-gray-200">1</p>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Rate</h5>-->
-<!--                  <p class="text-gray-800 dark:text-gray-200">6</p>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                  <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Amount</h5>-->
-<!--                  <p class="sm:text-end text-gray-800 dark:text-gray-200">$2000</p>-->
-<!--                </div>-->
-<!--              </div>-->
-
-
             </div>
           </div>
-          <!-- End Table -->
 
-          <!-- Flex -->
           <div class="mt-8 flex sm:justify-end">
             <div class="w-full max-w-2xl sm:text-end space-y-2">
-              <!-- Grid -->
               <div class="grid grid-cols-2 sm:grid-cols-1 gap-3 sm:gap-2">
                 <dl class="grid sm:grid-cols-5 gap-x-3">
                   <dt class="col-span-3 font-semibold text-gray-400">Subtotal</dt>
@@ -533,60 +370,12 @@ function formatarHoraDoPedido() {
                   <dd class="col-span-2 font-semibold text-gray-800">R$ {{ totalPedido }}</dd>
                 </dl>
               </div>
-              <!-- End Grid -->
             </div>
           </div>
-          <!-- End Flex -->
 
           <div class="mt-8 sm:mt-12">
-
-<!--            <div class="mb-8 flex justify-evenly">-->
-<!--              <div class="flex pr-5">-->
-<!--                <svg class="flex-shrink-0 size-3" xmlns="http://www.w3.org/2000/svg" :width="TAMANHO_ICONE_SVG" :height="TAMANHO_ICONE_SVG" viewBox="0 0 512 512" :fill="COR_ICONE_SVG" :stroke="COR_ICONE_SVG" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">-->
-<!--                  <path d="M507.5 209.7c-3.4 12.3-19.1 11.8-25.4 .7c-5.4-9.5-11.3-18.5-17.6-26c-27.6-32.6-60.8-44.5-90.1-55l-1-.3c-30-10.7-55.8-20.2-77.5-45.9c-10.8-12.8-21.3-33.4-29.3-52c-1.7-4-.6-8.7 3-11.2C320.9-16 401.3-2.6 458 54c45.7 45.7 63.2 106.7 49.5 155.6zM228.5 78.3c3.4-12.3 19.1-11.8 25.4-.7c5.3 9.5 11.3 18.5 17.6 26c27.6 32.6 60.8 44.5 90.1 55l1 .3c30 10.7 55.8 20.2 77.5 45.9c10.8 12.8 21.3 33.4 29.3 52c1.7 4 .6 8.7-3 11.2C415.1 304 334.7 290.6 278 234c-45.7-45.7-63.2-106.7-49.5-155.6zM75.5 206c11.2-6.3 22 5.2 18.5 17.6c-2.9 10.5-5.2 21.2-6 31c-3.6 42.8 11.6 74.9 25 103.2l.4 .9c13.7 28.9 25.3 54.1 22.5 87.8c-1.4 16.7-8.6 38.9-16.1 57.9c-1.6 4.1-5.8 6.6-10.1 5.8C47.7 499.3 0 432.6 0 352c0-65 31-120.9 75.5-146zM180.5 498c-11.2 6.3-22-5.2-18.5-17.6c2.9-10.5 5.2-21.2 6-31c3.6-42.8-11.6-74.9-25-103.2l-.4-.9c-13.7-28.9-25.3-54.1-22.5-87.8c1.4-16.7 8.6-38.9 16.1-57.9c1.6-4.1 5.8-6.6 10.1-5.8C208.3 204.7 256 271.4 256 352c0 65-31 120.9-75.5 146z"/>-->
-<!--                </svg>-->
-<!--              </div>-->
-
-<!--              <div class="flex pr-5">-->
-<!--                <svg class="flex-shrink-0 size-3" xmlns="http://www.w3.org/2000/svg" :width="TAMANHO_ICONE_SVG" :height="TAMANHO_ICONE_SVG" viewBox="0 0 512 512" :fill="COR_ICONE_SVG" :stroke="COR_ICONE_SVG" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">-->
-<!--                  <path d="M88 80c-22.1 0-40 17.9-40 40v80c0 13.3-10.7 24-24 24s-24-10.7-24-24V120C0 71.4 39.4 32 88 32h34.4H192 453.6C468.2 32 480 43.8 480 58.4c0 3.7-.8 7.3-2.3 10.7l-48.4 109c50 34.7 82.7 92.5 82.7 157.9v8c0 55.5-34.6 99.4-55.9 121.2C446.2 475.3 432.3 480 418 480H158c-14.2 0-28.1-4.7-38.1-14.8C98.6 443.4 64 399.5 64 344v-8c0-65.4 32.7-123.2 82.7-157.9L103.1 80H88zm296.8 80l35.6-80H192 155.6l35.6 80H384.8zm1.2 48H190c-41.8 21.6-71.7 63.1-77.1 112H463.1c-5.4-48.9-35.3-90.4-77.1-112zm32.2 224H157.7c.1 0 .1 0 .2 0H418c.1 0 .1 0 .2 0z"/>-->
-<!--                </svg>-->
-<!--              </div>-->
-
-<!--              <div class="flex pr-5">-->
-<!--                <svg class="flex-shrink-0 size-3" xmlns="http://www.w3.org/2000/svg" :width="TAMANHO_ICONE_SVG" :height="TAMANHO_ICONE_SVG" viewBox="0 0 640 512" :fill="COR_ICONE_SVG" :stroke="COR_ICONE_SVG" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">-->
-<!--                  <path d="M96 64c0-17.7 14.3-32 32-32H448h64c70.7 0 128 57.3 128 128s-57.3 128-128 128H480c0 53-43 96-96 96H192c-53 0-96-43-96-96V64zM480 224h32c35.3 0 64-28.7 64-64s-28.7-64-64-64H480V224zM32 416H544c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/>-->
-<!--                </svg>-->
-<!--              </div>-->
-
-<!--              <div class="flex pr-5">-->
-<!--                <svg class="flex-shrink-0 size-3" xmlns="http://www.w3.org/2000/svg" :width="TAMANHO_ICONE_SVG" :height="TAMANHO_ICONE_SVG" viewBox="0 0 448 512" :fill="COR_ICONE_SVG" :stroke="COR_ICONE_SVG" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">-->
-<!--                  <path d="M108.2 48h232c3 0 5.8 1.7 7.2 4.4L361.2 80H88l13-27.4c1.3-2.8 4.1-4.6 7.2-4.6zM414.8 80L390.3 31c-9.5-19-28.9-31-50.1-31h-232C86.6 0 66.9 12.4 57.6 32L34.8 80H24C10.7 80 0 90.7 0 104s10.7 24 24 24H50 400h24c13.3 0 24-10.7 24-24s-10.7-24-24-24h-9.2zM47.4 160L74.6 453.9c3 32.9 30.7 58.1 63.7 58.1H309.7c33.1 0 60.7-25.2 63.7-58.1L400.6 160H352.4l-5.9 64H101.5l-5.9-64H47.4zm68.9 224H331.6l-6.1 65.5c-.8 8.2-7.7 14.5-15.9 14.5H138.3c-8.3 0-15.2-6.3-15.9-14.5L116.4 384z"/>-->
-<!--                </svg>-->
-<!--              </div>-->
-
-<!--              <div class="flex pr-5">-->
-<!--                <svg class="flex-shrink-0 size-3" xmlns="http://www.w3.org/2000/svg" :width="TAMANHO_ICONE_SVG" :height="TAMANHO_ICONE_SVG" viewBox="0 0 512 512" :fill="COR_ICONE_SVG" :stroke="COR_ICONE_SVG" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">-->
-<!--                  <path d="M88 0C74.7 0 64 10.7 64 24c0 38.9 23.4 59.4 39.1 73.1l1.1 1C120.5 112.3 128 119.9 128 136c0 13.3 10.7 24 24 24s24-10.7 24-24c0-38.9-23.4-59.4-39.1-73.1l-1.1-1C119.5 47.7 112 40.1 112 24c0-13.3-10.7-24-24-24zM32 192c-17.7 0-32 14.3-32 32V416c0 53 43 96 96 96H288c53 0 96-43 96-96h16c61.9 0 112-50.1 112-112s-50.1-112-112-112H352 32zm352 64h16c26.5 0 48 21.5 48 48s-21.5 48-48 48H384V256zM224 24c0-13.3-10.7-24-24-24s-24 10.7-24 24c0 38.9 23.4 59.4 39.1 73.1l1.1 1C232.5 112.3 240 119.9 240 136c0 13.3 10.7 24 24 24s24-10.7 24-24c0-38.9-23.4-59.4-39.1-73.1l-1.1-1C231.5 47.7 224 40.1 224 24z"/>-->
-<!--                </svg>-->
-<!--              </div>-->
-
-<!--              <div class="flex pr-5">-->
-<!--                <svg class="flex-shrink-0 size-3" xmlns="http://www.w3.org/2000/svg" :width="TAMANHO_ICONE_SVG" :height="TAMANHO_ICONE_SVG" viewBox="0 0 512 512" :fill="COR_ICONE_SVG" :stroke="COR_ICONE_SVG" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">-->
-<!--                  <path d="M192 32c7.5 0 14.4 2.6 19.8 6.9L175 75.7c-9.6 9.6-15 22.7-15 36.3c0 5.5 .9 10.9 2.6 16H32V64c0-17.7 14.3-32 32-32H192zm5.7 93.7C194 122 192 117.1 192 112s2-10 5.7-13.7l60.7-60.7C262 34 266.9 32 272 32s10 2 13.7 5.7l60.7 60.7c3.6 3.6 5.7 8.5 5.7 13.7s-2 10-5.7 13.7L344 128H200l-2.3-2.3zM0 192c0-17.7 14.3-32 32-32H96v64c0 17.7 14.3 32 32 32s32-14.3 32-32V160H352h48c61.9 0 112 50.1 112 112s-50.1 112-112 112H384c0 53-43 96-96 96H96c-53 0-96-43-96-96V192zm384 32v96h16c26.5 0 48-21.5 48-48s-21.5-48-48-48H384z"/>-->
-<!--                </svg>-->
-<!--              </div>-->
-
-<!--              <div class="flex pr-5">-->
-<!--                <svg class="flex-shrink-0 size-3" xmlns="http://www.w3.org/2000/svg" :width="TAMANHO_ICONE_SVG" :height="TAMANHO_ICONE_SVG" viewBox="0 0 448 512" :fill="COR_ICONE_SVG" :stroke="COR_ICONE_SVG" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">-->
-<!--                  <path d="M331.4 203.3c24.4-24.6 45.4-67.3 59.9-101.7c5.1-12.2 20.9-15.3 28.2-4.3c51.2 77.7 26.2 201.2-63.4 290.8c-79.6 79.6-186 108.1-263.2 77.7c-14.8-5.8-20-23.2-13.2-37.5c.7-1.6 1.5-3.1 2.2-4.7c16.5-34.5 37.5-72.2 57.4-92.3c29.7-29.9 59.7-44.9 91.8-61l.5-.3 0 0c32-15.9 66.1-32.9 99.7-66.8zM53.1 409.7c-5.3 11-19.9 13.6-26.9 3.6c-54-77.4-29.6-203.2 61.2-294C167.6 39.1 275.1 10.7 352.5 42.4c14 5.7 19.4 22 13.7 36c-1.4 3.5-2.9 7.1-4.4 10.8c-14.5 34.5-33.5 71.8-53.1 91.5c-29.7 29.9-59.7 44.9-91.8 61l-.5 .3c-32 15.9-66.1 32.9-99.7 66.8c-24.1 24.3-47.1 66.6-63.6 101z"/>-->
-<!--                </svg>-->
-<!--              </div>-->
-<!--            </div>-->
-
             <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Obrigado!</h4>
             <p class="text-gray-500">Se você possui alguma questão sobre este pedido, entre em contato conosco:</p>
-<!--            <p class="text-gray-500">If you have any questions concerning this invoice, use the following contact information:</p>-->
             <div class="mt-2">
               <p class="block text-sm font-medium text-gray-800 dark:text-gray-200">helloworld@turmadocafe.com.br</p>
               <p class="block text-sm font-medium text-gray-800 dark:text-gray-200">+55 (21) 999-888-777</p>
@@ -639,9 +428,7 @@ function formatarHoraDoPedido() {
             </div>
           </div>
         </div>
-        <!-- End Card -->
 
-        <!-- Buttons -->
         <div class="mt-6 flex justify-end gap-x-3">
           <a class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-lg border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm" href="#">
             <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
@@ -652,11 +439,8 @@ function formatarHoraDoPedido() {
             Imprimir
           </a>
         </div>
-        <!-- End Buttons -->
       </div>
     </div>
-    <!-- End Invoice -->
-
   </div>
 
 </template>
