@@ -5,7 +5,6 @@ import axios from 'axios';
 import {gerarUUID} from "@/global/functions.js";
 import router from "@/router.js";
 
-
 const form = ref({
   id: gerarUUID(),
   imagem: '',
@@ -20,11 +19,9 @@ const form = ref({
   estoque: '',
 });
 
-
-
 const submitForm = async () => {
+
   const jsonForm = JSON.stringify(form.value);
-  console.log(jsonForm);
 
   try {
     const response = await axios.post('https://localhost:7173/api/Produto', jsonForm, {
@@ -34,7 +31,6 @@ const submitForm = async () => {
     });
 
     console.log('Resposta do servidor:', response.data);
-
     await router.push("/produtos");
 
   } catch (error) {
@@ -54,24 +50,11 @@ const submitForm = async () => {
       </h2>
     </div>
 
-    <!-- Card Section -->
     <div class="max-w-4xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-      <!-- Card -->
       <div class="bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-slate-900">
-<!--        <div class="mb-8">-->
-<!--          <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">-->
-<!--            Adicionar Produto-->
-<!--          </h2>-->
-<!--          <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">-->
-<!--            Formulário para adição de produtos ao e-commerce-->
-<!--          </p>-->
-<!--        </div>-->
-
         <form @submit.prevent="submitForm">
           <!-- Grid -->
           <div class="grid sm:grid-cols-12 gap-2 sm:gap-6">
-
-            <!--            IMAGEM -->
             <div class="sm:col-span-3">
               <label for="imagem-produto" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-gray-200">
                 Imagem
@@ -88,17 +71,13 @@ const submitForm = async () => {
                 </span>
               </div>
             </div>
-            <!-- End Col -->
 
             <div class="sm:col-span-9">
               <div class="sm:flex">
                 <input v-model="form.imagem" placeholder="Link da imagem do produto" id="imagem-produto" type="url" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
               </div>
             </div>
-            <!-- End Col -->
 
-
-            <!--            NOME -->
             <div class="sm:col-span-3">
               <label for="nome-produto" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-gray-200">
                 Nome
@@ -115,17 +94,13 @@ const submitForm = async () => {
                 </span>
               </div>
             </div>
-            <!-- End Col -->
 
             <div class="sm:col-span-9">
               <div class="sm:flex">
                 <input v-model="form.nome" placeholder="Nome do produto" id="nome-produto" type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
               </div>
             </div>
-            <!-- End Col -->
 
-
-            <!--            PREÇO PRECO -->
             <div class="sm:col-span-3">
               <label for="preco-produto" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-gray-200">
                 Preço
@@ -142,15 +117,10 @@ const submitForm = async () => {
                 </span>
               </div>
             </div>
-            <!-- End Col -->
-
             <div class="sm:col-span-9">
               <input v-model="form.preco" placeholder="Preço do produto em reais (somente números)" id="preco-produto" type="number" min="1" step="0.01" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
             </div>
-            <!-- End Col -->
 
-
-            <!--            PESO -->
             <div class="sm:col-span-3">
               <label for="peso-produto" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-gray-200">
                 Peso
@@ -167,17 +137,10 @@ const submitForm = async () => {
                 </span>
               </div>
             </div>
-            <!-- End Col -->
-
             <div class="sm:col-span-9">
               <input v-model="form.peso" placeholder="Peso do produtos em gramas (somente números)" id="peso-produto" type="number" min="1" step="1" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
             </div>
-            <!-- End Col -->
 
-
-
-
-            <!--            TIPO -->
             <div class="sm:col-span-3">
               <label for="tipo-produto" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-gray-200">
                 Tipo
@@ -194,27 +157,19 @@ const submitForm = async () => {
                 </span>
               </div>
             </div>
-            <!-- End Col -->
-
             <div class="sm:col-span-9">
               <div class="sm:flex">
                 <label for="tipo-produto" class="flex py-2 px-3 w-full border border-gray-200 shadow-sm -mt-px -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
                   <input v-model="form.tipo" value="Café" type="radio" name="tipo-produto" class="shrink-0 mt-0.5 border-gray-300 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-500 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="tipo-produto">
                   <span class="text-sm text-gray-500 ms-3 dark:text-gray-400">Café</span>
                 </label>
-
                 <label for="tipo-produto-acessorio" class="flex py-2 px-3 w-full border border-gray-200 shadow-sm -mt-px -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
                   <input v-model="form.tipo" value="Acessório" type="radio" name="tipo-produto" class="shrink-0 mt-0.5 border-gray-300 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-500 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="tipo-produto-acessorio">
                   <span class="text-sm text-gray-500 ms-3 dark:text-gray-400">Acessório</span>
                 </label>
-
               </div>
             </div>
-            <!-- End Col -->
 
-
-
-            <!--            AVALIACAO -->
             <div class="sm:col-span-3">
               <label for="avaliacao-produto" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-gray-200">
                 Avaliação
@@ -231,16 +186,10 @@ const submitForm = async () => {
                 </span>
               </div>
             </div>
-            <!-- End Col -->
-
             <div class="sm:col-span-9">
               <input v-model="form.avaliacao" placeholder="Avaliação do produto (somente números de 0 a 5)" id="avaliacao-produto" type="number" min="0" max="5" step="0.5" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
             </div>
-            <!-- End Col -->
 
-
-
-            <!--            DESCRICAO -->
             <div class="sm:col-span-3">
               <label for="descricao-produto" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-gray-200">
                 Descrição
@@ -257,18 +206,12 @@ const submitForm = async () => {
                 </span>
               </div>
             </div>
-            <!-- End Col -->
-
             <div class="sm:col-span-9">
               <div class="sm:flex">
                 <textarea v-model="form.descricao" rows="8" placeholder="Descrição do produto" id="descricao-produto" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600" ></textarea>
               </div>
             </div>
-            <!-- End Col -->
 
-
-
-            <!--            SLOGAN -->
             <div class="sm:col-span-3">
               <label for="slogan-produto" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-gray-200">
                 Slogan
@@ -285,17 +228,12 @@ const submitForm = async () => {
                 </span>
               </div>
             </div>
-            <!-- End Col -->
-
             <div class="sm:col-span-9">
               <div class="sm:flex">
                 <input v-model="form.slogan" placeholder="Slogan do produto" id="slogan-produto" type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
               </div>
             </div>
-            <!-- End Col -->
 
-
-            <!--            ORIGEM -->
             <div class="sm:col-span-3">
               <label for="origem-produto" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-gray-200">
                 Origem
@@ -312,19 +250,12 @@ const submitForm = async () => {
                 </span>
               </div>
             </div>
-            <!-- End Col -->
-
             <div class="sm:col-span-9">
               <div class="sm:flex">
                 <input v-model="form.origem" placeholder="Origem (país) do produto" id="origem-produto" type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
               </div>
             </div>
-            <!-- End Col -->
 
-
-
-
-            <!--            ESTOQUE -->
             <div class="sm:col-span-3">
               <label for="estoque-produto" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-gray-200">
                 Estoque
@@ -341,19 +272,11 @@ const submitForm = async () => {
                 </span>
               </div>
             </div>
-            <!-- End Col -->
-
             <div class="sm:col-span-9">
               <input v-model="form.estoque" placeholder="Estoque do produto (somente números)" id="estoque-produto" type="number" min="0" step="1" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
             </div>
-            <!-- End Col -->
-
-
-
           </div>
-          <!-- End Grid -->
 
-          <!--          BOTOES FORMULARIO -->
           <div class="mt-5 flex justify-end gap-x-2">
             <button @click="router.push('/produtos')" type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
               Cancelar
@@ -362,16 +285,9 @@ const submitForm = async () => {
               Adicionar produto
             </button>
           </div>
-
         </form>
-
       </div>
-      <!-- End Card -->
-
     </div>
-    <!-- End Card Section -->
-
-
   </div>
 
 </template>
