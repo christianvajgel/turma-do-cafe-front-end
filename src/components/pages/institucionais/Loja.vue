@@ -4,16 +4,11 @@
 
 <template>
 
-
   <div>
-
-    <!-- Features -->
     <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-      <!-- Grid -->
       <div class="md:grid md:grid-cols-2 md:items-center md:gap-12 xl:gap-32">
         <div>
           <div>
-            <!-- Slider -->
             <div data-hs-carousel='{ "loadingClasses": "opacity-0", "isAutoPlay": true }' class="relative">
               <div class="hs-carousel relative overflow-hidden w-full min-h-[600px] bg-white rounded-lg">
                 <div class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0">
@@ -22,16 +17,13 @@
                       <img class="rounded-xl self-center transition duration-700" :src="`https://storage.googleapis.com/turma-do-cafe-assets/cafeteria%20(${n}).jpg`" alt="Image Description">
                     </div>
                   </div>
-
                 </div>
               </div>
 
               <button type="button" class="hs-carousel-prev hs-carousel:disabled:opacity-50 disabled:pointer-events-none absolute inset-y-0 start-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/[.1]">
                 <span class="text-2xl" aria-hidden="true">
-                  <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                       viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                          d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                  <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
                   </svg>
                 </span>
                 <span class="sr-only">Previous</span>
@@ -47,24 +39,16 @@
               </button>
 
               <div class="hs-carousel-pagination flex justify-center absolute bottom-3 start-0 end-0 space-x-2">
-                <span
-                    class="hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer"></span>
-                <span
-                    class="hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer"></span>
-                <span
-                    class="hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer"></span>
+                <span class="hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer"></span>
+                <span class="hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer"></span>
+                <span class="hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer"></span>
               </div>
             </div>
-            <!-- End Slider -->
           </div>
-
-
         </div>
-        <!-- End Col -->
 
         <div class="mt-5 sm:mt-10 lg:mt-0">
           <div class="space-y-6 sm:space-y-8">
-            <!-- Title -->
             <div class="space-y-2 md:space-y-4">
               <h2 class="font-bold text-4xl text-gray-800">
                 <span class="titulo-header">Tecnologia</span> e café em sintonia
@@ -74,12 +58,8 @@
                 Desfrute de um café quente e saboroso, conecte-se com o mundo e deixe-se inspirar por nosso ambiente inovador.
               </p>
             </div>
-            <!-- End Title -->
 
-            <!-- List -->
             <ul role="list" class="space-y-2 sm:space-y-4">
-
-
               <li class="flex space-x-3">
                 <span class="mt-0.5 size-5 flex justify-center items-center rounded-full ">
                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 512 512" fill="none">
@@ -92,72 +72,46 @@
                 </span>
               </li>
 
-
-
-
-
               <li class="flex space-x-3">
-            <span class="mt-0.5 size-5 flex justify-center items-center rounded-full">
-              <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 640 512" fill="none">
-
-                <path class="svg-primario" d="M128 0C92.7 0 64 28.7 64 64V288H19.2C8.6 288 0 296.6 0 307.2C0 349.6 34.4 384 76.8 384H352V288H128V64H448V96h64V64c0-35.3-28.7-64-64-64H128zM576 448V192H448V448H576z"/>
-                <path class="svg-secundario" d="M448 192H576V448H448V192zm-16-64c-26.5 0-48 21.5-48 48V464c0 26.5 21.5 48 48 48H592c26.5 0 48-21.5 48-48V176c0-26.5-21.5-48-48-48H432z"/>
-              </svg>
-
-            </span>
-
+                <span class="mt-0.5 size-5 flex justify-center items-center rounded-full">
+                  <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 640 512" fill="none">
+                    <path class="svg-primario" d="M128 0C92.7 0 64 28.7 64 64V288H19.2C8.6 288 0 296.6 0 307.2C0 349.6 34.4 384 76.8 384H352V288H128V64H448V96h64V64c0-35.3-28.7-64-64-64H128zM576 448V192H448V448H576z"/>
+                    <path class="svg-secundario" d="M448 192H576V448H448V192zm-16-64c-26.5 0-48 21.5-48 48V464c0 26.5 21.5 48 48 48H592c26.5 0 48-21.5 48-48V176c0-26.5-21.5-48-48-48H432z"/>
+                  </svg>
+                </span>
                 <span class="text-sm sm:text-base text-gray-500">
-                <span class="font-bold">Tecnologia de ponta</span> com Wi-Fi, energia renovável para carregar os seus dispositivos e um ambiente propício para a criatividade e inovação.
-            </span>
+                  <span class="font-bold">Tecnologia de ponta</span> com Wi-Fi, energia renovável para carregar os seus dispositivos e um ambiente propício para a criatividade e inovação.
+                </span>
               </li>
-
-
               <li class="flex space-x-3">
-            <span class="mt-0.5 size-5 flex justify-center items-center rounded-full">
-              <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 640 512" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path class="svg-secundario" d="M418.4 157.9c-5.9 1.4-12 2.1-18.4 2.1c-16.5 0-31.9-5-44.6-13.6L317.6 354.1c5.9-1.4 12-2.1 18.4-2.1c16.5 0 31.9 5 44.6 13.6l37.8-207.7zM114.1 280.4L259.7 407.8c6.8-21.3 22.2-38.7 42.1-48.2L156.3 232.2c-6.8 21.3-22.2 38.7-42.1 48.2zM160 210.5l183.8-73.5C329.1 122.4 320 102.3 320 80c0-.8 0-1.7 0-2.5L136.2 151.1C150.9 165.6 160 185.7 160 208c0 .8 0 1.7 0 2.5z"/>
-                <path class="svg-primario" d="M320 80a80 80 0 1 1 160 0A80 80 0 1 1 320 80zM256 432a80 80 0 1 1 160 0 80 80 0 1 1 -160 0zM80 128a80 80 0 1 1 0 160 80 80 0 1 1 0-160z"/>
-              </svg>
-
-            </span>
-
-                <span class="text-sm sm:text-base text-gray-500">
-                <span class="font-bold">Um espaço único</span> para pensar, criar e se conectar. A sua dose diária de inspiração.
-            </span>
+                <span class="mt-0.5 size-5 flex justify-center items-center rounded-full">
+                  <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 640 512" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path class="svg-secundario" d="M418.4 157.9c-5.9 1.4-12 2.1-18.4 2.1c-16.5 0-31.9-5-44.6-13.6L317.6 354.1c5.9-1.4 12-2.1 18.4-2.1c16.5 0 31.9 5 44.6 13.6l37.8-207.7zM114.1 280.4L259.7 407.8c6.8-21.3 22.2-38.7 42.1-48.2L156.3 232.2c-6.8 21.3-22.2 38.7-42.1 48.2zM160 210.5l183.8-73.5C329.1 122.4 320 102.3 320 80c0-.8 0-1.7 0-2.5L136.2 151.1C150.9 165.6 160 185.7 160 208c0 .8 0 1.7 0 2.5z"/>
+                    <path class="svg-primario" d="M320 80a80 80 0 1 1 160 0A80 80 0 1 1 320 80zM256 432a80 80 0 1 1 160 0 80 80 0 1 1 -160 0zM80 128a80 80 0 1 1 0 160 80 80 0 1 1 0-160z"/>
+                  </svg>
+                </span>
+                  <span class="text-sm sm:text-base text-gray-500">
+                  <span class="font-bold">Um espaço único</span> para pensar, criar e se conectar. A sua dose diária de inspiração.
+                </span>
               </li>
-
             </ul>
-            <!-- End List -->
           </div>
         </div>
-        <!-- End Col -->
       </div>
-      <!-- End Grid -->
     </div>
-    <!-- End Features -->
-
 
     <div>
-
-      <!-- Hero -->
       <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Grid -->
         <div class="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
           <div>
-<!--            <h1 class="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-4xl lg:leading-tight dark:text-white">-->
-<!--              Estamos no coração da <span class="titulo-header">tecnologia</span>-->
-<!--            </h1>-->
-
             <h2 class="font-bold text-4xl text-gray-800">
               Acessórios com <span class="titulo-header">tecnologia</span>
             </h2>
-
             <p class="mt-3 text-lg text-gray-600 text-justify">
               Transforme a experiência do seu café com acessórios inovadores e inteligentes que combinam tecnologia de ponta e mantém o sabor incomparável. Tudo em um toque.
             </p>
 
             <div class="mt-6 lg:mt-10 grid grid-cols-2 gap-x-5">
-
               <div class="py-5">
                 <div class="flex space-x-1">
                     <div class="group flex gap-y-6 size-full rounded-lg p-5 transition-all">
@@ -165,7 +119,6 @@
                         <path class="svg-secundario" d="M208 32V82.7c0 8.5-3.4 16.6-9.4 22.6l-29.3 29.3c-6 6-9.4 14.1-9.4 22.6V224c0 17.7 14.3 32 32 32h64c17.7 0 32-14.3 32-32V157.3c0-8.5-3.4-16.6-9.4-22.6l-29.3-29.3c-6-6-9.4-14.1-9.4-22.6V32H208zM32 416c-17.7 0-32 14.3-32 32s14.3 32 32 32H544c17.7 0 32-14.3 32-32s-14.3-32-32-32H32z"/>
                         <path class="svg-primario" d="M208 32V82.7c0 8.5-3.4 16.6-9.4 22.6l-29.3 29.3c-6 6-9.4 14.1-9.4 22.6V224c0 17.7 14.3 32 32 32h64c17.7 0 32-14.3 32-32V157.3c0-8.5-3.4-16.6-9.4-22.6l-29.3-29.3c-6-6-9.4-14.1-9.4-22.6V32H448h64c70.7 0 128 57.3 128 128s-57.3 128-128 128H480c0 53-43 96-96 96H192c-53 0-96-43-96-96V64c0-17.7 14.3-32 32-32h80zM480 224h32c35.3 0 64-28.7 64-64s-28.7-64-64-64H480V224z"/>
                       </svg>
-
                       <div>
                         <div>
                           <h3 class="block font-bold text-gray-700">Xícara</h3>
@@ -183,7 +136,6 @@
                         <path class="svg-secundario" d="M160.4 176C103.4 202.9 64 260.8 64 328v16c0 55.5 34.6 99.4 55.9 121.2c9.9 10.2 23.9 14.8 38.1 14.8H418c14.2 0 28.1-4.7 38.1-14.8C477.4 443.4 512 399.5 512 344V328c0-67.2-39.4-125.1-96.4-152H160.4zM448 328v16c0 27.4-16.8 53.7-33.5 72H161.5c-16.7-18.3-33.5-44.6-33.5-72V328c0-57.4 46.6-104 104-104H344c57.4 0 104 46.6 104 104z"/>
                         <path class="svg-primario" d="M96 96c-17.7 0-32 14.3-32 32v64c0 17.7-14.3 32-32 32s-32-14.3-32-32V128C0 75 43 32 96 32h25.3H192 454.7c14 0 25.3 11.3 25.3 25.3c0 4.4-1.1 8.7-3.3 12.5L416 176H160L114.3 96H96zM448 344c0 27.4-16.8 53.7-33.5 72H161.5c-16.7-18.3-33.5-44.6-33.5-72V328c0-2.7 .1-5.4 .3-8H447.7c.2 2.6 .3 5.3 .3 8v16z"/>
                       </svg>
-
                       <div>
                         <div>
                           <h3 class="block font-bold text-gray-700">Jarra</h3>
@@ -201,7 +153,6 @@
                         <path class="svg-secundario" d="M70 392l5.1 61.3c2.8 33.2 30.5 58.7 63.8 58.7H309.1c33.3 0 61-25.5 63.8-58.7L378 392H70zM56.7 232H391.3L400 128H48l8.7 104z"/>
                         <path class="svg-primario" d="M55.2 17.7L32 64C14.3 64 0 78.3 0 96s14.3 32 32 32H416c17.7 0 32-14.3 32-32s-14.3-32-32-32L392.8 17.7C387.4 6.8 376.3 0 364.2 0H83.8C71.7 0 60.6 6.8 55.2 17.7zM378 392l13.3-160H56.7L70 392H378z"/>
                       </svg>
-
                       <div>
                         <div>
                           <h3 class="block font-bold text-gray-700">Copo térmico</h3>
@@ -219,7 +170,6 @@
                         <path class="svg-primario" d="M32 192c-17.7 0-32 14.3-32 32V416c0 53 43 96 96 96H288c53 0 96-43 96-96h16c61.9 0 112-50.1 112-112s-50.1-112-112-112H352 32zm352 64h16c26.5 0 48 21.5 48 48s-21.5 48-48 48H384V256z"/>
                         <path class="svg-secundario" d="M112 24c0-13.3-10.7-24-24-24S64 10.7 64 24c0 38.9 23.4 59.4 39.1 73.1l1.1 1C120.5 112.3 128 119.9 128 136c0 13.3 10.7 24 24 24s24-10.7 24-24c0-38.9-23.4-59.4-39.1-73.1l-1.1-1C119.5 47.7 112 40.1 112 24zm112 0c0-13.3-10.7-24-24-24s-24 10.7-24 24c0 38.9 23.4 59.4 39.1 73.1l1.1 1C232.5 112.3 240 119.9 240 136c0 13.3 10.7 24 24 24s24-10.7 24-24c0-38.9-23.4-59.4-39.1-73.1l-1.1-1C231.5 47.7 224 40.1 224 24z"/>
                       </svg>
-
                       <div>
                         <div>
                           <h3 class="block font-bold text-gray-700">Caneca</h3>
@@ -234,10 +184,7 @@
           </div>
 
           <div class="relative ms-4">
-
-
             <div>
-              <!-- Slider -->
               <div data-hs-carousel='{ "loadingClasses": "opacity-0", "isAutoPlay": true }' class="relative">
                 <div class="hs-carousel relative overflow-hidden w-full min-h-[600px] bg-white rounded-lg">
                   <div class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0">
@@ -248,7 +195,6 @@
                     </div>
                   </div>
                 </div>
-
                 <button type="button" class="hs-carousel-prev hs-carousel:disabled:opacity-50 disabled:pointer-events-none absolute inset-y-0 start-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/[.1]">
                 <span class="text-2xl" aria-hidden="true">
                   <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -259,7 +205,6 @@
                 </span>
                   <span class="sr-only">Previous</span>
                 </button>
-
                 <button type="button" class="hs-carousel-next hs-carousel:disabled:opacity-50 disabled:pointer-events-none absolute inset-y-0 end-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/[.1]">
                   <span class="sr-only">Next</span>
                   <span class="text-2xl" aria-hidden="true">
@@ -278,23 +223,16 @@
                       class="hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer"></span>
                 </div>
               </div>
-              <!-- End Slider -->
             </div>
-
-
           </div>
         </div>
       </div>
     </div>
 
-
-    <!-- Features -->
     <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-      <!-- Grid -->
       <div class="md:grid md:grid-cols-2 md:items-center md:gap-12 xl:gap-32">
         <div>
           <div>
-            <!-- Slider -->
             <div data-hs-carousel='{ "loadingClasses": "opacity-0", "isAutoPlay": true }' class="relative">
               <div class="hs-carousel relative overflow-hidden w-full min-h-[600px] bg-white rounded-lg">
                 <div class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0">
@@ -305,7 +243,6 @@
                   </div>
                 </div>
               </div>
-
               <button type="button" class="hs-carousel-prev hs-carousel:disabled:opacity-50 disabled:pointer-events-none absolute inset-y-0 start-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/[.1]">
                 <span class="text-2xl" aria-hidden="true">
                   <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -335,16 +272,11 @@
                     class="hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer"></span>
               </div>
             </div>
-            <!-- End Slider -->
           </div>
-
-
         </div>
-        <!-- End Col -->
 
         <div class="mt-5 sm:mt-10 lg:mt-0">
           <div class="space-y-6 sm:space-y-8">
-            <!-- Title -->
             <div class="space-y-2 md:space-y-4">
               <h2 class="font-bold text-4xl text-gray-800">
                 <span class="titulo-header">Tecnologia</span> da origem a xícara
@@ -353,12 +285,7 @@
                 A tecnologia se une à tradição no cultivo do café, oferecendo a você o café perfeito, desde a origem do grão até a sua xícara.
               </p>
             </div>
-            <!-- End Title -->
-
-            <!-- List -->
             <ul role="list" class="space-y-2 sm:space-y-4">
-
-
               <li class="flex space-x-3">
                 <span class="mt-0.5 size-5 flex justify-center items-center rounded-full ">
                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 576 512" fill="none">
@@ -389,40 +316,24 @@
                 <path class="svg-secundario" d="M48 56c0-4.4 3.6-8 8-8h80c13.3 0 24-10.7 24-24s-10.7-24-24-24H56C25.1 0 0 25.1 0 56v80c0 13.3 10.7 24 24 24s24-10.7 24-24V56zm480 0v80c0 13.3 10.7 24 24 24s24-10.7 24-24V56c0-30.9-25.1-56-56-56H440c-13.3 0-24 10.7-24 24s10.7 24 24 24h80c4.4 0 8 3.6 8 8zM56 464c-4.4 0-8-3.6-8-8V376c0-13.3-10.7-24-24-24s-24 10.7-24 24v80c0 30.9 25.1 56 56 56h80c13.3 0 24-10.7 24-24s-10.7-24-24-24H56zm472-8c0 4.4-3.6 8-8 8H440c-13.3 0-24 10.7-24 24s10.7 24 24 24h80c30.9 0 56-25.1 56-56V376c0-13.3-10.7-24-24-24s-24 10.7-24 24v80z"/>
                 <path class="svg-primario" d="M152 128c-13.3 0-24 10.7-24 24V360c0 13.3 10.7 24 24 24h16c13.3 0 24-10.7 24-24V152c0-13.3-10.7-24-24-24H152zm160 0c-13.3 0-24 10.7-24 24V360c0 13.3 10.7 24 24 24h16c13.3 0 24-10.7 24-24V152c0-13.3-10.7-24-24-24H312zm72 24V360c0 13.3 10.7 24 24 24h16c13.3 0 24-10.7 24-24V152c0-13.3-10.7-24-24-24H408c-13.3 0-24 10.7-24 24zM240 128c-8.8 0-16 7.2-16 16V368c0 8.8 7.2 16 16 16s16-7.2 16-16V144c0-8.8-7.2-16-16-16z"/>
               </svg>
-
             </span>
-
                 <span class="text-sm sm:text-base text-gray-500">
                 <span class="font-bold">Rastreabilidade</span> em cada colheita desde a planta até a sua xícara, garantindo a origem e a qualidade do café.
             </span>
               </li>
-
             </ul>
-            <!-- End List -->
           </div>
         </div>
-        <!-- End Col -->
       </div>
-      <!-- End Grid -->
     </div>
-    <!-- End Features -->
-
 
     <div>
-
-      <!-- Hero -->
       <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Grid -->
         <div class="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
           <div>
-            <!--            <h1 class="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-4xl lg:leading-tight dark:text-white">-->
-            <!--              Estamos no coração da <span class="titulo-header">tecnologia</span>-->
-            <!--            </h1>-->
-
             <h2 class="font-bold text-4xl text-gray-800">
               Grãos com <span class="titulo-header">tecnologia</span>
             </h2>
-
             <p class="mt-3 text-lg text-gray-600 text-justify">
               Nossos atendentes e robôs estão prontos para te ajudar a escolher o melhor grão para o seu paladar.
             </p>
@@ -436,7 +347,6 @@
                       <path class="svg-secundario" d="M240 56c0-30.9-25.1-56-56-56c-28.9 0-52.7 21.9-55.7 49.9C100.6 56.9 80 82.1 80 112c0 6 .8 11.9 2.4 17.4C53.6 135.7 32 161.3 32 192c0 15 5.1 28.8 13.8 39.7C18.7 244.5 0 272.1 0 304c0 34.2 21.4 63.4 51.6 74.8C49.3 385.4 48 392.6 48 400c0 35.3 28.7 64 64 64c5.6 0 11.1-.7 16.3-2.1c2.9 28.2 26.8 50.1 55.7 50.1c30.9 0 56-25.1 56-56V272H192c-8.8 0-16 7.2-16 16v34.7c18.6 6.6 32 24.4 32 45.3c0 26.5-21.5 48-48 48s-48-21.5-48-48c0-20.9 13.4-38.7 32-45.3V288c0-26.5 21.5-48 48-48h48V160H205.3c-6.6 18.6-24.4 32-45.3 32c-26.5 0-48-21.5-48-48s21.5-48 48-48c20.9 0 38.7 13.4 45.3 32H240V56zm32 104V352h34.7c6.6-18.6 24.4-32 45.3-32c26.5 0 48 21.5 48 48s-21.5 48-48 48c-20.9 0-38.7-13.4-45.3-32H272v72c0 30.9 25.1 56 56 56c28.9 0 52.7-21.9 55.7-50.1c5.2 1.4 10.7 2.1 16.3 2.1c35.3 0 64-28.7 64-64c0-7.4-1.3-14.6-3.6-21.2C490.6 367.4 512 338.2 512 304c0-31.9-18.7-59.5-45.8-72.3C474.9 220.8 480 207 480 192c0-30.7-21.6-56.3-50.4-62.6c1.6-5.5 2.4-11.4 2.4-17.4c0-29.9-20.6-55.1-48.3-62.1C380.6 21.9 356.9 0 328 0c-30.9 0-56 25.1-56 56v72h48c26.5 0 48 21.5 48 48v2.7c18.6 6.6 32 24.4 32 45.3c0 26.5-21.5 48-48 48s-48-21.5-48-48c0-20.9 13.4-38.7 32-45.3V176c0-8.8-7.2-16-16-16H272z"/>
                       <path class="svg-primario" d="M240 272V456h32V384h34.7c6.6 18.6 24.4 32 45.3 32c26.5 0 48-21.5 48-48s-21.5-48-48-48c-20.9 0-38.7 13.4-45.3 32H272V160h48c8.8 0 16 7.2 16 16v2.7c-18.6 6.6-32 24.4-32 45.3c0 26.5 21.5 48 48 48s48-21.5 48-48c0-20.9-13.4-38.7-32-45.3V176c0-26.5-21.5-48-48-48H272V56H240v72H205.3c-6.6-18.6-24.4-32-45.3-32c-26.5 0-48 21.5-48 48s21.5 48 48 48c20.9 0 38.7-13.4 45.3-32H240v80H192c-26.5 0-48 21.5-48 48v34.7c-18.6 6.6-32 24.4-32 45.3c0 26.5 21.5 48 48 48s48-21.5 48-48c0-20.9-13.4-38.7-32-45.3V288c0-8.8 7.2-16 16-16h48zM176 144a16 16 0 1 1 -32 0 16 16 0 1 1 32 0zm176 96a16 16 0 1 1 0-32 16 16 0 1 1 0 32zM176 368a16 16 0 1 1 -32 0 16 16 0 1 1 32 0zm192 0a16 16 0 1 1 -32 0 16 16 0 1 1 32 0z"/>
                     </svg>
-
                     <div>
                       <div>
                         <h3 class="block font-bold text-gray-700">Inteligência artificial</h3>
@@ -454,7 +364,6 @@
                       <path class="svg-secundario" d="M56.9 309.7L1.3 441.8c-2.2 5.3-1.4 11.4 2.1 16s9.3 6.9 15 6l56.1-8.3 32.2 49.2c3.2 5 8.9 7.7 14.8 7.2s11-4.3 13.3-9.7l50.1-119c-3.9-.9-7.6-2.4-11-4.7L156 366.8c-6-3.9-13-5.8-20.1-5.4l-21.3 1.3c-13.2 .8-25.6-6.4-31.5-18.2l-9.6-19.1c-3.2-6.4-8.4-11.5-14.7-14.7l-1.8-.9zm142.3 73.5l50.1 119c2.3 5.5 7.4 9.2 13.3 9.7s11.6-2.2 14.8-7.2l32.2-49.2 56.1 8.3c5.7 .8 11.4-1.5 15-6s4.3-10.7 2.1-16L327.1 309.7l-1.8 .9c-6.4 3.2-11.5 8.4-14.7 14.7L301 344.5c-5.9 11.8-18.3 19-31.5 18.2l-21.3-1.3c-7.1-.4-14.2 1.5-20.1 5.4l-17.8 11.8c-3.4 2.3-7.2 3.8-11 4.7z"/>
                       <path class="svg-primario" d="M210.2 5.5c-11-7.3-25.4-7.3-36.4 0L156 17.2c-6 3.9-13 5.8-20.1 5.4l-21.3-1.3c-13.2-.8-25.6 6.4-31.5 18.2L73.4 58.6C70.2 65 65 70.2 58.6 73.4L39.5 83c-11.8 5.9-19 18.3-18.2 31.5l1.3 21.3c.4 7.1-1.5 14.2-5.4 20.1L5.5 173.8c-7.3 11-7.3 25.4 0 36.4L17.2 228c3.9 6 5.8 13 5.4 20.1l-1.3 21.3c-.8 13.2 6.4 25.6 18.2 31.5l19.1 9.6c6.4 3.2 11.5 8.4 14.7 14.7L83 344.5c5.9 11.8 18.3 19 31.5 18.2l21.3-1.3c7.1-.4 14.2 1.5 20.1 5.4l17.8 11.8c11 7.3 25.4 7.3 36.4 0L228 366.8c6-3.9 13-5.8 20.1-5.4l21.3 1.3c13.2 .8 25.6-6.4 31.5-18.2l9.6-19.1c3.2-6.4 8.4-11.5 14.7-14.7l19.1-9.6c11.8-5.9 19-18.3 18.2-31.5l-1.3-21.3c-.4-7.1 1.5-14.2 5.4-20.1l11.8-17.8c7.3-11 7.3-25.4 0-36.4L366.8 156c-3.9-6-5.8-13-5.4-20.1l1.3-21.3c.8-13.2-6.4-25.6-18.2-31.5l-19.1-9.6c-6.4-3.2-11.5-8.4-14.7-14.7L301 39.5c-5.9-11.8-18.3-19-31.5-18.2l-21.3 1.3c-7.1 .4-14.2-1.5-20.1-5.4L210.2 5.5zM192 112a80 80 0 1 1 0 160 80 80 0 1 1 0-160z"/>
                     </svg>
-
                     <div>
                       <div>
                         <h3 class="block font-bold text-gray-700">Premiados</h3>
@@ -472,7 +381,6 @@
                       <path class="svg-secundario" d="M96 128H352c0 70.7-57.3 128-128 128s-128-57.3-128-128z"/>
                       <path class="svg-primario" d="M352 80v48H320 304 144 128 96V80 42.3v-.1V39 16c0-8.8 7.2-16 16-16h2.4c3.6 0 7.2 1.2 10 3.5L140 16l3 2.4c.3 .2 .6 .4 .8 .6l.1 .1c10.2 7.5 23.8 8.3 34.9 2L209.1 4c4.6-2.6 9.7-4 14.9-4s10.4 1.4 14.9 4l30.2 17.2c11 6.3 24.7 5.5 34.9-2l.1-.1c.3-.2 .6-.4 .8-.6l3-2.4L323.6 3.5c2.8-2.3 6.4-3.5 10-3.5H336c8.8 0 16 7.2 16 16V39v3.2 .1V80zM0 472c0-92.8 75.2-168 168-168H280c92.8 0 168 75.2 168 168v8c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32v-8z"/>
                     </svg>
-
                     <div>
                       <div>
                         <h3 class="block font-bold text-gray-700">Exclusivo</h3>
@@ -490,7 +398,6 @@
                       <path class="svg-secundario" d="M278.4 235.4c-55.1-55.1-69.5-132.5-37.9-184.3c8.1 17.8 18.9 38.5 31.3 53.2c27.7 32.8 61.2 44.7 90.7 55.3l1 .4c30.1 10.8 56.2 20.3 78 46.2c10.9 12.8 21.4 33.6 29.5 52.3c1 2.3 2 4.6 2.9 6.8c-51.3 41.5-136.3 29.3-195.6-29.9zm181-181c55.1 55.1 69.5 132.5 37.9 184.3c-8.1-17.8-18.9-38.5-31.3-53.2c-27.7-32.8-61.2-44.7-90.7-55.3l-1-.4c-30.1-10.8-56.2-20.3-78-46.2c-10.9-12.8-21.4-33.6-29.5-52.3c-1-2.3-2-4.6-2.9-6.8C315.1-17 400.2-4.9 459.4 54.4zM0 352c0-77.9 44.5-142.8 103.5-157.1c-6.9 18.3-13.9 40.6-15.5 59.7c-3.6 42.8 11.6 74.9 25 103.2l.4 .9c13.7 28.9 25.3 54.1 22.5 87.8c-1.4 16.7-8.6 38.9-16.1 57.9c-.9 2.4-1.9 4.7-2.8 6.9C51.5 504.5 0 435.8 0 352zm256 0c0 77.9-44.5 142.8-103.5 157.1c6.9-18.3 13.9-40.6 15.5-59.8c3.6-42.8-11.6-74.9-25-103.2l-.4-.9c-13.7-28.9-25.3-54.1-22.5-87.8c1.4-16.7 8.6-38.9 16.1-57.9c.9-2.4 1.9-4.7 2.8-6.9C204.5 199.5 256 268.2 256 352z"/>
                       <path class="svg-primario" d="M471 258.5c1 2.3 2 4.6 2.9 6.8c2.8-2.3 5.5-4.7 8.1-7.3c5.9-5.9 11-12.4 15.2-19.4c-8.1-17.8-18.9-38.5-31.3-53.2c-27.7-32.8-61.2-44.7-90.7-55.3l-1-.4c-30.1-10.8-56.2-20.3-78-46.2c-10.9-12.8-21.4-33.6-29.5-52.3c-1-2.3-2-4.6-2.9-6.8c-2.8 2.3-5.5 4.7-8.1 7.3c-5.9 5.9-11 12.4-15.2 19.4c8.1 17.8 18.9 38.5 31.3 53.2c27.7 32.8 61.2 44.7 90.7 55.3l1 .4c30.1 10.8 56.2 20.3 78 46.2c10.9 12.8 21.4 33.6 29.5 52.3zM119.9 504.5c-.9 2.4-1.9 4.7-2.8 6.9c3.6 .4 7.2 .6 10.9 .6c8.4 0 16.6-1 24.5-2.9c6.9-18.3 13.9-40.6 15.5-59.8c3.6-42.8-11.6-74.9-25-103.2l-.4-.9c-13.7-28.9-25.3-54.1-22.5-87.8c1.4-16.7 8.6-38.9 16.1-57.9c.9-2.4 1.9-4.7 2.8-6.9c-3.6-.4-7.2-.6-10.9-.6c-8.4 0-16.6 1-24.5 2.9c-6.9 18.3-13.9 40.6-15.5 59.7c-3.6 42.8 11.6 74.9 25 103.2l.4 .9c13.7 28.9 25.3 54.1 22.5 87.8c-1.4 16.7-8.6 38.9-16.1 57.9z"/>
                     </svg>
-
                     <div>
                       <div>
                         <h3 class="block font-bold text-gray-700">De todos os lugares</h3>
@@ -500,15 +407,11 @@
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
 
           <div class="relative ms-4">
-
-
             <div>
-              <!-- Slider -->
               <div data-hs-carousel='{ "loadingClasses": "opacity-0", "isAutoPlay": true }' class="relative">
                 <div class="hs-carousel relative overflow-hidden w-full min-h-[600px] bg-white rounded-lg">
                   <div class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0">
@@ -519,7 +422,6 @@
                     </div>
                   </div>
                 </div>
-
                 <button type="button" class="hs-carousel-prev hs-carousel:disabled:opacity-50 disabled:pointer-events-none absolute inset-y-0 start-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/[.1]">
                 <span class="text-2xl" aria-hidden="true">
                   <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -549,23 +451,16 @@
                       class="hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer"></span>
                 </div>
               </div>
-              <!-- End Slider -->
             </div>
-
-
           </div>
         </div>
       </div>
     </div>
 
-
-    <!-- Features -->
     <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-      <!-- Grid -->
       <div class="md:grid md:grid-cols-2 md:items-center md:gap-12 xl:gap-32">
         <div>
           <div>
-            <!-- Slider -->
             <div data-hs-carousel='{ "loadingClasses": "opacity-0", "isAutoPlay": true }' class="relative">
               <div class="hs-carousel relative overflow-hidden w-full min-h-[600px] bg-white rounded-lg">
                 <div class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0">
@@ -576,7 +471,6 @@
                   </div>
                 </div>
               </div>
-
               <button type="button" class="hs-carousel-prev hs-carousel:disabled:opacity-50 disabled:pointer-events-none absolute inset-y-0 start-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/[.1]">
                 <span class="text-2xl" aria-hidden="true">
                   <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -596,7 +490,6 @@
                   </svg>
                 </span>
               </button>
-
               <div class="hs-carousel-pagination flex justify-center absolute bottom-3 start-0 end-0 space-x-2">
                 <span
                     class="hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer"></span>
@@ -606,16 +499,11 @@
                     class="hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer"></span>
               </div>
             </div>
-            <!-- End Slider -->
           </div>
-
-
         </div>
-        <!-- End Col -->
 
         <div class="mt-5 sm:mt-10 lg:mt-0">
           <div class="space-y-6 sm:space-y-8">
-            <!-- Title -->
             <div class="space-y-2 md:space-y-4">
               <h2 class="font-bold text-4xl text-gray-800">
                 <span class="titulo-header">Tecnologia</span> no cardápio
@@ -624,12 +512,8 @@
                 Uma maneira tecnológica e integrada de fazer o seu pedido, crie e aprecie o seu café como quiser.
               </p>
             </div>
-            <!-- End Title -->
 
-            <!-- List -->
             <ul role="list" class="space-y-2 sm:space-y-4">
-
-
               <li class="flex space-x-3">
                 <span class="mt-0.5 size-5 flex justify-center items-center rounded-full ">
                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 448 512" fill="none">
@@ -666,36 +550,24 @@
                   <span class="font-bold">De forma humanizada</span> é como os nossos robôs interagem com os nossos clientes, eles fazem mais do que preparar um café.
                 </span>
               </li>
-
             </ul>
-            <!-- End List -->
           </div>
         </div>
-        <!-- End Col -->
       </div>
-      <!-- End Grid -->
     </div>
-    <!-- End Features -->
-
 
     <div>
-
-      <!-- Hero -->
       <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Grid -->
         <div class="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
           <div>
-
             <h2 class="font-bold text-4xl text-gray-800">
               Entrega feita com <span class="titulo-header">tecnologia</span>
             </h2>
-
             <p class="mt-3 text-lg text-gray-600 text-justify">
               Redefinimos a maneira como você desfruta do seu café favorito, peça no seu smartphone e receba em sua casa, escritório ou aonde estiver.
             </p>
 
             <div class="mt-6 lg:mt-10 grid grid-cols-2 gap-x-5">
-
               <div class="py-5">
                 <div class="flex space-x-1">
                   <div class="group flex gap-y-6 size-full rounded-lg p-5 transition-all">
@@ -703,7 +575,6 @@
                       <path class="svg-primario" d="M80 112c0 16.2 12.1 29.7 27.8 31.7L160 213.3v85.3l-52.2 69.6C92.1 370.3 80 383.8 80 400c0 17.7 14.3 32 32 32c16.2 0 29.7-12.1 31.7-27.8L213.3 352h85.3l69.6 52.2c2.1 15.7 15.5 27.8 31.7 27.8c17.7 0 32-14.3 32-32c0-16.2-12.1-29.7-27.8-31.7L352 298.7V213.3l52.2-69.6c15.7-2.1 27.8-15.5 27.8-31.7c0-17.7-14.3-32-32-32c-16.2 0-29.7 12.1-31.7 27.8L298.7 160H213.3l-69.6-52.2C141.7 92.1 128.2 80 112 80c-17.7 0-32 14.3-32 32z"/>
                       <path class="svg-secundario" d="M213.3 159.9c6.9-14.5 10.7-30.8 10.7-47.9C224 50.1 173.9 0 112 0S0 50.1 0 112s50.1 112 112 112c17.2 0 33.4-3.9 47.9-10.7l-29.9-39.8c-5.7 1.7-11.8 2.6-18.1 2.6c-35.3 0-64-28.7-64-64s28.7-64 64-64s64 28.7 64 64c0 6.3-.9 12.3-2.6 18.1l39.8 29.9zm138.8 53.3c14.5 6.9 30.8 10.7 47.9 10.7c61.9 0 112-50.1 112-112S461.9 0 400 0S288 50.1 288 112c0 17.2 3.9 33.4 10.7 47.9l39.8-29.9c-1.7-5.7-2.6-11.8-2.6-18.1c0-35.3 28.7-64 64-64s64 28.7 64 64s-28.7 64-64 64c-6.3 0-12.3-.9-18.1-2.6l-29.9 39.8zM298.7 352.1C291.9 366.6 288 382.8 288 400c0 61.9 50.1 112 112 112s112-50.1 112-112s-50.1-112-112-112c-17.2 0-33.4 3.9-47.9 10.7l29.9 39.8c5.7-1.7 11.8-2.6 18.1-2.6c35.3 0 64 28.7 64 64s-28.7 64-64 64s-64-28.7-64-64c0-6.3 .9-12.3 2.6-18.1l-39.8-29.9zM159.9 298.7C145.4 291.9 129.2 288 112 288C50.1 288 0 338.1 0 400s50.1 112 112 112s112-50.1 112-112c0-17.2-3.9-33.4-10.7-47.9l-39.8 29.9c1.7 5.7 2.6 11.8 2.6 18.1c0 35.3-28.7 64-64 64s-64-28.7-64-64s28.7-64 64-64c6.3 0 12.3 .9 18.1 2.6l29.9-39.8z"/>
                     </svg>
-
                     <div>
                       <div>
                         <h3 class="block font-bold text-gray-700">Drone</h3>
@@ -721,7 +592,6 @@
                       <path class="svg-primario" d="M128 128C128 57.3 185.3 0 256 0s128 57.3 128 128v64H128V128zm96 0a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm96-16a16 16 0 1 0 -32 0 16 16 0 1 0 32 0zM208 256h96c8.8 0 16 7.2 16 16s-7.2 16-16 16H208c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64h96c8.8 0 16 7.2 16 16s-7.2 16-16 16H208c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/>
                       <path class="svg-secundario" d="M96 192c-26.5 0-48 21.5-48 48V398.3c0 8.7-2.4 17.2-6.8 24.7L2.3 487.8c-3 4.9-3 11.1-.2 16.1s8.2 8.1 13.9 8.1h96c8.8 0 16-7.2 16-16V384l45.3 45.3c12 12 28.3 18.7 45.3 18.7h75c17 0 33.3-6.7 45.3-18.7L384 384V496c0 8.8 7.2 16 16 16h96c5.8 0 11.1-3.1 13.9-8.1s2.8-11.2-.2-16.1L470.8 423c-4.5-7.5-6.8-16-6.8-24.7V240c0-26.5-21.5-48-48-48H96zm112 64h96c8.8 0 16 7.2 16 16s-7.2 16-16 16H208c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64h96c8.8 0 16 7.2 16 16s-7.2 16-16 16H208c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/>
                     </svg>
-
                     <div>
                       <div>
                         <h3 class="block font-bold text-gray-700">Robô entregador</h3>
@@ -739,7 +609,6 @@
                       <path class="svg-primario" d="M336 128c-26.5 0-48 21.5-48 48V400c0 20.9 13.4 38.7 32 45.3V488c0 13.3 10.7 24 24 24h16c13.3 0 24-10.7 24-24V448H544v40c0 13.3 10.7 24 24 24h16c13.3 0 24-10.7 24-24V445.3c18.6-6.6 32-24.4 32-45.3V176c0-26.5-21.5-48-48-48H336zm16 176l15.8-49.3c3.3-8.7 11.2-14.7 20.5-14.7H539.7c9.2 0 17.2 6 20.5 14.7L576 304H352zm192 72a24 24 0 1 1 48 0 24 24 0 1 1 -48 0zM360 352a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"/>
                       <path class="svg-secundario" d="M144 86.1C144 54.7 169.4 0 200 0c31.5 0 56 54.7 56 86.1v96.9l0 0c0 .4 0 .7 0 1.1V325.5 408v3.5l.1 .1c1.2 22.2 13.7 41.3 31.9 51.8V496c0 5.2 .8 10.3 2.4 15L200 480.9l-90.9 30.3c-4.9 1.6-10.2 .8-14.4-2.2s-6.6-7.8-6.6-13V464c0-4.9 2.2-9.5 6-12.5l50-40V330.3l-123.4 37c-4.8 1.5-10.1 .5-14.1-2.5S0 357.1 0 352V288c0-5.6 2.9-10.8 7.8-13.7L144 192.5V86.1z"/>
                     </svg>
-
                     <div>
                       <div>
                         <h3 class="block font-bold text-gray-700">Courier</h3>
@@ -757,7 +626,6 @@
                       <path class="svg-primario" d="M377.4 41.4c12.5-12.5 32.8-12.5 45.3 0l48 48c12.5 12.5 12.5 32.8 0 45.3L270.2 335.1c11.4 24.6 17.8 52 17.8 80.9c0 31.7-7.7 61.5-21.2 87.8c-4.7 9-16.7 10.3-23.8 3.1L135.3 399.3l-16.4 16.4c.7 2.6 1.1 5.4 1.1 8.3c0 17.7-14.3 32-32 32s-32-14.3-32-32s14.3-32 32-32c2.9 0 5.6 .4 8.3 1.1l16.4-16.4L5.1 269.1c-7.2-7.2-5.9-19.2 3.1-23.8C34.5 231.7 64.3 224 96 224c28.9 0 56.3 6.4 80.9 17.8L377.4 41.4z"/>
                       <path class="svg-secundario" d="M233 7c-9.4-9.4-24.6-9.4-33.9 0l-96 96c-9.4 9.4-9.4 24.6 0 33.9l89.4 89.4L322.3 96.4 233 7zM375 409c9.4 9.4 24.6 9.4 33.9 0l96-96c9.4-9.4 9.4-24.6 0-33.9l-89.4-89.4L285.7 319.6 375 409z"/>
                     </svg>
-
                     <div>
                       <div>
                         <h3 class="block font-bold text-gray-700">Rastreamento real-time</h3>
@@ -767,15 +635,11 @@
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
 
           <div class="relative ms-4">
-
-
             <div>
-              <!-- Slider -->
               <div data-hs-carousel='{ "loadingClasses": "opacity-0", "isAutoPlay": true }' class="relative">
                 <div class="hs-carousel relative overflow-hidden w-full min-h-[600px] bg-white rounded-lg">
                   <div class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0">
@@ -786,7 +650,6 @@
                     </div>
                   </div>
                 </div>
-
                 <button type="button" class="hs-carousel-prev hs-carousel:disabled:opacity-50 disabled:pointer-events-none absolute inset-y-0 start-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/[.1]">
                 <span class="text-2xl" aria-hidden="true">
                   <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -797,7 +660,6 @@
                 </span>
                   <span class="sr-only">Previous</span>
                 </button>
-
                 <button type="button" class="hs-carousel-next hs-carousel:disabled:opacity-50 disabled:pointer-events-none absolute inset-y-0 end-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/[.1]">
                   <span class="sr-only">Next</span>
                   <span class="text-2xl" aria-hidden="true">
@@ -816,24 +678,16 @@
                       class="hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer"></span>
                 </div>
               </div>
-              <!-- End Slider -->
             </div>
-
-
           </div>
-
         </div>
       </div>
     </div>
 
-
-    <!-- Features -->
     <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-      <!-- Grid -->
       <div class="md:grid md:grid-cols-2 md:items-center md:gap-12 xl:gap-32">
         <div>
           <div>
-            <!-- Slider -->
             <div data-hs-carousel='{ "loadingClasses": "opacity-0", "isAutoPlay": true }' class="relative">
               <div class="hs-carousel relative overflow-hidden w-full min-h-[600px] bg-white rounded-lg">
                 <div class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0">
@@ -844,7 +698,6 @@
                   </div>
                 </div>
               </div>
-
               <button type="button" class="hs-carousel-prev hs-carousel:disabled:opacity-50 disabled:pointer-events-none absolute inset-y-0 start-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/[.1]">
                 <span class="text-2xl" aria-hidden="true">
                   <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -855,7 +708,6 @@
                 </span>
                 <span class="sr-only">Previous</span>
               </button>
-
               <button type="button" class="hs-carousel-next hs-carousel:disabled:opacity-50 disabled:pointer-events-none absolute inset-y-0 end-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/[.1]">
                 <span class="sr-only">Next</span>
                 <span class="text-2xl" aria-hidden="true">
@@ -864,7 +716,6 @@
                   </svg>
                 </span>
               </button>
-
               <div class="hs-carousel-pagination flex justify-center absolute bottom-3 start-0 end-0 space-x-2">
                 <span
                     class="hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer"></span>
@@ -874,16 +725,11 @@
                     class="hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer"></span>
               </div>
             </div>
-            <!-- End Slider -->
           </div>
-
-
         </div>
-        <!-- End Col -->
 
         <div class="mt-5 sm:mt-10 lg:mt-0">
           <div class="space-y-6 sm:space-y-8">
-            <!-- Title -->
             <div class="space-y-2 md:space-y-4">
               <h2 class="font-bold text-4xl text-gray-800">
                 <span class="titulo-header">Tecnologia</span> nos detalhes do café
@@ -892,12 +738,8 @@
                 Com a destreza do auxílio de robôs, os nossos cafés são uma obra de arte feita sobre a espuma do leite.
               </p>
             </div>
-            <!-- End Title -->
 
-            <!-- List -->
             <ul role="list" class="space-y-2 sm:space-y-4">
-
-
               <li class="flex space-x-3">
                 <span class="mt-0.5 size-5 flex justify-center items-center rounded-full ">
                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 576 512" fill="none">
@@ -922,7 +764,6 @@
                 </span>
               </li>
 
-
               <li class="flex space-x-3">
               <span class="mt-0.5 size-5 flex justify-center items-center rounded-full">
                 <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 512 512" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -934,42 +775,25 @@
                 <span class="font-bold">Tudo para ser seu</span> e você sentir a essência do café unido a sua essência e ao seu dia.
               </span>
               </li>
-
             </ul>
-            <!-- End List -->
           </div>
         </div>
-        <!-- End Col -->
       </div>
-      <!-- End Grid -->
     </div>
-    <!-- End Features -->
-
 
     <div>
-
-      <!-- Hero -->
       <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Grid -->
         <div class="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
           <div>
-<!--            <h1 class="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-4xl lg:leading-tight dark:text-white">-->
-<!--              Estamos no coração da <span class="titulo-header">tecnologia</span>-->
-<!--            </h1>-->
-
             <h2 class="font-bold text-4xl text-gray-800">
               Estamos no coração da <span class="titulo-header">tecnologia</span>
             </h2>
-
             <p class="mt-3 text-lg text-gray-600 text-justify">
               No coração pulsante da Cidade Maravilhosa, onde os zeros e uns da tecnologia encontram a paixão pelo café, está a nossa cafeteria.
             </p>
-
             <div class="mt-6 lg:mt-10 grid grid-cols-2 gap-x-5">
-              <!-- Review -->
               <div class="py-5">
                 <div class="flex space-x-1">
-
                   <svg fill="url(#myGradient1)" class="mt-1 flex-shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 576 512" stroke="transparent" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <defs>
                     </defs>
@@ -1044,13 +868,11 @@
                       </linearGradient>
                     </defs>
                   </svg>
-
                 </div>
 
                 <p class="mt-3 text-sm text-gray-800">
                   <span class="font-bold">4.9</span> / 5 - de 12k avaliações
                 </p>
-
                 <div class="mt-5">
                   <svg class="h-auto w-16 text-gray-800 dark:text-white" width="80" height="27" viewBox="0 0 80 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M20.558 9.74046H11.576V12.3752H17.9632C17.6438 16.0878 14.5301 17.7245 11.6159 17.7245C7.86341 17.7245 4.58995 14.7704 4.58995 10.6586C4.58995 6.62669 7.70373 3.51291 11.6159 3.51291C14.6498 3.51291 16.4063 5.42908 16.4063 5.42908L18.2426 3.51291C18.2426 3.51291 15.8474 0.878184 11.4961 0.878184C5.94724 0.838264 1.67578 5.50892 1.67578 10.5788C1.67578 15.5289 5.70772 20.3592 11.6558 20.3592C16.8854 20.3592 20.7177 16.8063 20.7177 11.4969C20.7177 10.3792 20.558 9.74046 20.558 9.74046Z" fill="currentColor"/>
@@ -1065,7 +887,6 @@
 
               <div class="py-5">
                 <div class="flex space-x-1">
-
                   <svg fill="url(#myGradient6)" class="mr-2.5 mt-1 flex-shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 576 512" stroke="transparent" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <defs>
                     </defs>
@@ -1142,13 +963,11 @@
                       </linearGradient>
                     </defs>
                   </svg>
-
                 </div>
 
                 <p class="mt-3 text-sm text-gray-800">
                   <span class="font-bold">4.95</span> / 5 - de 10k avaliações
                 </p>
-
                 <div class="mt-5">
                   <svg class="h-auto w-16 text-gray-800 dark:text-white" width="110" height="28" viewBox="0 0 110 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M66.6601 8.35107C64.8995 8.35107 63.5167 8.72875 62.1331 9.48265C62.1331 5.4582 62.1331 1.81143 62.2594 0.554199L53.8321 2.06273V2.81736L54.7124 2.94301C55.8433 3.19431 56.2224 3.82257 56.4715 5.33255C56.725 8.35107 56.5979 24.4496 56.4715 27.0912C58.7354 27.5945 61.1257 27.9722 63.5159 27.9722C70.1819 27.9722 74.2064 23.8213 74.2064 17.281C74.2064 12.1249 70.9366 8.35107 66.6601 8.35107ZM63.7672 26.5878C63.2639 26.5878 62.6342 26.5878 62.258 26.4629C62.1316 24.7023 62.0067 17.281 62.1316 10.7413C62.8862 10.4893 63.3888 10.3637 64.0185 10.3637C66.7872 10.3637 68.2965 13.6335 68.2965 17.6572C68.2957 22.6898 66.4088 26.5878 63.7672 26.5878ZM22.1363 1.0568H0V2.18838L1.25796 2.31403C2.89214 2.56533 3.52184 3.57127 3.77242 5.9608C4.15082 10.4886 4.02445 18.6646 3.77242 22.5619C3.52112 24.9522 2.89287 26.0845 1.25796 26.2087L0 26.4615V27.4674H14.2123V26.4615L12.703 26.2087C11.0681 26.0838 10.4392 24.9522 10.1879 22.5619C10.0615 20.9263 9.93583 18.2847 9.93583 15.0156L12.9543 15.1413C14.8413 15.1413 15.7208 16.6505 16.0985 18.7881H17.2308V9.86106H16.0985C15.7201 11.9993 14.8413 13.5078 12.9543 13.5078L9.93655 13.6342C9.93655 9.35773 10.0622 5.33328 10.1886 2.94374H14.59C17.9869 2.94374 19.7475 5.08125 21.0047 8.85513L22.2626 8.47745L22.1363 1.0568Z" fill="currentColor"/>
@@ -1160,19 +979,11 @@
           </div>
 
           <div class="relative ms-4">
-
-
             <iframe class="w-full rounded-xl" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12509.071220028352!2d-43.176818!3d-22.906079!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997f5fd24e0bdd%3A0x99447fc2607f1de1!2sFaculdade%20Infnet%20-%20Faculdade%20de%20Engenharia%20de%20Software%2C%20Engenharia%20da%20Computa%C3%A7%C3%A3o%2C%20Engenharia%20de%20Dados%20e%20IA%20%7C%20MBA%20e%20P%C3%B3s%20em%20TI!5e1!3m2!1spt-BR!2sbr!4v1711470017960!5m2!1spt-BR!2sbr" width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
           </div>
         </div>
       </div>
     </div>
-
-
-
-
-
   </div>
 
 </template>
