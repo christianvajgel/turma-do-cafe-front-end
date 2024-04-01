@@ -6,7 +6,6 @@ export function gerarUUID() {
     });
 }
 
-
 export function gerarLocalizador(length = 6) {
     const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     let localizador = '';
@@ -16,7 +15,6 @@ export function gerarLocalizador(length = 6) {
     }
     return localizador;
 }
-
 
 export function obterIdDoCarrinho() {
 
@@ -30,11 +28,9 @@ export function obterIdDoCarrinho() {
     return idCarrinho;
 }
 
-
 export function apagarIdDoCarrinho() {
     localStorage.removeItem("carrinhoID");
 }
-
 
 export function gerarCodigoDeAutorizacaoAleatorio(length = 10) {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
