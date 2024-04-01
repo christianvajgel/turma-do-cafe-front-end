@@ -5,138 +5,35 @@
 <template>
 
   <div>
-
-    <!-- Blog Article -->
     <div class="max-w-3xl px-4 pt-6 lg:pt-10 pb-12 sm:px-6 lg:px-8 mx-auto">
       <div class="max-w-2xl">
-        <!-- Avatar Media -->
-<!--        <div class="flex justify-between items-center mb-6">-->
-<!--          <div class="flex w-full sm:items-center gap-x-5 sm:gap-x-3">-->
-<!--            <div class="flex-shrink-0">-->
-<!--              <img class="size-12 rounded-full" src="https://images.unsplash.com/photo-1669837401587-f9a4cfe3126e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80" alt="Image Description">-->
-<!--            </div>-->
-
-<!--            <div class="grow">-->
-<!--              <div class="flex justify-between items-center gap-x-2">-->
-<!--                <div>-->
-<!--                  &lt;!&ndash; Tooltip &ndash;&gt;-->
-<!--                  <div class="hs-tooltip inline-block [&#45;&#45;trigger:hover] [&#45;&#45;placement:bottom]">-->
-<!--                    <div class="hs-tooltip-toggle sm:mb-1 block text-start cursor-pointer">-->
-<!--                  <span class="font-semibold text-gray-800 dark:text-gray-200">-->
-<!--                    Leyla Ludic-->
-<!--                  </span>-->
-
-<!--                      &lt;!&ndash; Dropdown Card &ndash;&gt;-->
-<!--                      <div class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 max-w-xs cursor-default bg-gray-900 divide-y divide-gray-700 shadow-lg rounded-xl dark:bg-black" role="tooltip">-->
-<!--                        &lt;!&ndash; Body &ndash;&gt;-->
-<!--                        <div class="p-4 sm:p-5">-->
-<!--                          <div class="mb-2 flex w-full sm:items-center gap-x-5 sm:gap-x-3">-->
-<!--                            <div class="flex-shrink-0">-->
-<!--                              <img class="size-8 rounded-full" src="https://images.unsplash.com/photo-1669837401587-f9a4cfe3126e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80" alt="Image Description">-->
-<!--                            </div>-->
-
-<!--                            <div class="grow">-->
-<!--                              <p class="text-lg font-semibold text-gray-200">-->
-<!--                                Leyla Ludic-->
-<!--                              </p>-->
-<!--                            </div>-->
-<!--                          </div>-->
-<!--                          <p class="text-sm text-gray-400">-->
-<!--                            Leyla is a Customer Success Specialist at Preline and spends her time speaking to in-house recruiters all over the world.-->
-<!--                          </p>-->
-<!--                        </div>-->
-<!--                        &lt;!&ndash; End Body &ndash;&gt;-->
-
-<!--                        &lt;!&ndash; Footer &ndash;&gt;-->
-<!--                        <div class="flex justify-between items-center px-4 py-3 sm:px-5">-->
-<!--                          <ul class="text-xs space-x-3">-->
-<!--                            <li class="inline-block">-->
-<!--                              <span class="font-semibold text-gray-200">56</span>-->
-<!--                              <span class="text-gray-400">articles</span>-->
-<!--                            </li>-->
-<!--                            <li class="inline-block">-->
-<!--                              <span class="font-semibold text-gray-200">1k+</span>-->
-<!--                              <span class="text-gray-400">followers</span>-->
-<!--                            </li>-->
-<!--                          </ul>-->
-
-<!--                          <div>-->
-<!--                            <button type="button" class="py-1.5 px-2.5 inline-flex items-center gap-x-2 text-xs font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">-->
-<!--                              <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">-->
-<!--                                <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>-->
-<!--                                <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>-->
-<!--                              </svg>-->
-<!--                              Follow-->
-<!--                            </button>-->
-<!--                          </div>-->
-<!--                        </div>-->
-<!--                        &lt;!&ndash; End Footer &ndash;&gt;-->
-<!--                      </div>-->
-<!--                      &lt;!&ndash; End Dropdown Card &ndash;&gt;-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                  &lt;!&ndash; End Tooltip &ndash;&gt;-->
-
-<!--                  <ul class="text-xs text-gray-500">-->
-<!--                    <li class="inline-block relative pe-6 last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-2 before:-translate-y-1/2 before:size-1 before:bg-gray-300 before:rounded-full dark:text-gray-400 dark:before:bg-gray-600">-->
-<!--                      Jan 18-->
-<!--                    </li>-->
-<!--                    <li class="inline-block relative pe-6 last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-2 before:-translate-y-1/2 before:size-1 before:bg-gray-300 before:rounded-full dark:text-gray-400 dark:before:bg-gray-600">-->
-<!--                      8 min read-->
-<!--                    </li>-->
-<!--                  </ul>-->
-<!--                </div>-->
-
-<!--                &lt;!&ndash; Button Group &ndash;&gt;-->
-<!--                <div>-->
-<!--                  <button type="button" class="py-1.5 px-2.5 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">-->
-<!--                    <svg class="size-3.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">-->
-<!--                      <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>-->
-<!--                    </svg>-->
-<!--                    Tweet-->
-<!--                  </button>-->
-<!--                </div>-->
-<!--                &lt;!&ndash; End Button Group &ndash;&gt;-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-        <!-- End Avatar Media -->
-
         <div class="mt-5 max-w-2xl mx-auto text-center mb-10 lg:mb-14">
           <h2 class="text-2xl font-bold md:text-4xl md:leading-tight titulo-header">Sustentabilidade</h2>
         </div>
 
-        <!-- Content -->
         <div class="space-y-5 md:space-y-8">
-
           <div class="space-y-3">
-
             <h2 class="text-2xl font-semibold">Tecnologia para um Futuro Mais Verde e Justo</h2>
-
             <p class="text-lg text-gray-800 dark:text-gray-200">
               O café, bebida apreciada por milhões de pessoas em todo o mundo, enfrenta desafios crescentes.
               Mudanças climáticas, escassez de recursos e desigualdade na cadeia de
               valor são apenas alguns dos obstáculos que ameaçam a viabilidade da produção cafeeira.
             </p>
-
           </div>
 
           <figure>
             <img class="w-full object-cover rounded-xl" src="https://storage.googleapis.com/turma-do-cafe-assets/sustentabilidade-1.jpg" alt="Image Description">
             <figcaption class="mt-3 text-sm text-center text-gray-500">
-              A woman sitting at a table.
+              Aferição manual de grãos de café em diferentes estágios de maturação.
             </figcaption>
           </figure>
 
           <h2 class="text-2xl font-semibold">Rastreabilidade e transparência</h2>
-
           <p class="text-lg text-gray-800 dark:text-gray-200">
             A tecnologia blockchain oferece soluções inovadoras para o rastreamento das sacas de café desde
             a produção até o consumidor final. Essa maior transparência garante aos consumidores um café
             de origem sustentável e certificada, além de fortalecer a confiança entre os diferentes elos da cadeia.
           </p>
-
           <blockquote class="text-center p-4 sm:px-7">
             <p class="text-xl font-medium text-gray-800 md:text-2xl md:leading-normal xl:text-2xl xl:leading-normal dark:text-gray-200">
               É neste contexto que o cultivo sustentável do café emerge como uma solução essencial para garantir
@@ -150,13 +47,12 @@
           <figure>
             <img class="w-full object-cover rounded-xl" src="https://storage.googleapis.com/turma-do-cafe-assets/sustentabilidade-2.jpg" alt="Image Description">
             <figcaption class="mt-3 text-sm text-center text-gray-500">
-              A man and a woman looking at a cell phone.
+              Tecnologia e ciência de dados desde o plantio até o café em sua xícara.
             </figcaption>
           </figure>
 
           <div class="space-y-3">
             <h3 class="text-2xl font-semibold">Menor impacto ambiental</h3>
-
             <p class="text-lg text-gray-800 dark:text-gray-200">
               A adoção de práticas agrícolas sustentáveis, como a agricultura de precisão e a agroecologia, contribui
               para a preservação do meio ambiente. A redução do uso de agrotóxicos, a otimização do consumo de água e a
@@ -180,16 +76,12 @@
             </a>
           </div>
         </div>
-        <!-- End Content -->
       </div>
     </div>
-    <!-- End Blog Article -->
 
-    <!-- Sticky Share Group -->
     <div class="sticky bottom-6 inset-x-0 text-center">
       <div class="inline-block bg-white shadow-md rounded-full py-3 px-4 dark:bg-gray-800">
         <div class="flex items-center gap-x-1.5">
-          <!-- Button -->
           <div class="hs-tooltip inline-block">
             <button type="button" class="hs-tooltip-toggle flex items-center gap-x-2 text-sm text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
               <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
@@ -199,7 +91,6 @@
           </span>
             </button>
           </div>
-          <!-- Button -->
 
           <div class="block h-3 border-e border-gray-300 mx-3 dark:border-gray-600"></div>
 
@@ -213,11 +104,9 @@
           </span>
             </button>
           </div>
-          <!-- Button -->
 
           <div class="block h-3 border-e border-gray-300 mx-3"></div>
 
-          <!-- Button -->
           <div class="hs-dropdown relative inline-flex">
             <button type="button" id="blog-article-share-dropdown" class="hs-dropdown-toggle flex items-center gap-x-2 text-sm text-gray-500 hover:text-gray-800">
               <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" x2="12" y1="2" y2="15"/></svg>
@@ -249,12 +138,9 @@
               </a>
             </div>
           </div>
-          <!-- Button -->
         </div>
       </div>
     </div>
-    <!-- End Sticky Share Group -->
-
   </div>
 
 </template>
