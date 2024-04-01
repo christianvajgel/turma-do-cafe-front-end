@@ -5,15 +5,11 @@
 <template>
 
   <div>
-    <!-- Team -->
     <div class="max-w-5xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-      <!-- Title -->
       <div class="mt-5 max-w-2xl mx-auto text-center mb-10 lg:mb-14">
         <h2 class="text-2xl font-bold md:text-4xl md:leading-tight titulo-header">Equipe</h2>
       </div>
-      <!-- End Title -->
 
-      <!-- Grid -->
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-8 md:gap-12">
         <div class="text-center">
           <img class="rounded-full size-24 mx-auto" src="https://storage.googleapis.com/turma-do-cafe-assets/ch2.jpg" alt="Image Description">
@@ -62,7 +58,6 @@
             </p>
           </div>
         </div>
-        <!-- End Col -->
 
         <div class="text-center">
           <img class="rounded-full size-24 mx-auto" src="https://storage.googleapis.com/turma-do-cafe-assets/m.jpg" alt="Image Description">
@@ -75,7 +70,6 @@
             </p>
           </div>
         </div>
-        <!-- End Col -->
 
         <div class="text-center">
           <img class="rounded-full size-24 mx-auto" src="https://storage.googleapis.com/turma-do-cafe-assets/r.jpg" alt="Image Description">
@@ -88,11 +82,9 @@
             </p>
           </div>
         </div>
-        <!-- End Col -->
 
       </div>
     </div>
-    <!-- End Team -->
   </div>
 
 </template>
