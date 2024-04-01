@@ -15,7 +15,6 @@ import Equipe from "@/components/pages/institucionais/Equipe.vue";
 import Loja from "@/components/pages/institucionais/Loja.vue";
 import Sustentabilidade from "@/components/pages/institucionais/Sustentabilidade.vue";
 
-
 const routes = [
     {
         path: '/',
@@ -81,9 +80,6 @@ const routes = [
         path: '/sustentabilidade',
         component: Sustentabilidade,
     },
-
-    // ADD NEW ROUTES HERE
-
 ];
 
 const router = createRouter({
